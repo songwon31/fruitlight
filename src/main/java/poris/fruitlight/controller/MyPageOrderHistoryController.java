@@ -61,8 +61,6 @@ public class MyPageOrderHistoryController {
 	    	if (searchKeyword != null) {
 	    		orderSearch.setShopperNo(shopper.getShopperNo());
 	    		orderSearch.setSearchKeyword(searchKeyword);
-	    		
-	    		
 	    		mypageOrdered = myPageOrderedService.searchOrderList(orderSearch);
 	    		for (OrderHistoryOrderList mpo : mypageOrdered) {
 	    			mpo.setBase64Img(Base64.getEncoder().encodeToString(mpo.getMEDIA_DATA()));
