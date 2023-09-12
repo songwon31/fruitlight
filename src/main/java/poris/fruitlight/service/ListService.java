@@ -2,9 +2,19 @@ package poris.fruitlight.service;
 
 import java.util.List;
 
+import poris.fruitlight.dto.MobileBoardMedia;
+import poris.fruitlight.dto.MobileProductForList;
 import poris.fruitlight.dto.ProductList;
 
 public interface ListService {
+	
+	public List<MobileProductForList> getMobileProductsForList();
+	
+	/**
+	 * @author 송원석
+	 */
+	public MobileBoardMedia getThumbnailImage(int board_no);
+	
 	/**
 	 * @author 김진성
 	 * @param pname - 검색한 상품의 이름

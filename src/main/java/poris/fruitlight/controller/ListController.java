@@ -1,6 +1,5 @@
 package poris.fruitlight.controller;
 
-import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Comparator;
 import java.util.List;
@@ -12,8 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import lombok.extern.slf4j.Slf4j;
+import poris.fruitlight.dto.MobileProductForList;
 import poris.fruitlight.dto.ProductList;
 import poris.fruitlight.service.ListService;
 
@@ -23,6 +24,26 @@ public class ListController {
 	
 	@Resource
 	private ListService listService;
+	
+	/**
+	 * @author 송원석
+	 */
+	@RequestMapping(value="/list/getMobileProductsForList", produces="application/json; charset=UTF-8")
+	@ResponseBody
+	public List<MobileProductForList> getMobileProductsForList() {
+		return listService.getMobileProductsForList();
+	}
+	
+	/**
+	 * @author 송원석
+	 */
+	@RequestMapping(value="/list/getThumbnailImage", produces="image/jpeg")
+	@ResponseBody
+	public byte[] getThumbnailImage(int board_no) {
+		return listService.getThumbnailImage(board_no).getMedia_data();
+	}
+	
+	
 	
 	/**
 	 * @author 김진성

@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import poris.fruitlight.dto.FoodRequiredInfo;
+import poris.fruitlight.dto.BoardMedia;
+import poris.fruitlight.dto.MobileBoardMedia;
+import poris.fruitlight.dto.Product;
 import poris.fruitlight.dto.ProductList;
 
 /**
@@ -14,6 +16,17 @@ import poris.fruitlight.dto.ProductList;
  */
 @Mapper
 public interface ProductDao {
+	
+	public List<Product> selectProductList();
+	
+	List<Integer> selectStarRateList(int product_no);
+	
+	/**
+	 * @author 송원석
+	 * @return 단일 상품 썸네일 가져오기
+	 */
+	public MobileBoardMedia selectThumbnailImage(int board_no);
+	
    /**
     * @author 김진성
     * @return 메인 배너에 보여질 상품 목록 리스트

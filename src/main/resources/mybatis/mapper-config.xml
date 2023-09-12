@@ -11,6 +11,7 @@
 		<typeAlias alias="AddressBook" type="poris.fruitlight.dto.AddressBook"/><!-- 배송지 정보 DTO -->
 		<typeAlias alias="FoodRequiredInfo" type="poris.fruitlight.dto.FoodRequiredInfo"/><!-- 상품 필수 표기 정보 DTO -->
       	<typeAlias alias="BoardMedia" type="poris.fruitlight.dto.BoardMedia"/><!-- 게시글 미디어 파일 정보 DTO -->
+      	<typeAlias alias="MobileBoardMedia" type="poris.fruitlight.dto.MobileBoardMedia"/><!-- 게시글 미디어 파일 정보 DTO -->
       	<typeAlias alias="OrderSearch" type="poris.fruitlight.dto.OrderSearchParam"/><!-- 주문 내역 검색 정보 DTO -->
       	<typeAlias alias="ShippingAddressParam" type="poris.fruitlight.dto.ShippingAddressParam"/><!-- 회원의 기본 배송지 정보 DTO -->
       	<typeAlias alias="Pager" type="poris.fruitlight.dto.Pager"/><!-- 페이지 객체 정보 DTO -->

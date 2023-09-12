@@ -89,7 +89,7 @@ public class MainPageController {
       }
       session.setAttribute("catesublists", cateSublist);
       
-      return "main";
+      return "/WEB-INF/views/main.jsp";
    }
     
    /**
