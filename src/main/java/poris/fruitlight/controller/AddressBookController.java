@@ -32,7 +32,6 @@ public class AddressBookController {
 	 */
 	@RequestMapping("/addressBook")
 	public String AddressBook(HttpSession session, Model model) {
-		/////////////////////////////////////////////
 		 
 		// Step1. 회원 정보 조회 - 회원 고유번호 획득
 		Shopper shopper = (Shopper) session.getAttribute("ShopperInfo");
