@@ -53,7 +53,7 @@ public class MyPageOrderHistoryController {
 	    Shopper shopper = (Shopper) session.getAttribute("ShopperInfo");
 	    if(shopper == null) {
 	    	try {
-				AlertScript.alertAndMovePage(response, "로그인을 해주세요", "/fruitlight/login");
+				AlertScript.alertAndMovePage(response, "로그인을 해", "/fruitlight/login");
 			} catch (IOException e) {
 				return "redirect:/main";
 			}
