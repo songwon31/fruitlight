@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="poris.fruitlight.dao.DetailViewDao">
+	
+	<!-- 2023.08.13 고재승 -->
+	<!-- 게시글 번호를 기준으로 상품 정보를 조회하는 SQL문 -->
+	<select id="selectByBno" parameterType="int" resultType="ProductBoard">
+      SELECT b.BOARD_NO as boardNo,
+      p.PRODUCT_NO as productNo,
+      p.PRODUCT_NAME as productName,
+      p.PRODUCT_PRICE as productPrice,
+      p.PRODUCT_OPTION as productOption,
+      p.DISCOUNT_RATE as discountRate,
+      p.DISCOUNT_PRICE as discountPrice,
+      m.MEDIA_NAME as mediaName,
+      m.MEDIA_DATA as mediaData
+	  FROM PRODUCT p, PRODUCT_BOARD b, BOARD_MEDIA m
+	  WHERE p.PRODUCT_NO = b.PRODUCT_NO
+	  AND b.BOARD_NO = m.BOARD_NO
+	  AND b.BOARD_NO = #{bno}
+	  AND m.MEDIA_NAME like '%list_thumbnail%'
+   </select>
+       
+    <!-- 2023.08.16 고재승 - 게시글의 상품 필수 표기 정보 조회 SQL문 -->
+    <select id="SelectRequiredInfoByBoardNo" parameterType="int" resultType="FoodRequiredInfo">
+    	SELECT BOARD_NO as boardNo,
+    	ITEM as item,
+    	WEIGHT as weight,
+    	PRODUCER as producer,
+    	ORIGIN as origin,
+    	PRODUCTION_DATE as productionDate,
+    	DETAIL as detail,
+    	IMPORTED_FOOD_STATEMENT as importedFoodStatement,
+    	COMPOSITION as composition,
+    	STORAGE_TYPE as storageType,
+    	PRECAUTION as precaution,
+    	CS_CONTACT as csContact
+    	FROM FOOD_REQUIRED_INFO
+    	WHERE BOARD_NO = #{boardNo}
+    </select>
+    
+    <!-- 2023.08.16 고재승 - 게시글의 상품 미디어 파일 정보 조회 SQL문 -->
+    <select id="SelectProductContentByBoardNo" parameterType="int" resultType="BoardMedia">
+    	SELECT MEDIA_NO as mediaNo,
+    		BOARD_NO as boardNo,
+    		MEDIA_NAME as mediaName,
+    		MEDIA_DATA as mediaData
+    	FROM BOARD_MEDIA
+    	WHERE BOARD_NO = #{boardNo}
+    		AND MEDIA_NAME LIKE '%content%'
+    	order by MEDIA_NAME
+    </select>
+   
+   <!-- 상품 이미지 조회 -->
+	<select id="selectImgsByBno" parameterType="int" resultType="ProductBoard">
+      select MEDIA_NAME as mediaName, 
+      		 MEDIA_DATA as mediaData
+	  from PRODUCT_BOARD b, BOARD_MEDIA m
+	  where b.BOARD_NO = m.BOARD_NO
+	  and b.BOARD_NO = #{bno}
+      and MEDIA_NAME like '%detailView_main%'
+      order by MEDIA_NAME
+   </select>
+   
+   <!-- 상품 옵션 조회 -->
+   <select id="selectByName" parameterType="String" resultType="Product">
+      select PRODUCT_NO, PRODUCT_NAME, PRODUCT_STOCK, PRODUCT_OPTION, DISCOUNT_PRICE
+      from PRODUCT
+      where PRODUCT_NAME = #{name}
+   </select>
+   
+   <!-- 2023.08.17 고재승 - 게시글 내 등록된 리뷰의 총 개수 조회 SQL문 -->
+   <select id="SelectTotalReviewStock" parameterType="int" resultType="int">
+      SELECT COUNT(*)
+      FROM REVIEW
+      WHERE BOARD_NO = #{boardNo}
+   </select>
+   
+   <!-- 2023.08.17 고재승 - 리뷰 페이저 -->
+   <select id="selectReviewList" parameterType="Pager" resultType="Review">
+      <![CDATA[
+         select REVIEW_NO as reviewNo,
+         	ORDER_NO as orderNo,
+         	PRODUCT_NO as productNo,
+			BOARD_NO as boardNo,
+			STAR_RATE as starRate,
+			HELP_POINT as helpPoint,
+			CONTENT as content,
+			SHOPPER_NAME as shopperName,
+			PRODUCT_NAME as productName,
+			WRITE_DATE as writeDate
+         from (
+            select rownum as rnum, REVIEW_NO, ORDER_NO, PRODUCT_NO, BOARD_NO, STAR_RATE, HELP_POINT, CONTENT, SHOPPER_NAME, PRODUCT_NAME, WRITE_DATE
+            from (
+               SELECT r.REVIEW_NO, r.ORDER_NO, r.PRODUCT_NO, r.BOARD_NO, r.STAR_RATE, r.HELP_POINT, r.CONTENT, s.SHOPPER_NAME, p.PRODUCT_NAME, r.WRITE_DATE
+               FROM REVIEW r, ORDER_HISTORY o, SHOPPER s, RECEIPT_HISTORY rh, PRODUCT p
+               WHERE r.ORDER_NO = o.ORDER_NO
+               	AND o.SHOPPER_NO = s.SHOPPER_NO
+               	AND r.ORDER_NO = rh.ORDER_NO
+               	AND rh.PRODUCT_NO = p.PRODUCT_NO
+               	AND BOARD_NO = #{BOARD_NO}
+            )
+            where rownum <= #{endRowNo}
+         )
+         where rnum >= #{startRowNo}
+      ]]>
+   </select>
+   
+   
+   <!-- 2023.08.18 고재승 - 베스트 리뷰 페이저 -->
+   <select id="selectBestReviewList" parameterType="Pager" resultType="Review">
+      <![CDATA[
+         select REVIEW_NO as reviewNo,
+         	ORDER_NO as orderNo,
+         	PRODUCT_NO as productNo,
+			BOARD_NO as boardNo,
+			STAR_RATE as starRate,
+			HELP_POINT as helpPoint,
+			CONTENT as content,
+			SHOPPER_NAME as shopperName,
+			PRODUCT_NAME as productName,
+			WRITE_DATE as writeDate
+         from (
+            select rownum as rnum, REVIEW_NO, ORDER_NO, PRODUCT_NO, BOARD_NO, STAR_RATE, HELP_POINT, CONTENT, SHOPPER_NAME, PRODUCT_NAME, WRITE_DATE
+            from (
+               SELECT r.REVIEW_NO, r.ORDER_NO, r.PRODUCT_NO, r.BOARD_NO, r.STAR_RATE, r.HELP_POINT, r.CONTENT, s.SHOPPER_NAME, p.PRODUCT_NAME, r.WRITE_DATE
+               FROM REVIEW r, ORDER_HISTORY o, SHOPPER s, RECEIPT_HISTORY rh, PRODUCT p
+               WHERE r.ORDER_NO = o.ORDER_NO
+               	AND o.SHOPPER_NO = s.SHOPPER_NO
+               	AND r.ORDER_NO = rh.ORDER_NO
+               	AND rh.PRODUCT_NO = p.PRODUCT_NO
+               	AND BOARD_NO = #{BOARD_NO}
+               	ORDER BY r.HELP_POINT DESC
+            )
+            where rownum <= #{endRowNo}
+         )
+         where rnum >= #{startRowNo}
+      ]]>
+   </select>
+   
+   
+   <!-- 2023.08.18 고재승 - 최신순 리뷰 페이저 -->
+   <select id="selectRecentReviewList" parameterType="Pager" resultType="Review">
+      <![CDATA[
+         select REVIEW_NO as reviewNo,
+         	ORDER_NO as orderNo,
+         	PRODUCT_NO as productNo,
+			BOARD_NO as boardNo,
+			STAR_RATE as starRate,
+			HELP_POINT as helpPoint,
+			CONTENT as content,
+			SHOPPER_NAME as shopperName,
+			PRODUCT_NAME as productName,
+			WRITE_DATE as writeDate
+         from (
+            select rownum as rnum, REVIEW_NO, ORDER_NO, PRODUCT_NO, BOARD_NO, STAR_RATE, HELP_POINT, CONTENT, SHOPPER_NAME, PRODUCT_NAME, WRITE_DATE
+            from (
+               SELECT r.REVIEW_NO, r.ORDER_NO, r.PRODUCT_NO, r.BOARD_NO, r.STAR_RATE, r.HELP_POINT, r.CONTENT, s.SHOPPER_NAME, p.PRODUCT_NAME, r.WRITE_DATE
+               FROM REVIEW r, ORDER_HISTORY o, SHOPPER s, RECEIPT_HISTORY rh, PRODUCT p
+               WHERE r.ORDER_NO = o.ORDER_NO
+               	AND o.SHOPPER_NO = s.SHOPPER_NO
+               	AND r.ORDER_NO = rh.ORDER_NO
+               	AND rh.PRODUCT_NO = p.PRODUCT_NO
+               	AND BOARD_NO = #{BOARD_NO}
+               	ORDER BY r.WRITE_DATE DESC
+            )
+            where rownum <= #{endRowNo}
+         )
+         where rnum >= #{startRowNo}
+      ]]>
+   </select>
+   
+   
+   <!-- 2023.08.18 고재승 - 리뷰 검색 페이저 -->
+   <select id="selectSearchReviewList" parameterType="map" resultType="Review">
+      <![CDATA[
+         select REVIEW_NO as reviewNo,
+         	ORDER_NO as orderNo,
+         	PRODUCT_NO as productNo,
+			BOARD_NO as boardNo,
+			STAR_RATE as starRate,
+			HELP_POINT as helpPoint,
+			CONTENT as content,
+			SHOPPER_NAME as shopperName,
+			PRODUCT_NAME as productName,
+			WRITE_DATE as writeDate
+         from (
+            select rownum as rnum, REVIEW_NO, ORDER_NO, PRODUCT_NO, BOARD_NO, STAR_RATE, HELP_POINT, CONTENT, SHOPPER_NAME, PRODUCT_NAME, WRITE_DATE
+            from (
+               SELECT r.REVIEW_NO, r.ORDER_NO, r.PRODUCT_NO, r.BOARD_NO, r.STAR_RATE, r.HELP_POINT, r.CONTENT, s.SHOPPER_NAME, p.PRODUCT_NAME, r.WRITE_DATE
+               FROM REVIEW r, ORDER_HISTORY o, SHOPPER s, RECEIPT_HISTORY rh, PRODUCT p
+               WHERE r.ORDER_NO = o.ORDER_NO
+               	AND o.SHOPPER_NO = s.SHOPPER_NO
+               	AND r.ORDER_NO = rh.ORDER_NO
+               	AND rh.PRODUCT_NO = p.PRODUCT_NO
+               	AND BOARD_NO = #{Pager.BOARD_NO}
+               	AND r.CONTENT LIKE '%' || #{Keyword} || '%'
+            )
+            where rownum <= #{Pager.endRowNo}
+         )
+         where rnum >= #{Pager.startRowNo}
+      ]]>
+   </select>
+   
+   <update id="updateAddHelpPoint" parameterType="String">
+   		UPDATE REVIEW
+		SET HELP_POINT = HELP_POINT + 1
+		WHERE REVIEW_NO = #{reviewNo}
+   </update>
+   
+   
+   <!-- 장바구니 추가 -->
+   <update id="updateCart" parameterType="poris.fruitlight.dto.Cart">
+      MERGE INTO CART
+	  USING DUAL
+	     ON (SHOPPER_NO = #{SHOPPER_NO} and PRODUCT_NO = #{PRODUCT_NO})
+	  WHEN MATCHED THEN
+	      UPDATE SET CART_PRODUCT_STOCK = #{CART_PRODUCT_STOCK} + CART_PRODUCT_STOCK
+	  WHEN NOT MATCHED THEN
+	      INSERT (SHOPPER_NO, PRODUCT_NO, CART_PRODUCT_STOCK) 
+	      VALUES (#{SHOPPER_NO}, #{PRODUCT_NO}, #{CART_PRODUCT_STOCK})
+   </update>
+   
+   <!-- 상품문의 게시글 조회 -->
+   <select id="selectProductInquiryPager" parameterType="poris.fruitlight.dto.Pager" resultType="poris.fruitlight.dto.ProductInquiry">
+      <![CDATA[
+         select rnum, INQUIRY_NO, INQUIRY_CONTENT, INQUIRY_DATE, EMPTANSWER, ANSWER_CONTENT, ANSWER_DATE, SHOPPER_NAME
+         from (
+            select rownum as rnum, INQUIRY_NO, INQUIRY_CONTENT, INQUIRY_DATE, EMPTANSWER, ANSWER_CONTENT, ANSWER_DATE, replace(SHOPPER_NAME, substr(SHOPPER_NAME, 2, 1), '*') as SHOPPER_NAME
+            from (
+               select INQUIRY_NO, INQUIRY_CONTENT, INQUIRY_DATE, EMPTANSWER, ANSWER_CONTENT, ANSWER_DATE, SHOPPER_NAME
+               from PRODUCT_INQUIRY i, SHOPPER s
+               where i.SHOPPER_NO = s.SHOPPER_NO
+               and BOARD_NO = #{BOARD_NO}
+               order by INQUIRY_DATE desc
+            )
+            where rownum <= #{endRowNo}
+         )
+         where rnum >= #{startRowNo}
+      ]]>
+   </select>
+   
+   <!-- 상품문의 페이저를 위한 총 게시글 조회 -->
+   <select id="count" parameterType="int" resultType="int">
+      select count(*) from PRODUCT_INQUIRY
+      where BOARD_NO = #{BOARD_NO}
+   </select>
+  
+</mapper>

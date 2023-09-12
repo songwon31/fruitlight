@@ -1,0 +1,409 @@
+@charset "UTF-8";
+/*오늘의 발견*/
+@media(max-width:767px){
+	.todayDiscoveryProduct{
+		text-align: center;
+	}
+	.todaySellerProduct{
+		text-align: center;
+	}
+}
+.todayDiscovery{
+	margin : 20px;
+	
+}
+.todayDiscoveryHottext{
+	font-size : 35px;
+	text-align: center;
+}
+.todayDiscoveryProduct{
+	padding : 10px;
+	color: #111;
+	transition: box-shadow .2s ease;
+	padding-bottom : 20px;
+	margin : 0 auto;
+}
+.todayDiscoveryProduct:hover{
+	box-shadow : 5px 5px 5px 5px rgba(0,0,0,0.3);
+	cursor: pointer;
+}
+.todayDiscoveryProduct:hover .productName {
+	color : #1E9A4F;
+}
+.productImage{
+	width : 237px;
+	height : 237px;
+}
+.productNameHolder{
+	margin-top : 4px;
+}
+.productName{
+	width: 100%;
+    max-height: 48px;
+    line-height: 16px;
+    font-size: 17px;
+    font-weight : 600;
+    color: #111;
+    text-decoration: none;
+}
+.productName:hover{
+	text-decoration: none;
+}
+.price{
+	margin-top : 3px;
+	margin-bottom : 5px;
+}
+.productDisrate{
+	font-size : 15px;
+}
+.productDiscountPrice{
+	font-size : 15px;
+	color : gray;
+}
+.productPrice{
+	display: block;
+    padding-bottom: 2px;
+    margin-bottom: -3px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 17px;
+    font-weight: 700;
+    color: #cb1400;
+    font-family : Tahoma,sans-serif;
+}
+.productStar{
+	float: left;
+    width: 200px;
+    height: 17px;
+    margin-right: 3px;
+    padding-top : 10px;
+}
+.productStarrate{
+	float : left;
+	display: block;
+    width: 90px;
+    height: 12px;
+    background-image : url("../images/star_all_list.png");
+    background-position: 0 -559px;
+    text-indent: -9999px;
+}
+.productStarrateRating{
+	display: block;
+	margin-bottom: 1px;
+    height: 12px;
+    background-image: url("../images/star_all_list.png");
+    background-position: 0 -534px;
+    text-indent: -9999px;
+}
+.productReviewCount{
+	display : inline-block;
+	float : left;
+	color: #888;
+    font-size: 13px;
+    font-family: Tahoma,sans-serif;
+}
+
+
+/*오늘의 판매자 특가*/
+.todaySeller{
+	margin : 20px;
+	
+}
+.todaySellerHottext{
+	font-size : 35px;
+	text-align: center;
+}
+.todaySellerProduct{
+	padding : 10px;
+	color: #111;
+	transition: box-shadow .2s ease;
+	padding-bottom : 20px;
+}
+.todaySellerProduct:hover{
+	box-shadow : 5px 5px 5px 5px rgba(0,0,0,0.3);
+	cursor: pointer;
+}
+.todaySellerProduct:hover > div > a {
+	color : #1E9A4F;
+}
+.productDiscountHolder{
+	color: #cb1400;
+    font-weight: 700;
+    font-size: 14px;
+}
+.productDiscountHolder span {
+	font-size: 15px;
+}
+
+/* 카테고리별 광고 추천 */
+.cateAdvertise{
+	position: relative;
+    margin: 40px auto 0 auto;
+    width: 1200px;
+    padding-left: 48px;
+}
+.cateAdvertise > p {
+	margin : 0;
+	font-size : 22px;
+	font-weight: 700;
+}
+.cateAdvertise > span {
+	font-size : 28px;
+	font-weight : 700;
+}
+.cateAdvertiseCherry{
+	border-top : 2px solid red;
+	width: 1095px;
+	height : 300px;
+    margin-bottom: 80px;
+    background-color: #fff;
+}
+.cateAdvertiseCherry > dl {
+	position: relative;
+	border-bottom: 1px solid #ddd;
+	height : 300px;
+}
+.cateAdvertiseCherryTitle {
+	position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    width: 114px;
+    padding: 40px 0 0 22px;
+    font-size: 30px;
+    color : red;
+}
+.cateAdvertiseCherryTitle > a {
+	display: block;
+    margin-top: 9px;
+    font-size: 11px;
+    color: #888;
+}
+.cateAdvertiseCherryHotkey {
+	position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+    width: 124px;
+    padding: 22px 10px;
+}
+.cateAdvertiseCherryHotkey > strong {
+	display: block;
+    font-size: 16px;
+    padding-bottom: 4px;
+}
+.cateAdvertiseCherryHotkey > a{
+	float: left;
+    clear: left;
+    display: block;
+    line-height: 28px;
+    padding: 0 10px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    white-space: nowrap;
+    font-size: 12px;
+}
+.cateAdvertiseCherryPromotion{
+	position: relative;
+    float: left;
+    margin-left: 145px;
+    width: 324px;
+    height: 300px;
+    border-bottom: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    background: #fafafa;
+    text-align: center;
+}
+.carousel-inner img {
+    width: 100%;
+    height: 100%;
+}
+.carousel-item {
+	height : 300px;
+}
+.cherry{
+	position: relative;
+	height : 120px;
+	background-color : red;
+	font-size : 16px;
+	font-weight : 500;
+}
+.carousel-caption{
+	height:105px;
+}
+.carousel-caption > h3 {
+	font-weight : 900;
+}
+.carousel-caption > p {
+	font-size : 14px;
+}
+.cateAdvertiseCherryList {
+	position: relative;
+    float: left;
+    width: 625px;
+    height: 300px;
+    overflow: hidden;
+    border-bottom: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+}
+.cateAdvertiseCherryListList {
+	display : inline-block;
+	list-style : none;
+}
+.cateAdvertiseCherryListItem {
+	display: block;
+    width: 208px;
+    height: 290px;
+    padding: 46px 1px 0 27px;
+    margin-top: -1px;
+    border-bottom: 1px solid #ddd;
+    font-size: 12px;
+    color: #111;
+    display: list-item;
+    float : left;
+}
+.cateAdvertiseCherryListItem:hover > a{
+	text-decoration: none;	
+}
+.cateAdvertiseCherryListItem:hover > a > .hoverUnderline {
+	color : red;
+	text-decoration: underline;
+}
+.cateAdvertiseCherryListItem > a > img {
+    width: 160px;
+    height: 160px;
+}
+.cateAdvertiseCherryListItem > a > span {
+	max-height: 28px;
+    overflow: hidden;
+    line-height: 14px;
+    margin: 6px 0 1px;
+    color: #111;
+    display : block;
+}
+.cateAdvertiseCherryListItem > a > span > span > img{
+	width: 59px;
+	height : 14px;
+}
+
+/* 수박 추천 카테고리*/
+.cateAdvertiseWatermelon{
+	border-top : 2px solid #0B8A1A;
+	width: 1095px;
+	height : 300px;
+    margin-bottom: 20px;
+    background-color: #fff;
+}
+.cateAdvertiseWatermelon > dl {
+	position: relative;
+	border-bottom: 1px solid #ddd;
+	height : 300px;
+}
+.cateAdvertiseWatermelonTitle {
+	position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    width: 114px;
+    padding: 40px 0 0 22px;
+    font-size: 30px;
+    color : #0B8A1A;
+}
+.cateAdvertiseWatermelonTitle > a {
+	display: block;
+    margin-top: 9px;
+    font-size: 11px;
+    color: #888;
+}
+.cateAdvertiseWatermelonHotkey {
+	position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+    width: 124px;
+    padding: 22px 10px;
+}
+.cateAdvertiseWatermelonHotkey > strong {
+	display: block;
+    font-size: 16px;
+    padding-bottom: 4px;
+}
+.cateAdvertiseWatermelonHotkey > a{
+	float: left;
+    clear: left;
+    display: block;
+    line-height: 28px;
+    padding: 0 10px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    white-space: nowrap;
+    font-size: 12px;
+}
+.cateAdvertiseWatermelonPromotion{
+	position: relative;
+    float: left;
+    margin-left: 145px;
+    width: 324px;
+    height: 300px;
+    border-bottom: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    background: #fafafa;
+    text-align: center;
+}
+
+.watermelon{
+	position: relative;
+	height : 105px;
+	background-color : #0B8A1A;
+	font-size : 16px;
+	font-weight : 500;
+}
+
+.cateAdvertiseWatermelonList {
+	position: relative;
+    float: left;
+    width: 625px;
+    height: 300px;
+    overflow: hidden;
+    border-bottom: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+}
+.cateAdvertiseWatermelonListList {
+	display : inline-block;
+	list-style : none;
+}
+.cateAdvertiseWatermelonListItem {
+	display: block;
+    width: 208px;
+    height: 290px;
+    padding: 46px 1px 0 27px;
+    margin-top: -1px;
+    border-bottom: 1px solid #ddd;
+    font-size: 12px;
+    color: #111;
+    display: list-item;
+    float : left;
+}
+.cateAdvertiseWatermelonListItem:hover > a{
+	text-decoration: none;	
+}
+.cateAdvertiseWatermelonListItem:hover > a > .hoverUnderline {
+	color : #0B8A1A;
+	text-decoration: underline;
+}
+.cateAdvertiseWatermelonListItem > a > img {
+    width: 160px;
+    height: 160px;
+}
+.cateAdvertiseWatermelonListItem > a > span {
+	max-height: 28px;
+    overflow: hidden;
+    line-height: 14px;
+    margin: 6px 0 1px;
+    color: #111;
+    display : block;
+}
+.cateAdvertiseWatermelonListItem > a > span > span > img{
+	width: 59px;
+	height : 14px;
+}

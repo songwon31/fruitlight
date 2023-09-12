@@ -1,0 +1,44 @@
+dl, dt, dd, ul, ol, menu, li {
+    list-style: none;
+}
+.leftside {
+	width : 200px;
+	float : left;
+	position: relative;
+} 
+.mymenu{
+    border-image: initial;
+    color: rgb(17, 17, 17);
+    margin: 0px;
+}
+
+.mymenu-menu {
+	padding: 20px 0;
+    border-top: 1px solid #dee2e6;
+    text-align: left;
+}
+.mymenu-menu-title {
+	display: block;
+    /* font-weight: bold; */
+    font-size: 15px;
+    line-height: 30px;
+    padding-left: 10px;
+    color: rgb(17, 17, 17);
+}
+.mymenu-menu-title:hover {
+	text-decoration: none;
+	color : #95CF59;
+}
+.mymenu-menu > div > ul > li:hover > a{
+	color: rgb(61, 130, 247);
+	text-decoration: none;
+}
+.mymenu-menu > div > ul > li:selected > a{
+	color: rgb(61, 130, 247);
+	text-decoration: none;
+}
+.mymenu-menu > div > ul > li > a {
+	color: rgb(17, 17, 17);
+    display: block;
+    padding: 3px 0px;
+}

@@ -1,0 +1,220 @@
+@charset "UTF-8";
+
+div, h2, header, img, section, table, colgroup, col, thead, tr, th, label, input, form, span, tbody, td, p, a, footer, em, dl, dt, dd, input {
+	margin: 0;
+	padding: 0;
+}
+
+.wrap {
+	margin: 0 auto;
+    font-size: 12px;
+}
+
+.row {
+	margin: 0;
+}
+
+/* 장바구니 제목 */
+.orderTitle {
+    height: 70px;
+    overflow: hidden;
+    border-bottom: 2px solid #777;
+}
+.orderTitle .title{
+    margin-top: 5px;
+    padding-left: 0;
+    line-height: 70px;
+    font-size: 30px;
+    color: #111;
+}
+.orderTitle .steps{
+    margin-top: 20px;
+    padding-right: 5px;
+    line-height: 50px;
+    font-size: 15px;
+    color: #bbb;
+    font-weight: 700;
+}
+.orderTitle .steps em{
+    color: #1E9A4F;
+    font-style: normal;
+}
+
+/* 장바구니에 담은 상품이 없을 경우 */
+.cartNoItem {
+	padding: 80px 0;
+	font-size: 16px;
+}
+.cartNoItem p {
+	text-align: center;
+	padding-bottom: 30px;
+}
+.cartNoItem a {
+	display: inline-block;
+	width: 190px;
+	border: 2px solid #95CF59;
+    border-radius: 4px;
+    background-color: #fefefe;
+	text-align: center;
+	padding: 14px 0;
+	color: #95CF59;
+	font-weight: 600;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+/* 상품테이블 */
+.cartTable {
+	border-collapse: collapse;
+    border-spacing: 0;
+}
+.cartTable thead tr {
+	text-align: center;
+	position: relative;
+	height: 40px;
+	background-color: #fafafa;
+}
+.cartTable thead tr th {
+	vertical-align: middle;
+	font-size: 13px;
+}
+.cartTable thead tr th label span {
+	position: absolute;
+	left: 45px;
+	height: 1px;
+}
+
+.cartTable tbody tr {
+	border-bottom: 1px solid #ddd;
+	font-size: 15px;
+	height: 100px;
+}
+
+.cartItem td {
+	text-align: center;
+	vertical-align: middle;
+	font-size: 12px;
+}
+.cartItem_product {
+	text-align: left;
+    font-size: 15px;
+    padding: 13px 0;
+}
+.cartItem_product a {
+    color: #555;
+    font-weight: bold;
+}
+
+.cartItemOption {
+    font-size: 15px;
+    padding: 13px 0;
+    border-left: 1px solid #ddd;
+}
+
+.quantityChange {
+    width: 52px;
+    height: 21px;
+    font-size: 11px;
+    border: 1px solid #888;
+    color: #555;
+    background: #fff;
+    text-align: center;
+}
+.productDelete {
+	border: none;
+	width: 18px;
+	height: 18px;
+	background-image: url(//img1a.coupangcdn.com/image/cart/generalCart/cart_sprite_170201.png);
+	background-position: -114px 0; 
+	background-repeat: no-repeat;
+	vertical-align: text-top;
+}
+
+.cartItemPrice {
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+}
+
+.shippingFreeRule {
+	font-size: 10px;
+}
+
+/* 전체 선택 */
+.checkedDelete {
+    margin-left: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    text-align: center;
+    background-color: #fff;
+}
+/* 할인쿠폰 */
+.cartCoupon {
+	margin-top: 30px;
+    margin-bottom: 50px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+.coupon_title {
+	background: #f9f9f9;
+	border-bottom: 1px solid #efefef;
+    padding: 12px 17px 10px;
+    font-size: 16px;
+    font-weight: 600;
+}
+.coupon_list {
+	padding: 15px 20px;
+}
+/* 총 구매가격 */
+.cartFinalPrice {
+	border: 2px solid #c8c8c8;
+    text-align: center;
+    padding: 20px;
+    font-size: 15px;
+    margin: 40px 0 30px;
+}
+.cartFinalPrice img {
+	vertical-align: text-bottom;
+}
+.finalProductPrice, .finalDiscountPrice, .finalDeliveryPrice {
+	font-size: 18px;
+}
+.finalTotalPrice {
+	font-size: 20px;
+	color: #95CF59;
+}
+/* 구매버튼 */
+.shopping_btn {
+	display: inline-block;
+	width: 190px;
+	border: 2px solid #95CF59;
+    border-radius: 4px;
+	text-align: center;
+	padding: 14px 0;
+	color: #95CF59;
+	font-size: 18px;
+	font-weight: 600;
+	margin-right: 5px;
+	text-decoration: none;
+}
+.buyBtn {
+	display: inline-block;
+	width: 190px;
+	border: 2px solid #A0DE5F;
+    border-radius: 4px;
+	background-color: #A0DE5F;
+	text-align: center;
+	padding: 14px 0;
+	color: #fff;
+	font-size: 18px;
+	font-weight: 700;
+	text-decoration: none;
+	cursor: pointer;
+}
+.shopping_btn:hover {
+	text-decoration: none;
+	color: #95CF59;
+}
+.buyBtn:hover {
+	text-decoration: none;
+	color: #fff;
+}

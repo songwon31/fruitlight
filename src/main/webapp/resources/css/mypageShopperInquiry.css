@@ -1,0 +1,229 @@
+@charset "UTF-8";
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.content {
+	width: 830px;
+	float: left;
+	margin-left: 30px;
+	margin-bottom: 150px;
+	font-size: 14px;
+}
+
+/* 제목 */
+.title {
+	margin-bottom: 16px;
+}
+
+.title span {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+/* 검색 기능 */
+.inquiry-search {
+	margin-bottom : 24px;
+}
+form {
+	display: flex;
+    flex-direction: row;
+    width: 480px;
+    height: 36px;
+    padding: 0px 5px 0px 8px;
+    border: 1px solid rgb(204, 204, 204);
+    border-radius: 4px;
+}
+.headerSearchBtn {
+	background: transparent;
+	border: none;
+}
+.inquiry-search-txt {
+	flex: 1 1 0%;
+    display: flex;
+}
+.inquirySearchKeyword {
+	width: 100%;
+    border: none;
+    font-size: 0.875rem;
+    outline : none;
+}
+.inquiry-search-btn {
+	width: 20px;
+    display: flex;
+    cursor: pointer;
+}
+
+/* 상품문의 내역 */
+.inquiry-item-container {
+	width: 800px;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.08) 0px 2px 4px 0px, rgba(0, 0, 0, 0.16) 0px 0px 1px 0px;
+    background-color: rgb(255, 255, 255);
+    margin-bottom: 20px;
+    padding: 24px 24px 16px;
+}
+
+/* 문의 게시글이 없을 경우 */
+.inquiry-none-items {
+	text-align: center;
+	padding: 10px 0;
+}
+
+.inquiry-item-product a {
+	font-size: 20px;
+	font-weight: bold;
+	color: inherit;
+}
+.inquiry-item-product a:hover {
+	color: inherit;
+}
+
+.inquiry-items {
+	margin-top: 16px;
+	margin-bottom: 24px;
+	border: 1px solid rgb(238, 238, 238);
+	border-radius: 8px;
+}
+.inquiry-item {
+	position: relative;
+	border: 1px solid rgb(238, 238, 238);
+	border-radius: 8px;
+	margin-top: 12px;
+	margin-bottom: 15px;
+}
+.inquiry-item-question-label {
+	position: absolute;
+    top: 20px;
+	left: 1em;
+    display: inline-block;
+    background-color: #777;
+    padding: 4px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #fff;
+}
+.inquiry-item-question {
+	padding: 20px 10px 20px 4em;	
+}
+.inquiry-item-option {
+	margin-top: 4px;
+    color: #888;
+}
+.inquiry-item-content {
+	margin-top: 3px;
+}
+.inquiry-item-time {
+	position: absolute;
+    right: 10px;
+    top: 20px;
+    color: #888;
+}
+.inquiry-item-answer {
+	position: relative;
+	/* border-top: 1px solid #ddd; */
+	border: 1px solid rgb(238, 238, 238);
+    background-color: #fafafa;
+}
+.inquiry-item-answer i {
+	display: inline-block;
+	position: absolute;
+    left: 1em;
+    top: 25px;
+	width: 8px;
+    height: 10px;
+    background-image: url("//img1a.coupangcdn.com/image/coupang/product/icon-reply.png");
+}
+.inquiry-item-answer-wrap {
+	position: relative;
+	padding: 20px 10px 20px 5.2em;
+}
+.inquiry-item-seller {
+	color: #23B75F;
+}
+.inquiry-item-answer-label {
+	position: absolute;
+    top: 20px;
+    left: 2.2em;
+    display: inline-block;
+    background-color: #A0DE5F;
+    padding: 4px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: #fff;
+}
+.inquiry-item-answer-content {
+	margin-top: 10px;
+}
+.inquiry-item-answer-time {
+	position: absolute;
+    right: 10px;
+    top: 20px;
+    color: #888;
+}
+
+.inquiry-delete-btn {
+	/* border-top: 1px solid #ddd; */
+	border: 1px solid rgb(238, 238, 238);
+}
+
+.inquiry-page-btns {
+	margin-top: 35px;
+    text-align: center;
+}
+
+.inquiry-page-btns .page-prev {
+	display: inline-block;
+    vertical-align: middle;
+    padding: 0;
+    margin-right: 5px;
+    border: 0;
+    outline: 0;
+    width: 31px;
+    height: 31px;
+    background: url(../images/btn-productreview-pagingleft.png) no-repeat;
+    cursor: pointer;
+}
+
+.inquiry-page-btns .page-next {
+	display: inline-block;
+    vertical-align: middle;
+    padding: 0;
+    margin-left: 5px;
+    border: 0;
+    outline: 0;
+    width: 31px;
+    height: 31px;
+	background: url(../images/btn-productreview-pagingright.png) left -31px no-repeat;
+    cursor: pointer;
+}
+
+.inquiry-page-btns .page-num {
+	display: inline-block;
+    vertical-align: middle;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    width: 31px;
+    height: 31px;
+    text-align: center;
+    line-height: 31px;
+    font-size: 12px;
+    color: #555;
+    font-weight: bold;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.inquiry-page-btns .page-num:hover {
+	line-height: 29px;
+    border: 1px solid #95CF59;
+    color: #95CF59;
+    text-decoration: none;
+}
+.inquiry-page-btns .page-num.selected {
+	line-height: 29px;
+    border: 1px solid #95CF59;
+    color: #95CF59;
+}

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="poris.fruitlight.dao.OrderHistoryDao">
+   
+   <!-- 작성자 : 김진성 -->
+   <!-- 사용자가 주문한 품목의 수 -->
+   <select id="SelectTotalOrderHistory" parameterType="int" resultType="int">
+   		SELECT COUNT(*)
+   		FROM ORDER_HISTORY
+   		WHERE SHOPPER_NO = #{shopperNo}
+   </select>
+   <!-- 작성자 : 김진성 -->
+   <!-- 사용자가 주문한 모든 상품을 Pager로 나누어 볼 수 있다. -->
+   <select id="SelectOrderHistory" parameterType="Pager" resultType="poris.fruitlight.dto.OrderHistoryOrderList">
+       <![CDATA[
+       SELECT ORDER_NO,
+             SHOPPER_NO,
+             PRODUCT_NO,
+             PRODUCT_NAME,
+             SHIPPING_NAME,
+             SHIPPING_ADDRESS,
+             ORDER_DATE,
+             MEDIA_DATA,
+             DISCOUNT_PRICE,
+             STOCK 
+          FROM (
+          	SELECT rownum as rnum, PRODUCT_NO, ORDER_NO, SHOPPER_NO, PRODUCT_NAME, SHIPPING_NAME, SHIPPING_ADDRESS, ORDER_DATE, MEDIA_DATA, DISCOUNT_PRICE, STOCK
+          	FROM (
+          		SELECT oh.ORDER_NO as ORDER_NO,
+			           oh.SHOPPER_NO as SHOPPER_NO,
+			           p.PRODUCT_NO as PRODUCT_NO,
+			           PRODUCT_NAME,
+			           SHIPPING_NAME,
+			           SHIPPING_ADDRESS,
+			           ORDER_DATE,
+			           MEDIA_DATA,
+			           p.DISCOUNT_PRICE as DISCOUNT_PRICE,
+			           STOCK
+			    FROM ORDER_HISTORY oh
+	            JOIN RECEIPT_HISTORY rh ON oh.ORDER_NO = rh.ORDER_NO
+	            JOIN SHIPPING_ADDRESS sa ON oh.ADDRESS_NO = sa.ADDRESS_NO
+	            JOIN SHOPPER s ON oh.SHOPPER_NO = s.SHOPPER_NO
+	            JOIN PRODUCT p ON rh.PRODUCT_NO = p.PRODUCT_NO
+	            JOIN PRODUCT_BOARD pb ON p.PRODUCT_NO = pb.PRODUCT_NO
+	            JOIN BOARD_MEDIA bm ON pb.BOARD_NO = bm.BOARD_NO
+	            WHERE oh.SHOPPER_NO = #{shopperNo} AND bm.MEDIA_NAME LIKE '%list_thumbnail%'
+	            ORDER BY ORDER_DATE DESC
+          		) WHERE rownum <= #{endRowNo}
+         ) where rnum >= #{startRowNo}
+          ]]>
+   </select>
+   
+   <!-- 작성자 : 김진성 -->
+   <!-- 사용자가 주문한 상품 중 상품 이름으로 검색된 목록만 출력 -->
+   <select id="SearchOrdersByPname" parameterType="OrderSearch" resultType="poris.fruitlight.dto.OrderHistoryOrderList">
+        SELECT oh.ORDER_NO as ORDER_NO,
+             oh.SHOPPER_NO as SHOPPER_NO,
+             p.PRODUCT_NO as PRODUCT_NO,
+             PRODUCT_NAME,
+             SHIPPING_NAME,
+             SHIPPING_ADDRESS,
+             ORDER_DATE,
+             MEDIA_DATA,
+             p.DISCOUNT_PRICE as DISCOUNT_PRICE,
+             STOCK
+        FROM ORDER_HISTORY oh
+        JOIN RECEIPT_HISTORY rh ON oh.ORDER_NO = rh.ORDER_NO
+        JOIN SHIPPING_ADDRESS sa ON oh.ADDRESS_NO = sa.ADDRESS_NO
+        JOIN SHOPPER s ON oh.SHOPPER_NO = s.SHOPPER_NO
+        JOIN PRODUCT p ON rh.PRODUCT_NO = p.PRODUCT_NO
+        JOIN PRODUCT_BOARD pb ON p.PRODUCT_NO = pb.PRODUCT_NO
+        JOIN BOARD_MEDIA bm ON pb.BOARD_NO = bm.BOARD_NO
+        WHERE oh.SHOPPER_NO = #{shopperNo} AND p.PRODUCT_NAME LIKE '%' || #{searchKeyword} || '%' AND MEDIA_NAME LIKE '%list_thumbnail%'
+        ORDER BY ORDER_DATE DESC
+    </select>
+    
+    <!-- 작정자: 이은지 -->
+	<insert id="insertOrderHistory" parameterType="poris.fruitlight.dto.OrderHistory">
+		<selectKey keyProperty="ORDER_NO" resultType="int" order="BEFORE">
+			select ORDER_NO_SEQ.nextval from dual
+		</selectKey>
+		insert into ORDER_HISTORY (
+			ORDER_NO, SHOPPER_NO, ADDRESS_NO, ORDER_DATE, TOTAL_PRICE, DISCOUNT_PRICE, SHIPPING_PRICE, 
+			PAYMENT_PRICE, PAYMENT_TYPE, CASH_RECEIPT_PURPOSE, CASH_RECEIPT_TYPE, CASH_RECEIPT_NO
+		)
+		values(
+			#{ORDER_NO}, #{SHOPPER_NO}, #{ADDRESS_NO}, #{ORDER_DATE}, #{TOTAL_PRICE}, #{DISCOUNT_PRICE}, #{SHIPPING_PRICE}, 
+			#{PAYMENT_PRICE}, #{PAYMENT_TYPE}, #{CASH_RECEIPT_PURPOSE}, #{CASH_RECEIPT_TYPE}, #{CASH_RECEIPT_NO}
+		)
+	</insert>
+	
+	<!-- 작성자: 이은지 -->
+	<insert id="insertReceiptHistory" parameterType="poris.fruitlight.dto.ReceiptHistory">
+		<selectKey keyProperty="ORDER_NO" resultType="int" order="BEFORE">
+			select ORDER_NO_SEQ.currval from dual
+		</selectKey>
+		insert into RECEIPT_HISTORY (ORDER_NO, PRODUCT_NO, PRICE, STOCK)
+		values(#{ORDER_NO}, #{PRODUCT_NO}, #{PRICE}, #{STOCK})
+	</insert>
+	
+	<!-- 작성자: 이은지 -->
+	<!-- <delete id="deleteCoupon" parameterType="poris.fruitlight.dto.Coupon">
+		delete from COUPON
+		where COUPON_NO = #{COUPON_NO} and SHOPPER_NO = #{SHOPPER_NO}
+	</delete> -->
+	<update id="updateCouponUsed" parameterType="poris.fruitlight.dto.Coupon">
+		update COUPON
+		set USED = 1
+		where COUPON_NO = #{COUPON_NO} and SHOPPER_NO = #{SHOPPER_NO}
+	</update>
+	
+	<!-- 작성자: 이은지 -->
+	<update id="updateProductStock" parameterType="poris.fruitlight.dto.OrderParam">
+		update PRODUCT
+		set PRODUCT_STOCK = PRODUCT_STOCK - #{productStock}
+		where PRODUCT_NO = #{productNo}
+	</update>
+</mapper>

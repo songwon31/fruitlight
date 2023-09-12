@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="poris.fruitlight.dao.ShippingAddressDao">
+
+	<!-- 2023.08.14 고재승 - 회원 고유번호를 기준으로 기본 배송지 조회 SQL문 -->
+	<select id="selectShippingAddressListById" parameterType="Shopper" resultType="AddressBook">
+		SELECT ADDRESS_NO as addressNo,
+			SHOPPER_NO as shopperNo,
+			SHIPPING_NAME as shippingName,
+			SHIPPING_ADDRESS as shippingAddress,
+			RECEIVER_TEL as receiverTel,
+			SHIPPING_PREFERENCE as shippingPreference
+		FROM SHIPPING_ADDRESS
+		WHERE SHOPPER_NO = #{shopperNo}
+			AND ACTIVATE = 'Y'
+	</select>
+	
+	<insert id="insertShippingAddress" parameterType="AddressBook">
+		INSERT INTO SHIPPING_ADDRESS
+		VALUES(ADDRESS_NO_SEQ.NEXTVAL, #{shopperNo}, #{shippingName}, #{shippingAddress}, #{receiverTel}, #{shippingPreference}, 'Y')
+	</insert>
+	
+	<!-- 2023.08.16 고재승 - 회원의 기본 배송지 정보 조회 SQL문 -->
+	<select id="selectShippingAddressById" parameterType="Shopper" resultType="ShippingAddressParam">
+		SELECT ADDRESS_NO as addressNo,
+			SHIPPING_NAME as name,
+			SHIPPING_ADDRESS as address,
+			RECEIVER_TEL as tel
+		FROM SHIPPING_ADDRESS
+		WHERE SHOPPER_NO = #{shopperNo}
+			AND ACTIVATE = 'Y'
+			AND ROWNUM = 1
+	</select>
+	
+	
+	<!-- 2023.08.16 고재승 - 회원의 배송지 비활성화 업데이트 SQL문 -->
+	<update id="deleteShippingAddress" parameterType="int">
+		UPDATE SHIPPING_ADDRESS
+  		SET ACTIVATE = 'N'
+ 		WHERE ADDRESS_NO = #{addressNo}
+	</update>
+	
+</mapper>

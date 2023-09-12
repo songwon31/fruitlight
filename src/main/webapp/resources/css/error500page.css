@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+	width : 100%;
+	text-align: center;
+	padding-top : 50px;
+	padding-bottom : 150px;
+	background-color: #F1F1F1;
+}
+
+.cnts {
+	width: 990px;
+    height: 500px;
+    padding-top: 188px;
+    margin: 40px auto;
+    text-align: center;
+    background: #fff url(https://ssl.nexon.com/S2/p3/etc/2016/ico_error.gif) no-repeat center 91px;
+}
+.ErrorMessage{
+	height: 77px;
+    font-size: 47px;
+    line-height: 47px;
+    letter-spacing: -5px;
+}
+
+.ErrorMessageInfo{
+	height: 60px;
+    font-size: 17px;
+    line-height: 25px;
+    letter-spacing: -2px;
+}
+.errorNote{
+	list-style: none;
+	width: 362px;
+    height: 68px;
+    padding-top: 15px;
+    font-size: 11px;
+    line-height: 17px;
+    color: #999;
+    border-top: 1px solid #ccc;
+    margin: 0 auto;
+}

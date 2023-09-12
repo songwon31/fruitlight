@@ -1,0 +1,463 @@
+@charset "UTF-8";
+/* 메인 홈페이지 화면 6개*/
+#main-today {
+	height: 450px;
+	max-width: 1120px;
+}
+#main-today > img {
+	float : left;
+	width : 1920px;
+	height : 450px;
+	position : relative;
+	left : -400px;
+	z-index : -1;
+}
+#main-today-lists {
+	float : left;
+	position : relative;
+	top : -400px;
+	right : -800px;
+	z-index : 1;
+	list-style : none;
+}
+#main-today-lists > li {
+	width : 180px;
+	height : 60px;
+}
+
+#main-today-lists > li:hover > a > img{
+	border : 2px solid #4285f4;
+}
+
+#main-today-lists > li > a > img {
+	position : relative;
+	top : 0;
+	bottom : 0;
+	left : 0;
+	right : 0;
+	width : 180px;
+	height : 60px;
+	border-right : 1px solid #fff;
+	border-top : 1px solid #eee;
+	border-left : 1px solid #fff;
+	border-bottom : 1px solid #eee;
+}
+/* 오늘의 발견  */
+#today-discovery {
+	position : relative;
+	width : 1020px;
+	height : 1000px;
+}
+
+#today-discovery > div > span {
+	position : relative;
+	left : -129px;	
+}
+#today-discovery-hottext {
+	border-left : 1px solid gray;
+}
+
+#today-discovery-content{
+	position: relative;
+    width: 1020px;
+    top : -314px;
+    border : 1px solid black;
+	float: left;
+}
+
+#today-discovery-content > ul > li{
+	margin : 10px 2px 10px 10px;
+	list-style: none;
+	display : inline-block;
+	float : left;
+	border : 1px solid black;
+}
+
+#today-discovery-content > ul > li:hover{
+	margin : 10px 2px 10px 10px;
+	list-style: none;
+	display : inline-block;
+	float : left;
+	border : 1px solid #4285f4;
+}
+
+#today-discovery-content > ul > li > a > img{
+	width : 489px;
+	height : 298px;
+}
+
+#today-discovery-content > ul > li > a > strong{
+	display: block;
+    text-indent: -9999em;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    background-position: -515px -236px;
+    background-image: url(//img1a.coupangcdn.com/image/coupang/main/bg_main_sprite_180103.png);
+    background-repeat: no-repeat;
+}
+
+#today-discovery-content > ul > li:hover > a > strong{
+	display: block;
+    text-indent: -9999em;
+    width: 100px;
+    height: 40px;
+    position: absolute;
+    background-position: -561px -236px;
+    background-image: url(//img1a.coupangcdn.com/image/coupang/main/bg_main_sprite_180103.png);
+    background-repeat: no-repeat;
+}
+
+.today-discovery-content-small {
+	width : 239px;
+	height : 300px;
+}
+/*오늘의 판매자 특가*/
+#today-sell{
+	height : 700px;
+}
+#today-sell-seller-content{
+	position: relative;
+    width: 980px;
+    margin: 0 auto;
+}
+#today-sell-seller-content-head{
+	position: relative;
+    top: -300px;
+}
+#today-sell-seller-content-title{
+	color: #111;
+    line-height: 29px;
+    margin: 0 4px;
+    font-family: Malgun Gothic;
+    font-style: normal;
+    font-size: 24px;
+    font-weight: 700;
+}
+#today-sell-seller-content-page > em{
+	font-weight: 700;
+    color: #111;
+}
+#today-sell-seller-content-bodyframe{
+	position : relative;
+	top : -300px;
+}
+#today-sell-seller-content-body{
+	width : auto;
+	margin-left: 50px;
+	position: relative;
+}
+
+#today-sell-seller-content-body-scroller-wrap{
+	width : 900px;
+	position : relative;
+	overflow : hidden;	
+}
+/* 오늘의 판매자 특가 페이지 버튼 */
+#today-sell-seller-content-body-prevbtn1 {
+	position: absolute;
+    top: 50%;
+    margin-top: -21px;
+    width: 36px;
+    height: 39px;
+    background: url(//static.coupangcdn.com/image/fodium/desktop/widget-sdp-alsoviewedproducts-20160622.png) no-repeat;
+    text-indent: -9999em;
+    -webkit-transition: opacity .6s ease-in-out;
+    -moz-transition: opacity .6s ease-in-out;
+    -ms-transition: opacity .6s ease-in-out;
+    transition: opacity .6s ease-in-out;
+    left: 0;
+    background-position: -2px -43px;
+}
+#today-sell-seller-content-body-prevbtn2 {
+	position: absolute;
+    top: 50%;
+    margin-top: -21px;
+    width: 36px;
+    height: 39px;
+    background: url(//static.coupangcdn.com/image/fodium/desktop/widget-sdp-alsoviewedproducts-20160622.png) no-repeat;
+    text-indent: -9999em;
+    -webkit-transition: opacity .6s ease-in-out;
+    -moz-transition: opacity .6s ease-in-out;
+    -ms-transition: opacity .6s ease-in-out;
+    transition: opacity .6s ease-in-out;
+    left: 0;
+    background-position: -2px -43px;
+}
+#today-sell-seller-content-body-nextbtn1{
+	position: absolute;
+    top: 50%;
+    margin-top: -21px;
+    width: 36px;
+    height: 39px;
+    background: url(//static.coupangcdn.com/image/fodium/desktop/widget-sdp-alsoviewedproducts-20160622.png) no-repeat;
+    text-indent: -9999em;
+    -webkit-transition: opacity .6s ease-in-out;
+    -moz-transition: opacity .6s ease-in-out;
+    -ms-transition: opacity .6s ease-in-out;
+    transition: opacity .6s ease-in-out;
+    right: 0;
+    background-position: -78px -2px;
+}
+#today-sell-seller-content-body-nextbtn2{
+	position: absolute;
+    top: 50%;
+    margin-top: -21px;
+    width: 36px;
+    height: 39px;
+    background: url(//static.coupangcdn.com/image/fodium/desktop/widget-sdp-alsoviewedproducts-20160622.png) no-repeat;
+    text-indent: -9999em;
+    -webkit-transition: opacity .6s ease-in-out;
+    -moz-transition: opacity .6s ease-in-out;
+    -ms-transition: opacity .6s ease-in-out;
+    transition: opacity .6s ease-in-out;
+    right: 0;
+    background-position: -78px -2px;
+}
+/* 여기까지  버튼 */
+#today-sell-seller-content-body-scroller1 {
+	transform : translateX(0px);
+	transition: transform .6s ease-in-out;
+}
+#today-sell-seller-content-body-scroller2 {
+	transform : translateX(0px);
+	transition: transform .6s ease-in-out;
+}
+#today-sell-seller-content-body-scroller1 > ul {
+	width : 9999px;
+	overflow : hidden;
+}
+#today-sell-seller-content-body-scroller1 > ul > li {
+	float: left;
+    width: 180px;
+    position: relative;
+    text-align: left;
+    list-style : none;
+}
+#today-sell-seller-content-body-scroller2 > ul {
+	width : 9999px;
+	overflow : hidden;
+}
+#today-sell-seller-content-body-scroller2 > ul > li {
+	float: left;
+    width: 180px;
+    position: relative;
+    text-align: left;
+    list-style : none;
+}
+#seller-product-info {
+	position: relative;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+}
+
+#seller-product-info-discount {
+	color: #cb1400;
+    font-weight: 700;
+    font-size: 12px;
+}
+#seller-product-info-title {
+	display: -webkit-box;
+    padding: 8px 0 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    margin-bottom: 4px;
+    width: 160px;
+    height: auto;
+    max-height: 40px;
+    font-size: 12px;
+    font-weight: 400;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 17px;
+    letter-spacing: normal;
+    color: #111;
+    text-align: left;
+}
+#seller-product-info-price{
+	font-weight: 700;
+    font-size: 14px;
+    line-height: 22px;
+    color: #ae0000;
+    margin: 0 0 6px;
+}
+#seller-product-info-rate-bg{
+	display: block;
+    width: 76px;
+    height: 15px;
+    text-indent: -9999px;
+	background: url(//img1a.coupangcdn.com/image/fodium/desktop/widget-sdp-alsoviewedproducts-20160622.png) no-repeat -39px -43px;
+}
+#seller-product-info-rate-bg > span{
+	display: block;
+    height: 15px;
+    text-indent: -9999px;
+	background: url(//img1a.coupangcdn.com/image/fodium/desktop/widget-sdp-alsoviewedproducts-20160622.png) no-repeat -39px -58px;
+}
+#seller-product-info-rate-count {
+	display: block;
+    margin-left: 4px;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #888;
+    margin-top: 2px;
+}
+
+/* 카테고리별 광고 추천 */
+#cate-advertise{
+	position: relative;
+    margin: 40px auto 0 auto;
+    width: 1068px;
+    padding-left: 48px;
+}
+#cate-advertise > p {
+	margin : 0;
+	font-size : 22px;
+	font-weight: 700;
+}
+#cate-advertise > span {
+	font-size : 28px;
+	font-weight : 700;
+}
+#cate-advertise-cherry{
+	border-top : 2px solid red;
+	width: 1020px;
+	height : 600px;
+    margin-bottom: 20px;
+    background-color: #fff;
+}
+#cate-advertise-cherry > dl {
+	position: relative;
+	border-bottom: 1px solid #ddd;
+	height : 600px;
+}
+#cate-advertise-cherry-title {
+	position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    width: 114px;
+    padding: 40px 0 0 22px
+}
+#cate-advertise-cherry-title {
+	font-size: 30px;
+	color : red;
+}
+#cate-advertise-cherry-title > a {
+	display: block;
+    margin-top: 9px;
+    font-size: 11px;
+    color: #888;
+}
+#cate-advertise-cherry-hotkey {
+	position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+    width: 124px;
+    padding: 22px 10px;
+}
+#cate-advertise-cherry-hotkey > strong {
+	display: block;
+    font-size: 16px;
+    padding-bottom: 4px;
+}
+#cate-advertise-cherry-hotkey > a{
+	float: left;
+    clear: left;
+    display: block;
+    line-height: 28px;
+    padding: 0 10px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    white-space: nowrap;
+    font-size: 12px;
+}
+#cate-advertise-cherry-promotion{
+	position: relative;
+    float: left;
+    margin-left: 145px;
+    width: 324px;
+    height: 600px;
+    border-bottom: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    background: #fafafa;
+    text-align: center;
+}
+.carousel-inner img {
+    width: 100%;
+    height: 100%;
+}
+.carousel-item {
+	height : 600px;
+}
+.carousel-caption {
+	position: relative;
+	height : 120px;
+	background-color : red;
+	font-size : 16px;
+	font-weight : 500;
+}
+.carousel-caption > h3 {
+	font-weight : 900;
+}
+#cate-advertise-cherry-list {
+	position: relative;
+    float: left;
+    width: 548px;
+    height: 600px;
+    overflow: hidden;
+    border-bottom: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+}
+#cate-advertise-cherry-list-list {
+	display : inline-block;
+	list-style : none;
+}
+#cate-advertise-cherry-list-item {
+	display: block;
+    width: 182px;
+    height: 290px;
+    padding: 22px 7px 0 15px;
+    margin-top: -1px;
+    border-bottom: 1px solid #ddd;
+    font-size: 12px;
+    color: #111;
+    display: list-item;
+    float : left;
+}
+#cate-advertise-cherry-list-item:hover > a{
+	text-decoration: none;	
+}
+#cate-advertise-cherry-list-item:hover > a > #hover-underline {
+	color : #4285f4;
+	text-decoration: underline;
+}
+#cate-advertise-cherry-list-item > a > img {
+    width: 160px;
+    height: 160px;
+}
+#cate-advertise-cherry-list-item > a > span {
+	max-height: 28px;
+    overflow: hidden;
+    line-height: 14px;
+    margin: 6px 0 1px;
+    color: #111;
+    display : block;
+}
+#cate-advertise-cherry-list-item > a > span > span > img{
+	width: 59px;
+	height : 14px;
+}
+#side-bar {
+	position : absolute;
+	left : 50%;
+	top : 600px;
+	width : 150px;
+	height : 1000px;
+	margin : 50px 0 0 495px;
+}

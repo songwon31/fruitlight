@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="poris.fruitlight.dao.ShopperDao">
+	
+	<select id="selectAllShopper" resultType="Shopper">
+		SELECT SHOPPER_NO as shopperNo,
+		SHOPPER_ID as shopperId,
+		SHOPPER_PW as shopperPw,
+		SHOPPER_NAME as shopperName,
+		SHOPPER_TEL as shopperTel,
+		SHOPPER_AUTO_LOGIN as shopperAutoLogin,
+		ACTIVATE as activate
+		FROM SHOPPER
+	</select>
+	
+	
+	<select id="selectShopper" parameterType="Shopper" resultType="Shopper">
+		SELECT SHOPPER_NO as shopperNo,
+		SHOPPER_ID as shopperId,
+		SHOPPER_PW as shopperPw,
+		SHOPPER_NAME as shopperName,
+		SHOPPER_TEL as shopperTel,
+		SHOPPER_AUTO_LOGIN as shopperAutoLogin,
+		ACTIVATE as activate
+		FROM SHOPPER
+		WHERE SHOPPER_ID=#{shopperId} AND SHOPPER_PW=#{shopperPw}
+	</select>
+	
+	
+	<update id="updateShopperAutoLoginState" parameterType="Shopper">
+		UPDATE SHOPPER
+		SET SHOPPER_AUTO_LOGIN = #{shopperAutoLogin}
+		WHERE SHOPPER_NO=#{shopperNo}
+	</update>
+	
+	<insert id="insertShopper" parameterType="Shopper">
+		INSERT INTO SHOPPER
+		VALUES(SHOPPER_NO_SEQ.NEXTVAL, #{shopperId}, #{shopperPw}, #{shopperName}, #{shopperTel}, '0', 'Y')
+	</insert>
+	
+	
+	<select id="selectShopperBySid" parameterType="Shopper" resultType="Shopper">
+		SELECT SHOPPER_NO as shopperNo,
+		SHOPPER_ID as shopperId,
+		SHOPPER_PW as shopperPw,
+		SHOPPER_NAME as shopperName,
+		SHOPPER_TEL as shopperTel,
+		SHOPPER_AUTO_LOGIN as shopperAutoLogin,
+		ACTIVATE as activate
+		FROM SHOPPER
+		WHERE SHOPPER_NO = #{shopperNo}
+	</select>
+	
+	
+	<select id="selectShopperId" parameterType="String" resultType="String">
+		SELECT SHOPPER_ID as shopperId
+		FROM SHOPPER
+		WHERE SHOPPER_ID= #{shopperId}
+	</select>
+	
+	<update id="updateShopper" parameterType="Shopper">
+		UPDATE SHOPPER
+		SET SHOPPER_ID = #{shopperId}
+		WHERE SHOPPER_NO = #{shopperNo}
+	</update>
+	
+	<!-- 2023.08.17 고재승 - 회원 연락처 갱신 SQL문 -->
+	<update id="updateShopperTel" parameterType="Shopper">
+		UPDATE SHOPPER
+		SET SHOPPER_TEL = #{shopperTel}
+		WHERE SHOPPER_NO = #{shopperNo}
+	</update>
+	
+	
+	<!-- 2023.08.17 고재승 - 회원 비밀번호 갱신 SQL문 -->
+	<update id="updateShopperPW" parameterType="Shopper">
+		UPDATE SHOPPER
+		SET SHOPPER_PW = #{shopperPw}
+		WHERE SHOPPER_NO = #{shopperNo}
+	</update>
+	
+	<!-- 2023.08.18 고재승 - 회원 탈퇴 - 회원 비활성화 갱신 SQL문 -->
+	<update id="deleteShopper" parameterType="Shopper">
+		UPDATE SHOPPER
+		SET ACTIVATE = 'N'
+		WHERE SHOPPER_NO = #{shopperNo}
+	</update>
+	
+	<!-- 2023.08.21 고재승 - 연락처와 일치하는 회원 ID 조회 SQL문 -->
+	<select id="selectSearchShopperEmail" parameterType="Shopper" resultType="String">
+		SELECT SHOPPER_ID
+		FROM SHOPPER
+		WHERE SHOPPER_TEL = #{shopperTel}
+			AND SHOPPER_NAME = #{shopperName}
+	</select>
+	
+	<!-- 2023.08.21 고재승 - 연락처와 일치하는 회원 ID 조회 SQL문 -->
+	<select id="selectSearchShopperPassword" parameterType="Shopper" resultType="String">
+		SELECT SHOPPER_PW
+		FROM SHOPPER
+		WHERE SHOPPER_TEL = #{shopperTel}
+			AND SHOPPER_NAME = #{shopperName}
+			AND SHOPPER_ID = #{shopperId}
+	</select>
+</mapper>

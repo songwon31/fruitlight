@@ -1,0 +1,190 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+	margin: 0 auto;
+    padding: 0 4.35%;
+    min-width: 290px;
+	max-width: 600px;
+}
+
+.skip {
+    display:none;
+}
+
+
+h1 {
+    text-align: center;
+    margin:50px auto 30px;
+
+}
+
+h1 a img {
+    width:80%;
+    margin-right: 50px;
+}
+
+section {
+    width: 100%;
+    margin: 0 auto;
+}
+section #loginform {
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+section #loginform fieldset {
+    border: 0;
+}
+section #loginform fieldset ul li {
+    border: 1px solid #ccc;
+    background: #fff;
+    display: flex;
+    flex-flow:row nowrap;
+    margin-bottom: 10px;
+    position: relative;
+}
+section #loginform fieldset ul .error {
+    color: #e7223d;
+    padding: 10px;
+    display: none;
+    border: 0;
+}
+
+section #loginform fieldset ul li .id_bg{
+    border-right: 1px solid #ccc;
+    padding: 20px;
+    width: 10px;
+    position: relative;
+}
+section #loginform fieldset ul li .id_bg::after{
+    content: '';
+    display: block;
+    background-image: url(../images/icon.svg);
+    background-position: 0 0;
+    width: 21px;
+    height: 21px;
+    left:11px;
+    top:11px;
+    position: absolute;
+
+}
+
+section #loginform fieldset ul li .pw_bg{
+    border-right: 1px solid #ccc;
+    padding: 20px;
+    width: 10px;
+    position: relative;
+}
+section #loginform fieldset ul li .pw_bg::after{
+    content: '';
+    display: block;
+    background-image: url(../images/icon.svg);
+    background-position: -21px 0;
+    width: 21px;
+    height: 21px;
+    left:11px;
+    top:11px;
+    position: absolute;
+
+}
+
+section #loginform fieldset ul li span input {
+	width: 100%;
+    height: 40px;
+    border: 0;
+    padding-left: 10px;
+}
+section #loginform fieldset ul li span input::placeholder {
+    font-size: 0.95rem;
+    color: #aaa;
+}
+
+section #loginform fieldset ul li .pw_show_hide {
+    background-image: url(../images/icon.svg);
+    background-position: -105px 0;
+    width: 21px;
+    height: 21px;
+    position: absolute;
+    right: 11px;
+    top: 8px;
+}
+
+section #loginform fieldset .btm {
+    display: flex;
+    flex-flow: row nowrap;
+    padding: 15px 0;
+    justify-content: space-between;
+}
+
+section #loginform fieldset .btm p label input[name=login_y] {
+    appearance: none;
+}
+section #loginform fieldset .btm p label input[name=login_y] + span::before {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    content: '';
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    background-image: url(../images/icon.svg);
+    background-position: -65px -22px;
+    margin-right: 5px;
+}
+section #loginform fieldset .btm p label input[name=login_y]:checked + span::before {
+    background-position: -84px -21px;
+}
+
+section #loginform fieldset .btm .idpw_search {
+    color:#95CF59;
+    font-weight: bold;
+    text-decoration-line: none;
+}
+
+section #loginform fieldset #login_btn {
+    background: #A0DE5F;
+    width: 100%;
+    color: white;
+    padding: 20px 0;
+    border: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+section .join_link {
+    color: #A0DE5F;
+    padding:20px 0;
+    width:100%;
+    text-align: center;
+    background: #fff;
+    display: block;
+    border: 1px solid #95CF59;
+    text-decoration-line:none;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+
+footer {
+    color: #333;
+    text-align: center;
+    font-size: 0.85rem;
+    margin-top: 20px;
+}
+
+
+.form-box {
+	border: 5px solid #95CF59;
+	margin: 30px auto;
+	max-width: 500px;
+	padding : 40px;
+}
+
+.findAccountBtn {
+	background-color: #A0DE5F;
+	color: #FFFFFF;
+	font-size: 16px;
+	font-weight: bold;
+}

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="poris.fruitlight.dao.ProductDao">
+   <!-- 작성자 : 김진성 -->
+   <select id="MainBanner" resultType="poris.fruitlight.dto.ProductList">
+      SELECT DISTINCT *
+         FROM PRODUCT p, PRODUCT_BOARD b, BOARD_MEDIA m
+         WHERE p.PRODUCT_NO = b.PRODUCT_NO AND b.BOARD_NO = m.BOARD_NO AND (p.PRODUCT_NO IN(
+         	SELECT DISTINCT BOARD_NO
+         		FROM PRODUCT_BOARD
+                WHERE (p.PRODUCT_NO IN(37,41,43)) AND MEDIA_NAME LIKE '%banner%'
+         ))
+   </select>
+   
+   <!-- 작성자 : 김진성 -->
+   <select id="TodayDiscovery" resultType="poris.fruitlight.dto.ProductList">
+      SELECT DISTINCT *
+         FROM PRODUCT p, PRODUCT_BOARD b, BOARD_MEDIA m
+         WHERE p.PRODUCT_NO = b.PRODUCT_NO AND b.BOARD_NO = m.BOARD_NO AND (p.PRODUCT_NO IN (
+         SELECT DISTINCT BOARD_NO
+         		FROM PRODUCT_BOARD
+                WHERE (p.PRODUCT_NO IN(21,26,29,33)) AND MEDIA_NAME LIKE '%list_thumbnail%'
+                ))
+   </select>
+   
+   <!-- 작성자 : 김진성 -->
+   <select id="TodaySeller" resultType="poris.fruitlight.dto.ProductList">
+      SELECT DISTINCT *
+         FROM PRODUCT p, PRODUCT_BOARD b, BOARD_MEDIA m
+         WHERE p.PRODUCT_NO = b.PRODUCT_NO AND b.BOARD_NO = m.BOARD_NO AND (p.PRODUCT_NO IN (
+          SELECT DISTINCT BOARD_NO
+         		FROM PRODUCT_BOARD
+                WHERE (p.PRODUCT_NO IN(1,4,9,12,15,18,46,48)) AND MEDIA_NAME LIKE '%list_thumbnail%'
+                ))
+   </select>
+   
+   <!-- 작성자 : 김진성 -->
+   <select id="CategoryMain" resultType="poris.fruitlight.dto.ProductList">
+     SELECT DISTINCT *
+         FROM PRODUCT p, PRODUCT_BOARD b, BOARD_MEDIA m
+         WHERE p.PRODUCT_NO = b.PRODUCT_NO AND b.BOARD_NO = m.BOARD_NO AND (p.PRODUCT_NO IN(
+         	SELECT DISTINCT b.BOARD_NO
+         		FROM PRODUCT_BOARD b
+                WHERE (p.PRODUCT_NO IN(1,29,43,105,111,113)) AND MEDIA_NAME LIKE '%list_thumbnail%'
+         ))
+         ORDER BY p.PRODUCT_NO ASC
+   </select>
+   
+   <!-- 작성자 : 김진성 -->
+   <select id="CategorySub" resultType="poris.fruitlight.dto.ProductList">
+     SELECT DISTINCT *
+         FROM PRODUCT p, PRODUCT_BOARD b, BOARD_MEDIA m
+         WHERE p.PRODUCT_NO = b.PRODUCT_NO AND b.BOARD_NO = m.BOARD_NO AND (p.PRODUCT_NO IN(
+         	SELECT DISTINCT b.BOARD_NO
+         		FROM PRODUCT_BOARD b
+                WHERE (p.PRODUCT_NO IN(1,29,43,50,53,56,90,91,4,12,105,106,110,111,113,115)) AND MEDIA_NAME LIKE '%list_thumbnail%'
+         ))
+         ORDER BY p.PRODUCT_NO ASC
+   </select>
+   
+   
+   <select id="SelectDetailView" parameterType="int" resultType="int">
+      	 SELECT b.BOARD_NO
+         FROM PRODUCT p, PRODUCT_BOARD b
+         WHERE p.PRODUCT_NO = b.PRODUCT_NO
+         AND p.PRODUCT_NO = #{pid}
+   </select>
+   
+   <!-- 작성자 : 김진성 -->
+	<select id="SearchProductsByPname" parameterType="String" resultType="poris.fruitlight.dto.ProductList">
+        SELECT DISTINCT *
+        FROM PRODUCT p
+        JOIN PRODUCT_BOARD b ON p.PRODUCT_NO = b.PRODUCT_NO
+        JOIN BOARD_MEDIA m ON b.BOARD_NO = m.BOARD_NO
+        WHERE p.PRODUCT_NAME LIKE '%' || #{searchKeyword} || '%' AND MEDIA_NAME LIKE '%list_thumbnail1%'
+    </select>
+    
+    <!-- 작성자 : 김진성 -->
+    <select id="SearchProducts" resultType="poris.fruitlight.dto.ProductList">
+        SELECT DISTINCT *
+        FROM PRODUCT p
+        JOIN PRODUCT_BOARD b ON p.PRODUCT_NO = b.PRODUCT_NO
+        JOIN BOARD_MEDIA m ON b.BOARD_NO = m.BOARD_NO
+        WHERE MEDIA_NAME LIKE '%list_thumbnail1%'
+    </select>
+</mapper>

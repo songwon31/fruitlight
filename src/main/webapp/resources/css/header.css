@@ -1,0 +1,137 @@
+@charset "UTF-8";
+
+* {
+    margin: 0;
+    padding: 0;
+}
+.headerLogo{
+	text-align: center;	
+}
+/* 검색창 */
+/* .headerSearch{
+	float : left;
+	margin-top: 40px;
+	text-align: center;
+	border-bottom: 2px solid #adadad;
+    background: transparent;
+}
+.headerSearchKeyword{
+	width: 227px;
+    height: 33px;
+    padding: 5px 36px 0 5px;
+    box-sizing: border-box;
+    background: transparent;
+    border : none;
+}
+.headerSearchKeyword:focus{
+	outline:none;	
+}
+.headerSearchBtn{
+	background-color: transparent;
+	border : none;
+} */
+/* 장바구니, 로그인, 마이페이지 */
+.headerIcon{
+	position : relative;
+	text-align : right;
+	margin-top: 15px;
+}
+.headerIcon > a {
+   padding-left : 7px;
+   border-left : 1px solid gray;
+   color: black;
+}
+.headerIcon > a:hover {
+   color : black;
+}
+.headerIcon > a:first-child {
+	border-left : none;
+}
+/* 카테고리 메뉴 */
+.menu {
+	width : 100%;
+	overflow: hidden;
+	text-align: center;
+}
+
+.rowbtn2 {
+	display: flex;
+	flex-wrap: nowrap;	
+}
+.rowmenus {
+	overflow : hidden;
+	display: flex;
+	flex-wrap: wrap;	
+}
+.rowmenus > label {
+	text-align : center;
+	margin-left : 40px;
+	margin-right : 55px;
+}
+.rowbtn1 {
+	display: flex;
+	flex-wrap: wrap;	
+}
+.menus {
+	width : 1150px;
+	height : 40px;
+	transform: translateX(0px);
+}
+.menus > label > a:hover {
+	color : #4285f4;
+	text-decoration: underline;
+}
+
+
+.menu-btn1 {
+   width : 20px;
+   height : 20px;
+   cursor: pointer;
+    background-image: url(//img1a.coupangcdn.com/image/coupang/common/pc_gnb_arrow-right@2x.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color : white;
+    border : 1px solid transparent;
+    display: inline-block;
+}
+.menu-btn2 {
+   width : 20px;
+   height: 20px;
+    background-image: url(//img1a.coupangcdn.com/image/coupang/common/pc_gnb_arrow-left-gray@2x.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color : white;
+    border : 1px solid transparent;
+    display: inline-block;
+}
+.rowbtn2 {
+	display: inline-block;
+	margin-top: 15px;
+}
+.rowbtn1 {
+	display: inline-block;
+	margin-top: 15px;
+}
+/* 실험용 코드 */
+.gnb_menu_box {
+	display: inline-block;
+    width: 85%;
+    vertical-align: top;
+    overflow: hidden;
+}
+
+.depth0 > li {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.depth0 > li > a {
+    display: inline-block;
+    padding: 0 36px 0 36px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 49px;
+    color: #666666;
+}

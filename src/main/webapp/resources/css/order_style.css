@@ -1,0 +1,640 @@
+/* body css */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+label {
+    cursor: pointer;
+}
+
+ul {
+    list-style: none;
+    margin: 0;
+}
+
+img {
+    vertical-align: top;
+}
+
+button {
+    background: 0;
+    cursor: pointer;
+}
+
+/* header CSS */
+.header-frame {
+    height: 86px;
+    margin: 0 auto;
+    position: relative;
+    border-bottom: 1px solid #e7e7e7;
+}
+
+.header-logo {
+    width: 1020px;
+    margin: 0 auto;
+}
+
+/* section CSS */
+section {
+    width: 90%;
+    margin: 0 auto 20px;
+    clear: both;
+    font-size: 13px;
+    z-index: 20;
+}
+section::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+section .middle {
+    clear: both;
+    padding: 0 0 40px;
+    background: #fff;
+}
+
+.row {
+	margin: 0;
+}
+
+/* 주문/결제 제목 */
+.orderTitle {
+    height: 70px;
+    overflow: hidden;
+    border-bottom: 3px solid #777;
+}
+
+.orderTitle .title{
+    float: left;
+    margin-top: 5px;
+    padding-left: 0;
+    line-height: 70px;
+    font-size: 30px;
+    color: #111;
+}
+
+.orderTitle .steps{
+    float: right;
+    margin-top: 20px;
+    padding-right: 5px;
+    line-height: 50px;
+    font-size: 15px;
+    color: #bbb;
+    font-weight: 700;
+}
+
+.orderTitle .steps em{
+    color: #1E9A4F;
+    font-style: normal;
+}
+
+/* 구매자 정보 */
+.customer-root {
+    margin-top: 30px;
+}
+
+.customer-root .customer-title {
+    padding-left: 2px;
+    margin-bottom: 8px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+}
+
+.table-frame {
+    width: 100%;
+    border-top: 2px solid #cecece;
+}
+
+.table-frame .table-row .table-colume{
+    display: table-cell;
+    vertical-align: middle;
+    width: 115px;
+    border: solid #e4e4e4;
+    border-width: 0 1px 1px 0;
+    padding: 7px 10px 7px 15px;
+    font-weight: bold;
+    text-align: left;
+    background: #f4f4f4;
+}
+
+.table-frame .table-row .table_content{
+    display: table-cell;
+    vertical-align: middle;
+    border-bottom: 1px solid #e4e4e4;
+    padding: 10px 16px;
+    width: 90%;
+}
+
+/* 받는사람정보(배송지 주소) */
+.delivery-address {
+    padding-left: 2px;
+    margin: 30px 0 8px;
+    text-align: left;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.delivery-address .delivery-address-list-btn {
+    padding: 4px 8px;
+    border: 1px solid #999;
+    color: #333;
+    border-radius: 2px;
+    background: #f8f8f8;
+    box-shadow: 0 -2px 0 rgba(0,0,0,.1) inset;
+    font-size: 11px;
+
+    margin-left: 5px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+/* 배송 요청사항 */
+.delivery-request-container {
+    border-bottom: 1px solid #e4e4e4;
+}
+
+
+.delivery-request-container .delivery-request-popup-button {
+    padding: 4px 8px;
+    border: 1px solid #999;
+    color: #333;
+    background: #f8f8f8;
+    border-radius: 2px;
+    box-shadow: 0 -2px 0 rgba(0,0,0,.1) inset;
+    font-size: 11px;
+
+    margin-left: 13px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+
+/* 택배 박스 정보 */
+.bundle-info-title {
+    margin-top: 20px;
+    margin-bottom: 9px;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 21px;
+}
+
+.bundle-info-box {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.bundle-info-box .delivery-date {
+    padding: 10px 15px 10px 20px!important;
+    line-height: 26px!important;
+    background-color: #eee;
+}
+
+.bundle-info-box .delivery-date .delivery-date-info {
+    display: inline-block;
+    color: #00891a;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.bundle-info-box .bundle-info-item-list {
+    overflow: hidden;
+    zoom: 1;
+    margin-left: 0!important;
+    margin-right: 0!important;
+    padding: 0 15px 0 20px;
+}
+
+.bundle-info-box .bundle-info-item-list .bundle-info-item-box {
+    padding-top: 10px!important;
+    padding-bottom: 10px!important;
+    position: relative;
+    zoom: 1;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.bundle-info-box .bundle-info-item-list .bundle-info-item {
+    float: left;
+    width: 60%!important;
+    padding-right: 40px!important;
+
+}
+
+.bundle-info-box .bundle-info-item-list .bundle-info-item > span {
+    color: #111;
+    font-size: 14px;
+
+}
+
+.bundle-info-box .bundle-info-item-list .bundle-info-item-box .bundle-info-delivery-service {
+    font-size: 14px!important;
+    margin-left: 50px;
+    float: right;
+    text-align: right;
+}
+
+.bundle-info-box .bundle-info-item-list .bundle-info-item-box .bundle-info-delivery-service > img {
+    width: auto;
+    height: 16px;
+    vertical-align: bottom;
+}
+
+.bundle-info-box .bundle-info-item-list .bundle-info-item-box .bundle-info-item-descript {
+    position: absolute;
+    left: 64%;
+    width: 34%;
+    padding: 0;
+    border: 0;
+    font-size: 13px;
+    text-align: right;
+}
+
+/* 결제정보 CSS */
+.order-section {
+    margin-bottom: 10px;
+    margin-top: 30px;
+}
+
+.pay-h2 {
+    padding-left: 2px;
+    margin-bottom: 8px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+}
+
+.type-selector-list {
+    position: relative;
+    padding-top: 4px;
+}
+
+.type-selector-list .type-selector-li{
+    display: block;
+    float: left;
+    margin-right: 9px;
+    padding-left: 2px;
+    font-size: 12px;
+    line-height: 39px;
+    letter-spacing: -1px;
+}
+
+.pay-box-content {
+    display: none;
+}
+
+.selected-pay-type {
+    display: block;
+}
+
+.pay-box-content>h3.title {
+    display:none;
+    position: relative;
+}
+
+.pay-type-content {
+    clear: both;
+    margin-top: -2px;
+    padding: 10px;
+    border: 2px solid #c5c7cd;
+    background-color: #f4f6fa;
+}
+
+.pay-type-section .line-title {
+    display: inline-block;
+    width: 90px;
+    font-size: 12px;
+    font-weight: 700;
+    margin: 0;
+    vertical-align: middle;
+}
+
+.pay-type-section .line-data {
+    display: inline;
+}
+
+.pay-type-section select {
+    height: 23px;
+    font-size: 12px;
+    vertical-align: middle;
+}
+
+.pay-type-section {
+    padding: 10px 0;
+    margin: 0;
+    line-height: 21px;
+}
+
+.pay-type-section [class^=note-] {
+    display: inline-block;
+    margin-left: 26px;
+    vertical-align: middle;
+}
+
+.rocketpay-card__cardList {
+    min-width: 200px;
+}
+
+.rocketpay-card__quotaList {
+    min-width: 200px;
+}
+
+.payment-cellphone__line-title {
+    display: inline-block;
+    width: 90px;
+    font-size: 12px;
+    font-weight: 700;
+    margin: 0;
+    vertical-align: middle;
+}
+
+.payment-cellphone__line-data {
+    display: inline;
+}
+
+.virtual-account-payment-explain{
+    padding-top: 5px;
+    margin-bottom: 10px;
+}
+.virtual-account-payment-explain dt{
+    font-weight: bold;
+    margin: 5px 0 10px;
+}
+.virtual-account-payment-explain dd{
+    display: list-item;
+    list-style-type: disc;
+    list-style-position: inside;
+    margin-bottom: 5px;
+    color: #888;
+}
+
+.savePaymentOption {
+    padding: 10px 0;
+    font-size: 11px;
+}
+
+/* 현금영수증 */
+.cash-receipt__root {
+    margin-top: 30px;
+}
+
+.cash-receipt__title {
+    padding-left: 2px;
+    margin-bottom: 8px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+}
+
+.cash-receipt__wrap {
+    border: 1px solid #ddd;
+    padding: 22px 30px; 
+}
+
+.cash-receipt__checkbox-title__wrap {
+    padding-bottom: 13px;
+}
+
+.cash-receipt__checkbox {
+    padding: 7px 0 5px 30px;
+}
+
+.cash-receipt__checkbox__checked {
+    background: url(//img1g.coupangcdn.com/image/order/btn_checkbox_radio.png) no-repeat;
+    background-position: -48px -6px;
+}
+
+.cash-receipt__checkbox__unchecked {
+    background: url(//img1g.coupangcdn.com/image/order/btn_checkbox_radio.png) no-repeat;
+    background-position: -12px -6px;
+}
+
+.cash-receipt__checkbox-title {
+    font-weight: bold;
+    font-size: 15px;
+    color: #222;
+}
+
+.data-cash-receipt-content {
+    display: blcok;
+}
+
+.cash-receipt__request-type__root {
+    padding-top: 14px;
+    border-top: 1px solid #ddd;
+    font-size: 14px;
+    color: #222;
+}
+
+.cash-receipt__request-type__root:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.cash-receipt__request-type__root>span {
+    float: left;
+    line-height: 25px;
+}
+
+.cash-receipt__request-type__radio {
+    float: left;
+    width: 25px;
+    height: 25px;
+    margin-right: 3px;
+}
+
+.cash-receipt__request-type__radio__checked {
+    background: url(//img1g.coupangcdn.com/image/order/btn_checkbox_radio.png) no-repeat;
+    background-position: -47px -41px;
+}
+
+.cash-receipt__request-type__radio__unchecked {
+    background: url(//img1g.coupangcdn.com/image/order/btn_checkbox_radio.png) no-repeat;
+    background-position: -12px -41px;
+}
+
+.cash-receipt__request-type__desc {
+    display: inline-block;
+    line-height: 25px;
+    margin-right: 20px;
+}
+
+.cash-receipt__resiter-type__wrap {
+    padding-top: 12px;
+}
+
+.cash-receipt__resiter-type__select {
+    vertical-align: bottom;
+    font-size: 14px!important;
+    color: #222!important;
+    height: 30px!important;
+    margin-right: 5px;
+    line-height: 30px;
+}
+
+.cash-receipt__resiter-type__text {
+    font-size: 14px!important;
+    color: #222!important;
+    height: 30px!important;
+    margin-right: 5px;
+    line-height: 30px;
+}
+
+.cash-receipt__notification_wrap {
+    margin-top: 20px;
+}
+
+.cash-receipt__notification_li {
+    color: #555;
+    font-size: 12px;
+    margin-bottom: 2px;
+}
+/* 결제 버튼 */
+.orderBox {
+    margin-top: 30px;
+}
+.orderBox.wrap-order-agree {
+    margin-top: 20px;
+}
+
+.confirm-agreements-message {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.agreeBtn {
+    position: relative;
+    text-align: center;
+}
+
+.agreeBtn.hasRocketPayCheckoutButton {
+    margin-top: 40px;
+}
+
+#paymentRocketpayBtn{
+    overflow: visible;
+    position: relative;
+    margin-right: 10px;
+    border: 0;
+}
+
+.paymentRocketpayBtn__tooltip-2percent-cashback {
+    position: absolute;
+    top: -29px;
+    left: 50%;
+    margin-left: -48px;
+}
+
+#paymentBtn {
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+}
+
+
+
+/* 3 */
+.custom-btn {
+  width: 180px;
+  height: 60px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  font-size: 2em;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+   box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+   7px 7px 20px 0px rgba(0,0,0,.1),
+   4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
+}
+
+.btn-3 {
+  background: rgb(149,207,89);
+background: linear-gradient(0deg, rgba(149,207,89,1) 0%, rgba(149,207,89,1) 100%);
+  width: 260px;
+  height: 80px;
+  line-height: 84px;
+  padding: 0;
+  border: none;
+  
+}
+.btn-3 span {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.btn-3:before,
+.btn-3:after {
+  position: absolute;
+  content: "";
+  right: 0;
+  top: 0;
+   background: rgba(149,207,89,1);
+  transition: all 0.3s ease;
+}
+.btn-3:before {
+  height: 0%;
+  width: 2px;
+}
+.btn-3:after {
+  width: 0%;
+  height: 2px;
+}
+.btn-3:hover{
+   background: transparent;
+  box-shadow: none;
+}
+.btn-3:hover:before {
+  height: 100%;
+}
+.btn-3:hover:after {
+  width: 100%;
+}
+.btn-3 span:hover{
+   color: rgba(149,207,89,1);
+}
+.btn-3 span:before,
+.btn-3 span:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+   background: rgba(149,207,89,1);
+  transition: all 0.3s ease;
+}
+.btn-3 span:before {
+  width: 2px;
+  height: 0%;
+}
+.btn-3 span:after {
+  width: 0%;
+  height: 2px;
+}
+.btn-3 span:hover:before {
+  height: 100%;
+}
+.btn-3 span:hover:after {
+  width: 100%;
+}
+
+.errorMsg {
+	display: none;
+    font-size: 11px;
+    line-height: 18px;
+    color: #e7223d;
+}

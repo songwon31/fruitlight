@@ -1,0 +1,130 @@
+@charset "UTF-8";
+
+dl, dt, dd, ul, ol, menu, li {
+    list-style: none;
+}
+.leftside {
+	width : 200px;
+	float : left;
+	position: relative;
+} 
+.mymenu{
+    border-image: initial;
+    color: rgb(17, 17, 17);
+    margin: 0px;
+}
+
+.mymenu-menu {
+	padding: 20px 0;
+    border-top: 1px solid #dee2e6;
+    text-align: left;
+}
+.mymenu-menu-title {
+	display: block;
+    /* font-weight: bold; */
+    font-size: 15px;
+    line-height: 30px;
+    padding-left: 10px;
+    color: rgb(17, 17, 17);
+}
+.mymenu-menu-title:hover {
+	text-decoration: none;
+	color : #95CF59;
+}
+.mymenu-menu > div > ul > li:hover > a{
+	color: rgb(61, 130, 247);
+	text-decoration: none;
+}
+.mymenu-menu > div > ul > li:selected > a{
+	color: rgb(61, 130, 247);
+	text-decoration: none;
+}
+.mymenu-menu > div > ul > li > a {
+	color: rgb(17, 17, 17);
+    display: block;
+    padding: 3px 0px;
+}
+.content {
+	float: left;
+	position: relative;
+}
+.mycoupang-main-title{
+	padding : 10px 0 50px 30px;
+	font-size : 24px;
+	font-weight: bold;
+}
+.passwordRequest {
+	margin : 100px 50px 400px 250px;
+}
+.passwordRequest > span {
+	font-size : 20px;
+	font-weight : 700;
+	padding-right : 20px;
+}
+.headerSearchBtn{
+	background: transparent;
+	border: none;
+}
+.headerSearchBtnImage {
+	margin : 0 0 5px 5px;
+}
+
+.changeInfo {
+	margin-left : 50px;
+	width : 100%;
+	border-top : 2px solid gray;
+}
+.changeInfo > tbody > tr {
+	border-bottom : 1px solid gray;
+}
+.changeInfo > tbody > tr > th {
+	text-align : center;
+	padding : 15px 30px;
+	background-color: #f0f0f0;
+	font-size: 12px;
+    font-weight: 600;
+}
+.changeInfo > tbody > tr > td {
+	padding : 15px 30px;
+	border-left : 1px solid gray;
+	font-weight: bold;
+}
+.infoForm > span{
+	padding-right : 15px;
+}
+.infoForm > form {
+	padding : 10px;
+	margin-top : 15px;
+}
+.changeBtn {
+	border: 1px solid #dbdbdb;
+    vertical-align: middle;
+    font-size: 12px;
+    padding: 5px 12px;
+    background-color: white;
+}
+.hidden {
+	background-color: white;
+}
+.changeForm {
+	background-color: #f0f0f0;
+	border : 1px solid gray;
+}
+.changeForm > input {
+	margin-right : 15px;
+}
+.pwForm > form > div {
+	margin : 10px;
+}
+
+.errorMsg {
+    margin: 0px 12px 9px;
+    padding: 0;
+    font-family: dotum,sans-serif;
+    font-size: 11px;
+    line-height: 18px;
+    cursor: default;
+    display: none;
+    color: #e7223d;
+    border: 0;
+}

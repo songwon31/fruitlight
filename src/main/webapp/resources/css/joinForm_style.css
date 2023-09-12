@@ -1,0 +1,241 @@
+/* #0074e9 #e7223d*/
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+ui, li {
+	list-style: none;
+}
+
+.skip {
+    display:none;
+}
+
+body{
+    margin: 0 auto;
+    padding: 0 4.35%;
+    min-width: 290px;
+    max-width: 600px;
+    font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, "Noto Sans KR", Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+}
+
+h1 {
+    text-align: center;
+    margin:50px auto 30px;
+}
+
+h1 a img {
+	margin: 30px auto;
+    width: 80%;
+}
+
+section {
+    font-family: dotum,sans-serif;
+    font-size: 12px;
+    line-height: 1.6;
+    color: #666;
+    position: relative;
+}
+section #joinform {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+section #joinform .form_title {
+    padding: 0 0 10px 0;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.29;
+    letter-spacing: normal;
+    color: #111;
+}
+section #joinform fieldset {
+    border-width: 0px;
+}
+section #joinform fieldset ul {
+    margin-bottom: 20px;
+}
+section #joinform fieldset ul li {
+    border: 1px solid #ccc;
+    background: #fff;
+    display: flex;
+    flex-flow:row nowrap;
+    margin-bottom: 10px;
+}
+
+.errorMsg {
+    margin: 0px 12px 9px;
+    padding: 0;
+    font-family: dotum,sans-serif;
+    font-size: 11px;
+    line-height: 18px;
+    cursor: default;
+    display: none;
+    color: #e7223d;
+    border: 0;
+}
+
+/* 회원가입 이메일 아이콘 */
+section #joinform fieldset ul li .id_bg{
+    border-right: 1px solid #ccc;
+    padding: 20px;
+    width: 10px;
+    position: relative;
+}
+section #joinform fieldset ul li .id_bg::after{
+    content: '';
+    display: block;
+    background-image: url(../images/icon.svg);
+    background-position: 0px 0px;
+    width: 21px;
+    height: 21px;
+    left:10px;
+    top:11px;
+    position: absolute;
+}
+
+/* 회원가입 비밀번호 아이콘 */
+section #joinform fieldset ul li .pw_bg{
+    border-right: 1px solid #ccc;
+    padding: 20px;
+    width: 10px;
+    position: relative;
+}
+section #joinform fieldset ul li .pw_bg::after{
+    content: '';
+    display: block;
+    background-image: url(../images/icon.svg);
+    background-position: 127px 0px;
+    width: 21px;
+    height: 21px;
+    left:10px;
+    top:11px;
+    position: absolute;
+}
+
+/* 회원가입 비밀번호 확인 아이콘 */
+section #joinform fieldset ul li .pw_check_bg{
+    border-right: 1px solid #ccc;
+    padding: 20px;
+    width: 10px;
+    position: relative;
+}
+section #joinform fieldset ul li .pw_check_bg::after{
+    content: '';
+    display: block;
+    background-image: url(../images/icon.svg);
+    background-position: 106px 0px;
+    width: 21px;
+    height: 21px;
+    left:10px;
+    top:11px;
+    position: absolute;
+}
+
+/* 회원가입 이름 아이콘 */
+section #joinform fieldset ul li .name_bg{
+    border-right: 1px solid #ccc;
+    padding: 20px;
+    width: 10px;
+    position: relative;
+}
+section #joinform fieldset ul li .name_bg::after{
+    content: '';
+    display: block;
+    background-image: url(../images/icon.svg);
+    background-position: 0px -21px;
+    width: 21px;
+    height: 21px;
+    left:10px;
+    top:11px;
+    position: absolute;
+}
+
+/* 회원가입 연락처 아이콘 */
+section #joinform fieldset ul li .tel_bg{
+    border-right: 1px solid #ccc;
+    padding: 20px;
+    width: 10px;
+    position: relative;
+}
+section #joinform fieldset ul li .tel_bg::after{
+    content: '';
+    display: block;
+    background-image: url(../images/icon.svg);
+    background-position: -21px -21px;
+    width: 21px;
+    height: 21px;
+    left:12px;
+    top:11px;
+    position: absolute;
+}
+
+section #joinform fieldset ul li span input {
+    width: 97.5%;
+    height: 40px;
+    border: 0;
+    padding-left: 10px;
+}
+
+/* 회원가입 모두 동의 폼 */
+section #joinform fieldset .agree_form {
+	font-size: 14px;
+	box-sizing: border-box;
+    margin-top: 15px
+}
+
+section #joinform fieldset .agree_form .controls {
+    color: #000000;
+}
+
+section #joinform fieldset .agree_form .controls .text {
+    display: none;
+    max-height: 300px;
+    padding: 10px;
+    overflow: scroll;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid #95CF59;
+}
+
+section #joinform fieldset .agree_form .controls .text li {
+    display: inline-block;
+    border: none;
+}
+
+section #joinform fieldset #join_btn {
+    background: #A0DE5F;
+    width: 100%;
+    color: white;
+    padding: 20px 0;
+    border-width: 0px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.biz_register {
+    margin-top: 30px;
+    margin-bottom: 18px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.6;
+    font-family: dotum,sans-serif;
+}
+
+.biz_register a {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 17px;
+    color: #454f5b;
+    margin-top: 6px;
+    text-decoration: none;
+}
+
+
+footer {
+    color: #333;
+    text-align: center;
+    font-size: 0.85rem;
+    padding: 20px 0 40px;
+}

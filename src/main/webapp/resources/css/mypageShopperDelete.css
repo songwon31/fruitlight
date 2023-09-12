@@ -1,0 +1,51 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+ui, li {
+	list-style: none;
+}
+
+
+.agree_form {
+	font-size: 14px;
+	box-sizing: border-box;
+    margin-top: 15px
+}
+
+.agree_form .controls {
+    color: #000000;
+}
+
+.agree_form .controls .text {
+    max-height: 300px;
+    padding: 10px;
+    overflow: scroll;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid #A1290C;
+}
+
+.agree_form .controls .text li {
+    display: inline-block;
+    border: none;
+}
+
+.delete_user_title {
+	font-size: 25px;
+	font-weight: bold;
+	color: #95CF59;
+	text-align: center;
+}
+
+#join_btn {
+	float: right;
+    background: #A1290C;
+    width: 20%;
+    color: white;
+    padding: 15px 0;
+    border-width: 0px;
+    font-weight: bold;
+    font-size: 20px;
+}

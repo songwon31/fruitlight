@@ -1,0 +1,33 @@
+@charset "UTF-8";
+@media(min-width: 989px){
+	.footerContainer {
+		display: flex;
+		flex-direction: row;
+	}
+}
+@media(max-width: 989px){
+	.footerContainer{
+		display: block;
+		text-align: center;
+	}
+}
+@media(max-width: 500px){
+	.footerLayer1 > img{
+		width : 200px;
+		height : 130px;
+	}
+}
+.footerWrapper {
+	background-color: #fefefe;
+	margin-top : 40px;
+	clear:both;
+}
+.footerLayer1{
+	margin : 30px 10px 0 180px;
+}
+.footerLayer2{
+	margin : 20px 50px;
+}
+.footerLayer3{
+	margin : 20px 50px;
+}
