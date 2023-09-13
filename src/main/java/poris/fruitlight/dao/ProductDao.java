@@ -17,6 +17,8 @@ import poris.fruitlight.dto.ProductList;
 @Mapper
 public interface ProductDao {
 	
+	public String selectProductOption(int product_no);
+	
 	public List<Product> selectProductList();
 	
 	List<Integer> selectStarRateList(int product_no);
