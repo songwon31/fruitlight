@@ -11,7 +11,7 @@ public interface AddressBookService {
 	 * @author 고재승
 	 * @return 배송지 정보의 목록을 반환합니다.
 	 */
-	public List<AddressBook> getAddressBookList(Shopper shopper);
+	public List<AddressBook> getAddressBookList(int shopperNo);
 	
 	/**
 	 * 삭제할 배송지 정보를 전달하는 메소드
@@ -27,4 +27,6 @@ public interface AddressBookService {
 	 * @param addressBook - 배송지 DTO
 	 */
 	public void createAddressBook(AddressBook addressBook);
+	
+	
 }

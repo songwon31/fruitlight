@@ -24,14 +24,15 @@ public class AddressController {
 	 * @param model - (받는 사람, 받을 주소, 연락처, 배송 요청사항) DTO
 	 * @return 배송지 목록 페이지 이동
 	 */
-	@GetMapping(value="/addressBook", produces="application/json; charset=UTF-8")
-	public List<AddressBook> getAddressList(Shopper shopper) {
+	@GetMapping(value="/getAddressList", produces="application/json; charset=UTF-8")
+	public List<AddressBook> getAddressList() {
 		 
 		// Step1. 회원 정보 조회 - 회원 고유번호 획득
 		//Shopper shopper = (Shopper) session.getAttribute("ShopperInfo");
 		
 		// Step2. 회원 번호를 기준으로 배송지 목록 조회
-		List<AddressBook> addrBookList = addrBookService.getAddressBookList(shopper);
+		int shopperNo = 1;
+		List<AddressBook> addrBookList = addrBookService.getAddressBookList(shopperNo);
 		
 		if(addrBookList == null) {
 			return addrBookList;
