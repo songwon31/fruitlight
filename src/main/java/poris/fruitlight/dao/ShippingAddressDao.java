@@ -18,7 +18,7 @@ public interface ShippingAddressDao {
 	 * @param shopper - 회원 정보
 	 * @return - 회원의 배송지 목록
 	 */
-	public List<AddressBook> selectShippingAddressListById(Shopper shopper);
+	public List<AddressBook> selectShippingAddressListById(int shopperNo);
 	
 	/**
 	 * 신규 배송지 주소를 등록하는 메소드

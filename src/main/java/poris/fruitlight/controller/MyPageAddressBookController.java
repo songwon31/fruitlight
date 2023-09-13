@@ -49,7 +49,8 @@ public class MyPageAddressBookController {
 		Shopper shopper = (Shopper) session.getAttribute("ShopperInfo");
 		
 		// Step2. 회원 번호를 기준으로 배송지 목록 조회
-		List<AddressBook> addrBookList = addrBookService.getAddressBookList(shopper);
+		int shopperNo = shopper.getShopperNo();
+		List<AddressBook> addrBookList = addrBookService.getAddressBookList(shopperNo);
 		
 		if(addrBookList == null) {
 			try {

@@ -17,9 +17,9 @@ public class AddressBookServiceImpl implements AddressBookService{
 	private ShippingAddressDao shippingAddressDao;
 	
 	@Override
-	public List<AddressBook> getAddressBookList(Shopper shopper) {
+	public List<AddressBook> getAddressBookList(int shopperNo) {
 		
-		List<AddressBook> AddrList = shippingAddressDao.selectShippingAddressListById(shopper);
+		List<AddressBook> AddrList = shippingAddressDao.selectShippingAddressListById(shopperNo);
 
 		if(AddrList == null) {
 			return null;
