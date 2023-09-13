@@ -25,11 +25,11 @@ public class ReviewServiceImpl implements ReviewService {
 		List<Review> reviewList = reviewDao.getList();
 		
 		for (int i=0; i<reviewList.size(); ++i) {
-			String option = productDao.selectProductOption(reviewList.get(i).getProductNo());
+			String option = productDao.selectProductOption(reviewList.get(i).getProduct_no());
 			ReviewListItem item = new ReviewListItem();
-			item.setReview_no(reviewList.get(i).getReviewNo());
-			item.setWrite_date(reviewList.get(i).getWriteDate());
-			item.setProduct_name(reviewList.get(i).getProductName());
+			item.setReview_no(reviewList.get(i).getReview_no());
+			item.setWrite_date(reviewList.get(i).getWrite_date());
+			item.setProduct_name(reviewList.get(i).getProduct_name());
 			item.setProduct_option(option);
 			item.setContent(reviewList.get(i).getContent());
 			
