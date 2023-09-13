@@ -100,7 +100,7 @@ public class DetailViewController {
 			int totalSumStarRate = 0;
 			
 			for(Review review : ReviewList) {
-				totalSumStarRate += review.getStarRate();
+				totalSumStarRate += review.getStar_rate();
 			}
 			
 			reviewInfo.setStarRateAvg(totalSumStarRate/ReviewList.size());
