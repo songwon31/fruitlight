@@ -2,6 +2,7 @@ package poris.fruitlight.service;
 
 import java.util.List;
 
+import poris.fruitlight.dto.MorderHistory;
 import poris.fruitlight.dto.OrderHistoryOrderList;
 import poris.fruitlight.dto.OrderSearchParam;
 import poris.fruitlight.dto.Pager;
@@ -14,6 +15,7 @@ public interface MyPageOrderedService {
 	 * @return 사용자가 주문했던 목록
 	 */
     public List<OrderHistoryOrderList> getList(Pager pager,int sid);
+    public List<MorderHistory> getOrderHistory(int shopperNo);
     
     /**
      * @author 김진성

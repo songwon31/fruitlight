@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import lombok.extern.slf4j.Slf4j;
 import poris.fruitlight.dao.OrderHistoryDao;
+import poris.fruitlight.dto.MorderHistory;
 import poris.fruitlight.dto.OrderHistoryOrderList;
 import poris.fruitlight.dto.OrderSearchParam;
 import poris.fruitlight.dto.Pager;
@@ -37,6 +38,11 @@ private OrderHistoryDao orderHistoryDao;
 	@Override
 	public int SelectTotalOrderHistory(int shopperNo) {
 		return orderHistoryDao.SelectTotalOrderHistory(shopperNo);
+	}
+
+	@Override
+	public List<MorderHistory> getOrderHistory(int shopperNo) {
+		return orderHistoryDao.selectOrderHistory(shopperNo);
 	}
    
 

@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import poris.fruitlight.dto.Coupon;
+import poris.fruitlight.dto.MorderHistory;
 import poris.fruitlight.dto.OrderHistory;
 import poris.fruitlight.dto.OrderHistoryOrderList;
 import poris.fruitlight.dto.OrderParam;
@@ -25,6 +26,8 @@ public interface OrderHistoryDao {
     * @return 주문내역 DTO
     */
    public List<OrderHistoryOrderList> SelectOrderHistory(Pager pager);
+   
+   public List<MorderHistory> selectOrderHistory(int shopperNo);
    
    /**
     * @author 김진성

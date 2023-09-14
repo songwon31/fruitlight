@@ -50,6 +50,14 @@
           ]]>
    </select>
    
+    <!-- 작성자 : 김시온 -->
+    <select id="selectOrderHistory" parameterType="int" resultType="poris.fruitlight.dto.MorderHistory">
+      select order_date, product_name, product_option, price, stock, payment_price 
+      from order_history oh, receipt_history rh, product p
+      where oh.order_no = rh.order_no and rh.product_no = p.product_no
+      and shopper_no = #{shopper_no}
+    </select>
+   
    <!-- 작성자 : 김진성 -->
    <!-- 사용자가 주문한 상품 중 상품 이름으로 검색된 목록만 출력 -->
    <select id="SearchOrdersByPname" parameterType="OrderSearch" resultType="poris.fruitlight.dto.OrderHistoryOrderList">
