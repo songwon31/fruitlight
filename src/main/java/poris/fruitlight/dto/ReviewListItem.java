@@ -12,6 +12,7 @@ import lombok.Data;
 @Data
 public class ReviewListItem {
 	private int review_no;
+	private int product_no;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
     private Date write_date;
     private String product_name;

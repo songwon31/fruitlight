@@ -29,6 +29,7 @@ public class ReviewServiceImpl implements ReviewService {
 			Product product = productDao.selectProductById(reviewList.get(i).getProduct_no());
 			ReviewListItem item = new ReviewListItem();
 			item.setReview_no(reviewList.get(i).getReview_no());
+			item.setProduct_no(product.getPRODUCT_NO());
 			item.setWrite_date(reviewList.get(i).getWrite_date());
 			item.setProduct_name(product.getPRODUCT_NAME());
 			item.setProduct_option(product.getPRODUCT_OPTION());
