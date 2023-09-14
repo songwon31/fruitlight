@@ -9,6 +9,8 @@ import poris.fruitlight.dto.ProductList;
 public interface ListService {
 	
 	public List<MobileProductForList> getCherryAdList();
+	public List<MobileProductForList> getWatermelonAdList();
+	public List<MobileProductForList> getMangoAdList();
 	
 	public List<MobileProductForList> getMobileProductsForList();
 	

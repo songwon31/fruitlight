@@ -31,6 +31,18 @@ public class ListController {
 		return listService.getCherryAdList();
 	}
 	
+	@RequestMapping(value="/list/getWatermelonAdList", produces="application/json; charset=UTF-8")
+	@ResponseBody
+	public List<MobileProductForList> getWatermelonAdList() {
+		return listService.getWatermelonAdList();
+	}
+	
+	@RequestMapping(value="/list/getMangoAdList", produces="application/json; charset=UTF-8")
+	@ResponseBody
+	public List<MobileProductForList> getMangoAdList() {
+		return listService.getMangoAdList();
+	}
+	
 	/**
 	 * @author 송원석
 	 */

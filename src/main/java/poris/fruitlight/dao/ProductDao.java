@@ -19,6 +19,10 @@ public interface ProductDao {
 	
 	public List<Product> selectCherryAdList();
 	
+	public List<Product> selectWatermelonAdList();
+	
+	public List<Product> selectMangoAdList();
+	
 	public Product selectProductById(int product_no);
 	
 	public List<Product> selectProductList();
