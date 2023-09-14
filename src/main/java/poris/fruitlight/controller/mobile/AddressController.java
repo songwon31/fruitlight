@@ -2,9 +2,12 @@ package poris.fruitlight.controller.mobile;
 
 import java.util.List;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.extern.slf4j.Slf4j;
 import poris.fruitlight.dto.AddressBook;
@@ -43,8 +46,27 @@ public class AddressController {
 		
 		return addrBookList;
 	}
-/*	
-	*//**
+
+	
+	@PostMapping(value="/deleteAddress", produces="application/json; charset=UTF-8")
+	public String deleteAddress(int addressNo) throws Exception {
+	   log.info("실행");
+	   JSONObject jsonObject = new JSONObject();
+	   try {
+		   addrBookService.deleteAddressBook(addressNo);
+		   jsonObject.put("result", "success");
+		   jsonObject.put("ano", addressNo);
+		   
+	   } catch(Exception e) {	   
+		  
+		   jsonObject.put("result", "fail");
+		   jsonObject.put("message", e.getMessage());
+	   }	   
+		   
+	   return jsonObject.toString();
+	   
+   }
+/*	*//**
 	 * @author 고재승
 	 * @param addressNo - 삭제할 배송지 고유번호
 	 * @return - 배송지 목록 페이지으로 리다이렉트 
