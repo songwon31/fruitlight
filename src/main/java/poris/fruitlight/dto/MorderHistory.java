@@ -2,6 +2,9 @@ package poris.fruitlight.dto;
 
 import java.util.Date;
 
+import lombok.Data;
+
+@Data
 public class MorderHistory {
 
 	private Date order_date;
