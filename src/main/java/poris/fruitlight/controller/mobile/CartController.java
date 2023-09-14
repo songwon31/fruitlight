@@ -1,4 +1,4 @@
-package poris.fruitlight.controller;
+package poris.fruitlight.controller.mobile;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import poris.fruitlight.dto.Cart;
 import poris.fruitlight.dto.CartProduct;
@@ -28,43 +29,35 @@ import poris.fruitlight.util.AlertScript;
  * @author 이은지
  *
  */
-//@Controller
+@RestController
 public class CartController {
 	@Resource
 	private CartService cartProductService;
 	
 	private Shopper loginShopper;
+
+	@GetMapping(value="cart/getCartProductList", produces="application/json; charset=UTF-8")
+	public List<CartProduct> getCartProductList() {
+		Shopper loginShopper = new Shopper();
+		loginShopper.setShopperNo(1);
+		List<CartProduct> listProduct = cartProductService.getCartProduct(loginShopper.getShopperNo());
+		
+		return listProduct;
+	}
 	
-	/**
-	 * 장바구니 페이지 초기화면 출력
-	 * @param model
-	 * @return 장바구니(cart) 페이지
-	 */
-	@RequestMapping("/cart")
-	public String cart(HttpServletResponse response, HttpSession session, Model model) {
-		// Step1. Session에 있는 로그인한 회원 정보 얻기
-		loginShopper = (Shopper) session.getAttribute("ShopperInfo");
-		if(loginShopper == null) {
-			try {
-				AlertScript.alertAndMovePage(response, "로그인을 해주세요", "/fruitlight/login");
-			} catch (IOException e) {
-				return "redirect:/main";
-			}
-		} else {
-			// Step2. 로그인한 회원의 장바구니 상품 및 쿠폰 데이터 얻기
-			List<CartProduct> listProduct = cartProductService.getCartProduct(loginShopper.getShopperNo());
-			List<Coupon> listCoupon = cartProductService.getCoupon(loginShopper.getShopperNo());
-			
-			// Step2-1. 장바구니 상품 이미지 변환
-			for(CartProduct cartProduct : listProduct) {
-				cartProduct.setBase64Img(Base64.getEncoder().encodeToString(cartProduct.getMEDIA_DATA()));
-		    }
-			
-			// Step2-2. 장바구니 정보를 JSP에 Model으로 전달
-			model.addAttribute("listProduct", listProduct);
-			model.addAttribute("listCoupon", listCoupon);
-		}
-		return "cart";
+	@GetMapping(value="cart/getCartProductImage", produces="image/jpeg")
+	public byte[] getCartProductImage(int pno) {
+		CartProduct cartProduct = cartProductService.getMediaData(pno);
+		return cartProduct.getMEDIA_DATA();
+	}
+	
+	@GetMapping(value="cart/getCartCouponList", produces="application/json; charset=UTF-8")
+	public List<Coupon> getCartCouponList() {
+		Shopper loginShopper = new Shopper();
+		loginShopper.setShopperNo(1);
+		List<Coupon> listCoupon = cartProductService.getCoupon(loginShopper.getShopperNo());
+		
+		return listCoupon;
 	}
 	
 	/**

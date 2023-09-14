@@ -23,6 +23,13 @@ public interface CartDao {
 	public List<CartProduct> selectCartBySno(int sno);
 	
 	/**
+	 * 모바일 - 상품 이미지 select
+	 * @param pno
+	 * @return
+	 */
+	public CartProduct selectMediaDataByPno(int pno);
+	
+	/**
 	 * 로그인한 회원번호로 사용가능한 보유쿠폰 데이터 select
 	 * @param sno(회원번호)
 	 * @return List<Coupon>(쿠폰 DTO 리스트)

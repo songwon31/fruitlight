@@ -2,13 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="poris.fruitlight.dao.CartDao">
 	<select id="selectCartBySno" parameterType="int" resultType="poris.fruitlight.dto.CartProduct">
-		select p.PRODUCT_NO, CART_PRODUCT_STOCK, PRODUCT_STOCK, PRODUCT_NAME, PRODUCT_OPTION, DISCOUNT_PRICE, MEDIA_DATA
+		select p.PRODUCT_NO, CART_PRODUCT_STOCK, PRODUCT_STOCK, PRODUCT_NAME, PRODUCT_OPTION, DISCOUNT_PRICE
 		from CART c, PRODUCT p, PRODUCT_BOARD b, BOARD_MEDIA m
 		where c.PRODUCT_NO = p.PRODUCT_NO
         and p.PRODUCT_NO = b.PRODUCT_NO
 		and b.BOARD_NO = m.BOARD_NO
 		and SHOPPER_NO = #{SHOPPER_NO}
         and MEDIA_NAME like '%detailView_main1%'
+	</select>
+	
+	<select id="selectMediaDataByPno" parameterType="int" resultType="poris.fruitlight.dto.CartProduct">
+		select p.PRODUCT_NO, MEDIA_DATA
+		from PRODUCT p, PRODUCT_BOARD b, BOARD_MEDIA m
+		where p.PRODUCT_NO = b.PRODUCT_NO
+		and b.BOARD_NO = m.BOARD_NO
+		and p.PRODUCT_NO = #{PRODUCT_NO}
+		and MEDIA_NAME like '%detailView_main1%'
 	</select>
 	
 	<select id="selectCouponBySno" parameterType="int" resultType="poris.fruitlight.dto.Coupon">

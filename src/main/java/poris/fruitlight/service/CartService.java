@@ -20,6 +20,13 @@ public interface CartService {
 	public List<CartProduct> getCartProduct(int sno);
 	
 	/**
+	 * 모바일 - 상품 이미지 조회
+	 * @param pno
+	 * @return
+	 */
+	public CartProduct getMediaData(int pno);
+	
+	/**
 	 * 회원번호로 보유쿠폰 조회
 	 * @param sno(현재 로그인한 회원 번호)
 	 * @return List<Coupon>(쿠폰 DTO 리스트)

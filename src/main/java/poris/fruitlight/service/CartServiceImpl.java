@@ -28,6 +28,13 @@ public class CartServiceImpl implements CartService {
 		List<CartProduct> list = cartDao.selectCartBySno(sno);
 		return list;
 	}
+	
+	//장바구니 상품 이미지 가져오기
+	@Override
+	public CartProduct getMediaData(int pno) {
+		CartProduct cartProduct = cartDao.selectMediaDataByPno(pno);
+		return cartProduct;
+	}
 
 	//쿠폰 목록 가져오기
 	@Override
