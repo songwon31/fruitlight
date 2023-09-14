@@ -52,7 +52,7 @@
    
     <!-- 작성자 : 김시온 -->
     <select id="selectOrderHistory" parameterType="int" resultType="poris.fruitlight.dto.MorderHistory">
-      select product_no, order_date, product_name, product_option, price, stock, payment_price 
+      select p.product_no, order_date, product_name, product_option, price, stock, payment_price 
       from order_history oh, receipt_history rh, product p
       where oh.order_no = rh.order_no and rh.product_no = p.product_no
       and shopper_no = #{shopper_no}
