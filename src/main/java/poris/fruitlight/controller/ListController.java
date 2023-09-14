@@ -25,6 +25,12 @@ public class ListController {
 	@Resource
 	private ListService listService;
 	
+	@RequestMapping(value="/list/getCherryAdList", produces="application/json; charset=UTF-8")
+	@ResponseBody
+	public List<MobileProductForList> getCherryAdList() {
+		return listService.getCherryAdList();
+	}
+	
 	/**
 	 * @author 송원석
 	 */
