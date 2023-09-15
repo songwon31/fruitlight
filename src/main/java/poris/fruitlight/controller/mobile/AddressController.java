@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.extern.slf4j.Slf4j;
+import oracle.net.aso.j;
 import poris.fruitlight.dto.AddressBook;
 import poris.fruitlight.service.AddressBookService;
 
@@ -52,7 +53,6 @@ public class AddressController {
 		   log.info("실행");
 		   JSONObject jsonObject = new JSONObject();
 		   try {
-		     
 		           addrBookService.deleteAddressBook(address_no);
 		           jsonObject.put("address_no", address_no);
 		           jsonObject.put("address_result", "success");
@@ -63,6 +63,29 @@ public class AddressController {
 		   }     
 		   return jsonObject.toString();
 	}
+	
+	/**
+	 * @author 김시온
+	 * @return 배송지 추가 페이지 이동
+	 */
+	@PostMapping(value="/addAddress", produces="application/json; charset=UTF-8")
+	public String addAddress(AddressBook addressBook) throws Exception {
+		log.info("addressBook :" + addressBook.toString());
+		JSONObject jsonObject = new JSONObject();
+		try {
+				addrBookService.createAddressBook(addressBook);
+				
+				jsonObject.put("address_result", "success");
+				jsonObject.put("address_no", addressBook.getAddress_no());
+		} catch(Exception e) {
+			
+			jsonObject.put("address_result", "fail");
+			jsonObject.put("message", e.getMessage());
+		}
+		return jsonObject.toString();
+	}
+	
+	
 /*	*//**
 	 * @author 고재승
 	 * @param addressNo - 삭제할 배송지 고유번호
@@ -83,18 +106,8 @@ public class AddressController {
 	public String newAddressBook() {
 		
 		return "newAddressBook";
-	}
-	
-	
-	*//**
-	 * @author 고재승
-	 * @return 배송지 추가 페이지 이동
-	 *//*
-	@PostMapping("/addressBook/addAddressBook")
-	public String addAddressBook(AddressBook addressBook) {
-		log.info("addressBook :" + addressBook.toString());
-		addrBookService.createAddressBook(addressBook);
-		
-		return "redirect:/addressBook";
 	}*/
+	
+	
+
 }
