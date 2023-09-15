@@ -137,6 +137,12 @@ public class DetailViewController {
 		return productBoard;
 	}
 
+	@GetMapping(value="detailView/getMainImage", produces="image/jpeg")
+	public byte[] getMainImage(int bno) {
+		byte[] mainImage = detailViewService.getMainImage(bno);
+		return mainImage;
+	}
+
 	@GetMapping(value="detailView/getMediaNoList", produces="application/json; charset=UTF-8")
 	public List<Integer> getMediaNoList(int bno) {
 		List<Integer> mediaNoList = detailViewService.getMediaNoList(bno);
@@ -157,26 +163,27 @@ public class DetailViewController {
 	
 	@GetMapping(value="detailView/getReviewList", produces="application/json; charset=UTF-8")
 	public List<Review> getReviewList(int bno) {
-		List<Review> ReviewList = detailViewService.getMReviewList(bno);
+		List<Review> reviewList = detailViewService.getMReviewList(bno);
+		return reviewList;
+	}
+
+	@GetMapping(value="detailView/getReviewInfo", produces="application/json; charset=UTF-8")
+	public ReviewInfo getReviewInfo(int bno) {
+		List<Review> reviewList = detailViewService.getMReviewList(bno);
 		
-		//List<Review> ReviewList = detailViewService.getReviewList(ReviewPager, bno);
+		ReviewInfo reviewInfo = new ReviewInfo();
+		int totalSumStarRate = 0;
 		
-		// Step5-3. 리뷰 평균 점수 처리
-		/*ReviewInfo reviewInfo = null;
+		for(Review review : reviewList) {
+			totalSumStarRate += review.getStar_rate();
+		}
 		
-		if(ReviewList.size() != 0) {
-			reviewInfo = new ReviewInfo();
-			int totalSumStarRate = 0;
-			
-			for(Review review : ReviewList) {
-				totalSumStarRate += review.getStar_rate();
-			}
-			
-			reviewInfo.setStarRateAvg(totalSumStarRate/ReviewList.size());
-			reviewInfo.setTotalReviewScore((float)(Math.round((totalSumStarRate/40.0)*10)/10.0));
-		}*/
+		reviewInfo.setStarRateAvg(totalSumStarRate/reviewList.size());
+		reviewInfo.setTotalReviewScore((float)(Math.round((totalSumStarRate/40.0)*10)/10.0));
+		reviewInfo.setReviewCount(reviewList.size());
+
+		return reviewInfo;
 		
-		return ReviewList;
 	}
 
 	/**

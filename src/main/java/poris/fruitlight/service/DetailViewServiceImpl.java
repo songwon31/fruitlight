@@ -29,6 +29,12 @@ public class DetailViewServiceImpl implements DetailViewService {
 	DetailViewDao detailViewDao;
 	
 	@Override
+	public byte[] getMainImage(int bno) {
+		BoardMedia boardMedia = detailViewDao.selectMainImageByBno(bno);
+		return boardMedia.getMediaData();
+	}
+	
+	@Override
 	public List<Review> getMReviewList(int bno) {
 		List<Review> reviewList = detailViewDao.selectProductReview(bno);
 		return reviewList;

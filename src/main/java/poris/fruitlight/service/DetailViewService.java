@@ -36,6 +36,8 @@ public interface DetailViewService {
 	
 	public List<Review> getMReviewList(int bno);
 	
+	public byte[] getMainImage(int bno);
+	
 	
 	/**
 	 * 게시글 번호에 해당하는 게시글 조회 메소드

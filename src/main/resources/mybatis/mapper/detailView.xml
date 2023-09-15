@@ -25,7 +25,7 @@
     	FROM BOARD_MEDIA m, PRODUCT_BOARD b
     	WHERE m.BOARD_NO = b.BOARD_NO
     	and b.BOARD_NO = #{bno}
-    	and MEDIA_NAME like '%detailView_main%'
+    	and MEDIA_NAME like '%detailView_content%'
     	order by MEDIA_NAME
     </select>
 
@@ -33,6 +33,14 @@
     	SELECT MEDIA_DATA as mediaData
     	FROM BOARD_MEDIA
     	WHERE MEDIA_NO = #{mno}
+    </select>
+    
+    <select id="selectMainImageByBno" parameterType="int" resultType="BoardMedia">
+    	select MEDIA_DATA as mediaData
+    	from PRODUCT_BOARD b, BOARD_MEDIA m
+	  	where b.BOARD_NO = m.BOARD_NO
+	  	and b.BOARD_NO = #{bno}
+      	and MEDIA_NAME like '%detailView_main1%'
     </select>
 	
 	<!-- 2023.08.13 고재승 -->
