@@ -1,24 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="poris.fruitlight.dao.DetailViewDao">
+
+	<select id="selectProductReview" parameterType="int" resultType="Review">
+    	SELECT r.REVIEW_NO, r.ORDER_NO, r.PRODUCT_NO, r.BOARD_NO, r.STAR_RATE, r.HELP_POINT, r.CONTENT, s.SHOPPER_NAME, p.PRODUCT_NAME, r.WRITE_DATE
+        FROM REVIEW r, ORDER_HISTORY o, SHOPPER s, RECEIPT_HISTORY rh, PRODUCT p
+        WHERE r.ORDER_NO = o.ORDER_NO
+      	AND o.SHOPPER_NO = s.SHOPPER_NO
+      	AND r.ORDER_NO = rh.ORDER_NO
+      	AND rh.PRODUCT_NO = p.PRODUCT_NO
+      	AND BOARD_NO = #{BOARD_NO}
+    </select>
+
+	<select id="selectProductInquiry" parameterType="int" resultType="poris.fruitlight.dto.ProductInquiry">
+    	select INQUIRY_NO, INQUIRY_CONTENT, INQUIRY_DATE, EMPTANSWER, ANSWER_CONTENT, ANSWER_DATE, SHOPPER_NAME
+        from PRODUCT_INQUIRY i, SHOPPER s
+        where i.SHOPPER_NO = s.SHOPPER_NO
+        and BOARD_NO = #{BOARD_NO}
+        order by INQUIRY_DATE desc
+    </select>
+
+	<select id="selectMediaNoListByBno" parameterType="int" resultType="int">
+    	SELECT MEDIA_NO
+    	FROM BOARD_MEDIA m, PRODUCT_BOARD b
+    	WHERE m.BOARD_NO = b.BOARD_NO
+    	and b.BOARD_NO = #{bno}
+    	and MEDIA_NAME like '%detailView_main%'
+    	order by MEDIA_NAME
+    </select>
+
+	<select id="SelectProductContentImageByBoardNo" parameterType="int" resultType="BoardMedia">
+    	SELECT MEDIA_DATA as mediaData
+    	FROM BOARD_MEDIA
+    	WHERE MEDIA_NO = #{mno}
+    </select>
 	
 	<!-- 2023.08.13 고재승 -->
 	<!-- 게시글 번호를 기준으로 상품 정보를 조회하는 SQL문 -->
 	<select id="selectByBno" parameterType="int" resultType="ProductBoard">
       SELECT b.BOARD_NO as boardNo,
-      p.PRODUCT_NO as productNo,
-      p.PRODUCT_NAME as productName,
-      p.PRODUCT_PRICE as productPrice,
-      p.PRODUCT_OPTION as productOption,
-      p.DISCOUNT_RATE as discountRate,
-      p.DISCOUNT_PRICE as discountPrice,
-      m.MEDIA_NAME as mediaName,
-      m.MEDIA_DATA as mediaData
-	  FROM PRODUCT p, PRODUCT_BOARD b, BOARD_MEDIA m
+	      p.PRODUCT_NO as productNo,
+	      p.PRODUCT_NAME as productName,
+	      p.PRODUCT_PRICE as productPrice,
+	      p.PRODUCT_OPTION as productOption,
+	      p.DISCOUNT_RATE as discountRate,
+	      p.DISCOUNT_PRICE as discountPrice
+	  FROM PRODUCT p, PRODUCT_BOARD b
 	  WHERE p.PRODUCT_NO = b.PRODUCT_NO
-	  AND b.BOARD_NO = m.BOARD_NO
 	  AND b.BOARD_NO = #{bno}
-	  AND m.MEDIA_NAME like '%list_thumbnail%'
    </select>
        
     <!-- 2023.08.16 고재승 - 게시글의 상품 필수 표기 정보 조회 SQL문 -->

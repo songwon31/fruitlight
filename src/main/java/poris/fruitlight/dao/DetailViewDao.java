@@ -16,6 +16,14 @@ import poris.fruitlight.dto.Review;
 
 @Mapper
 public interface DetailViewDao {
+	public List<Review> selectProductReview(int bno);
+	
+	public List<ProductInquiry> selectProductInquiry(int bno);
+	
+	public List<Integer> selectMediaNoListByBno(int bno);
+	
+	public BoardMedia SelectProductContentImageByBoardNo(int mno);
+	
 	/**
 	 * 게시글 번호로 상품 게시글 select
 	 * @author 이은지

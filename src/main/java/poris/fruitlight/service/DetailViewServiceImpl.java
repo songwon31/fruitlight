@@ -28,6 +28,30 @@ public class DetailViewServiceImpl implements DetailViewService {
 	@Autowired
 	DetailViewDao detailViewDao;
 	
+	@Override
+	public List<Review> getMReviewList(int bno) {
+		List<Review> reviewList = detailViewDao.selectProductReview(bno);
+		return reviewList;
+	}
+	
+	@Override
+	public List<ProductInquiry> getMProductInquiryList(int bno) {
+		List<ProductInquiry> inquiryList = detailViewDao.selectProductInquiry(bno);
+		return inquiryList;
+	}
+	
+	@Override
+	public List<Integer> getMediaNoList(int bno) {
+		List<Integer> mediaNoList = detailViewDao.selectMediaNoListByBno(bno);
+		return mediaNoList;
+	}
+	
+	@Override
+	public byte[] getMediaData(int mno) {
+		BoardMedia boardMedia = detailViewDao.SelectProductContentImageByBoardNo(mno);
+		return boardMedia.getMediaData();
+	}
+	
 	//상품게시글 가져오기
 	@Override
 	public ProductBoard getProduct(int bno) {
