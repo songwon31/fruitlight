@@ -12,6 +12,8 @@ import poris.fruitlight.dto.ProductInquiry;
  *
  */
 public interface MyPageShopperInquiryService {
+	public List<String> getMShopperInquiryProductList(int sno);
+	public List<ProductInquiry> getMShopperInquiryList(ProductInquiry productInquiry);
 	/**
 	 * 회원별 상품문의 목록 조회
 	 * @param pager(상품문의 페이저)

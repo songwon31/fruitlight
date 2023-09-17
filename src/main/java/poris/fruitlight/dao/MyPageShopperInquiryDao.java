@@ -17,6 +17,8 @@ import poris.fruitlight.dto.ProductInquiry;
  */
 @Mapper
 public interface MyPageShopperInquiryDao {
+	public List<String> selectShopperInquiryProductList(int sno);
+	public List<ProductInquiry> selectShopperInquiry(ProductInquiry productInquiry);
 	/**
 	 * 페이저로 회원별 상품문의 목록 select
 	 * @param pager(페이저 DTO)

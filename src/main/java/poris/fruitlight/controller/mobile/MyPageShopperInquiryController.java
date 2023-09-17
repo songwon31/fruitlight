@@ -1,14 +1,15 @@
-package poris.fruitlight.controller;
+package poris.fruitlight.controller.mobile;
 
 import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import lombok.extern.slf4j.Slf4j;
 import poris.fruitlight.dto.Pager;
@@ -22,11 +23,26 @@ import poris.fruitlight.service.MyPageShopperInquiryService;
  *
  */
 @Slf4j
-//@Controller
+@RestController
 public class MyPageShopperInquiryController {
 
    @Resource
    private MyPageShopperInquiryService pageShopperInquiryService;
+   
+   @GetMapping(value="myPageShopperInquiry/getInquiryProductList", produces="application/json; charset=UTF-8")
+   public List<String> getInquiryProductList(int sno) {
+	   List<String> inquiryProductList = pageShopperInquiryService.getMShopperInquiryProductList(sno);
+	   return inquiryProductList;
+   }
+   
+   @GetMapping(value="myPageShopperInquiry/getInquiryList", produces="application/json; charset=UTF-8")
+   public List<ProductInquiry> getInquiryList(int sno, String productName) {
+	   ProductInquiry productInquiry = new ProductInquiry();
+	   productInquiry.setSHOPPER_NO(sno);
+	   productInquiry.setPRODUCT_NAME(productName);
+	   List<ProductInquiry> productInquiryList = pageShopperInquiryService.getMShopperInquiryList(productInquiry);
+	   return productInquiryList;
+   }
    
    /**
     * 내 상품문의 초기화면 출력

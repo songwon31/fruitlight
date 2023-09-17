@@ -21,6 +21,18 @@ import poris.fruitlight.dto.ProductInquiry;
 public class MyPageShopperInquiryServiceImpl implements MyPageShopperInquiryService {
 	@Autowired
 	MyPageShopperInquiryDao myPageShopperInquiryDao;
+
+	@Override
+	public List<String> getMShopperInquiryProductList(int sno) {
+		List<String> list = myPageShopperInquiryDao.selectShopperInquiryProductList(sno);
+		return list;
+	}
+	
+	@Override
+	public List<ProductInquiry> getMShopperInquiryList(ProductInquiry productInquiry) {
+		List<ProductInquiry> list = myPageShopperInquiryDao.selectShopperInquiry(productInquiry);
+		return list;
+	}
 	
 	//회원별 상품문의 목록 가져오기
 	@Override

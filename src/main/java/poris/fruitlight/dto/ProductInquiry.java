@@ -25,4 +25,5 @@ public class ProductInquiry {
 	private Date ANSWER_DATE;		//답변날짜
 	private String strAnswerDate;	//답변날짜(날짜 포맷팅 후 저장할 필드)
 	private String SHOPPER_NAME;	//문의한 회원이름(이*지)
+	private int SHOPPER_NO;			//문의한 회원번호
 }

@@ -18,6 +18,28 @@ import poris.fruitlight.dto.Review;
  */
 public interface DetailViewService {
 	/**
+	 * 게시글 번호에 해당하는 이미지 번호 조회 메소드
+	 * @param bno
+	 * @return
+	 */
+	public List<Integer> getMediaNoList(int bno);
+	
+	/**
+	 * 이미지 번호에 해당하는 이미지 조회 메소드
+	 * @author 이은지
+	 * @param mno
+	 * @return
+	 */
+	public byte[] getMediaData(int mno);
+	
+	public List<ProductInquiry> getMProductInquiryList(int bno);
+	
+	public List<Review> getMReviewList(int bno);
+	
+	public byte[] getMainImage(int bno);
+	
+	
+	/**
 	 * 게시글 번호에 해당하는 게시글 조회 메소드
 	 * @author 고재승
 	 * @since 2023.08.13

@@ -10,4 +10,5 @@ import lombok.Data;
 public class ReviewInfo {
 	private int starRateAvg;				// 리뷰 평균 점수
 	private float totalReviewScore;			// 리뷰 총 점수
+	private int reviewCount;
 }

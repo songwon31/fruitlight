@@ -1,4 +1,4 @@
-package poris.fruitlight.controller;
+package poris.fruitlight.controller.mobile;
 
 import java.util.ArrayList;
 import java.util.Base64;
@@ -15,10 +15,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import lombok.extern.slf4j.Slf4j;
 import poris.fruitlight.dto.BoardMedia;
 import poris.fruitlight.dto.Cart;
+import poris.fruitlight.dto.CartProduct;
 import poris.fruitlight.dto.FoodRequiredInfo;
 import poris.fruitlight.dto.OrderParam;
 import poris.fruitlight.dto.Pager;
@@ -31,7 +33,7 @@ import poris.fruitlight.dto.Shopper;
 import poris.fruitlight.service.DetailViewService;
 
 @Slf4j
-//@Controller
+@RestController
 public class DetailViewController {
 	@Resource
 	private DetailViewService detailViewService;
@@ -127,6 +129,61 @@ public class DetailViewController {
 		model.addAttribute("productInquiryList", productInquiryList);
 		
 		return "detailView";
+	}
+	
+	@GetMapping(value="detailView/getBoard", produces="application/json; charset=UTF-8")
+	public ProductBoard getBoard(int bno) {
+		ProductBoard productBoard = detailViewService.getProduct(bno);
+		return productBoard;
+	}
+
+	@GetMapping(value="detailView/getMainImage", produces="image/jpeg")
+	public byte[] getMainImage(int bno) {
+		byte[] mainImage = detailViewService.getMainImage(bno);
+		return mainImage;
+	}
+
+	@GetMapping(value="detailView/getMediaNoList", produces="application/json; charset=UTF-8")
+	public List<Integer> getMediaNoList(int bno) {
+		List<Integer> mediaNoList = detailViewService.getMediaNoList(bno);
+		return mediaNoList;
+	}
+	
+	@GetMapping(value="detailView/getContentImage", produces="image/jpeg")
+	public byte[] getCartProductImage(int mno) {
+		byte[] media_data = detailViewService.getMediaData(mno);
+		return media_data;
+	}
+	
+	@GetMapping(value="detailView/getInquiryList", produces="application/json; charset=UTF-8")
+	public List<ProductInquiry> getInquiryList(int bno) {
+		List<ProductInquiry> productInquiryList = detailViewService.getMProductInquiryList(bno);
+		return productInquiryList;
+	}
+	
+	@GetMapping(value="detailView/getReviewList", produces="application/json; charset=UTF-8")
+	public List<Review> getReviewList(int bno) {
+		List<Review> reviewList = detailViewService.getMReviewList(bno);
+		return reviewList;
+	}
+
+	@GetMapping(value="detailView/getReviewInfo", produces="application/json; charset=UTF-8")
+	public ReviewInfo getReviewInfo(int bno) {
+		List<Review> reviewList = detailViewService.getMReviewList(bno);
+		
+		ReviewInfo reviewInfo = new ReviewInfo();
+		int totalSumStarRate = 0;
+		
+		for(Review review : reviewList) {
+			totalSumStarRate += review.getStar_rate();
+		}
+		
+		reviewInfo.setStarRateAvg(totalSumStarRate/reviewList.size());
+		reviewInfo.setTotalReviewScore((float)(Math.round((totalSumStarRate/40.0)*10)/10.0));
+		reviewInfo.setReviewCount(reviewList.size());
+
+		return reviewInfo;
+		
 	}
 
 	/**
