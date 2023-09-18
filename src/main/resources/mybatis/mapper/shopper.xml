@@ -60,7 +60,7 @@
 	</select>
 	
 	<select id="selectShopperById" parameterType="String" resultType="Shopper">
-		SELECT SHOPPER_ID as shopperId, SHOPPER_NAME as shopperName, SHOPPER_TEL as shopperTel
+		SELECT SHOPPER_ID as shopperId, SHOPPER_NO as shopperNo, SHOPPER_NAME as shopperName, SHOPPER_TEL as shopperTel
 		FROM SHOPPER
 		WHERE SHOPPER_ID= #{shopperId}
 	</select>

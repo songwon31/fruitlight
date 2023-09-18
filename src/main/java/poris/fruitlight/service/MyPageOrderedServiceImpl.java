@@ -44,6 +44,13 @@ private OrderHistoryDao orderHistoryDao;
 	public List<MorderHistory> getOrderHistory(int shopperNo) {
 		return orderHistoryDao.selectOrderHistory(shopperNo);
 	}
+	
+	@Override
+	public List<MorderHistory> searchOrderHistory(OrderSearchParam orderSearch) {
+		List<MorderHistory> dbResult = orderHistoryDao.searchOrdersByPname(orderSearch);
+		
+		return dbResult;
+	}
    
 
 }

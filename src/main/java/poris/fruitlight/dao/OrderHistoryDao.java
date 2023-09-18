@@ -41,6 +41,9 @@ public interface OrderHistoryDao {
     * @param shopperNo (회원 번호)
     * @return 사용자가 주문한 총 주문내역 수
     */
+   
+   //김시온
+   public List<MorderHistory> searchOrdersByPname(OrderSearchParam orderSearch);
  
    public int SelectTotalOrderHistory(int shopperNo);
    

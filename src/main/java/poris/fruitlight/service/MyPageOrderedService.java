@@ -29,5 +29,7 @@ public interface MyPageOrderedService {
      * @param shopperNo - 사용자 고유 번호
      * @return 사용자가 주문한 총 목록의 수
      */
+    //김시온
+    public List<MorderHistory> searchOrderHistory(OrderSearchParam orderSearchParam);
     public int SelectTotalOrderHistory(int shopperNo);
 }

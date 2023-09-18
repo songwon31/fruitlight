@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lombok.extern.slf4j.Slf4j;
 import poris.fruitlight.dto.MorderHistory;
+import poris.fruitlight.dto.OrderSearchParam;
 import poris.fruitlight.service.MyPageOrderedService;
 
 @RestController
@@ -24,6 +25,19 @@ public class OrderHistoryController {
 		List<MorderHistory> orderHistoryList = myPageOrderedService.getOrderHistory(shopperNo);
 		
 		return orderHistoryList;
+		
+	}
+	
+	@GetMapping(value="/searchOrderedList", produces="application/json; charset=UTF-8")
+	public List<MorderHistory> searchOrderedList(int shopperNo, String searchKeyword) {
+		OrderSearchParam orderSearch = new OrderSearchParam();
+		orderSearch.setSearchKeyword(searchKeyword);
+		orderSearch.setShopperNo(shopperNo);
+		
+		List<MorderHistory> orderHistoryList = myPageOrderedService.searchOrderHistory(orderSearch);
+		
+		return orderHistoryList;
+		
 		
 	}
 	
