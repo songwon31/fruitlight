@@ -48,8 +48,8 @@ public class ListController {
 	 */
 	@RequestMapping(value="/list/getMobileProductsForList", produces="application/json; charset=UTF-8")
 	@ResponseBody
-	public List<MobileProductForList> getMobileProductsForList() {
-		return listService.getMobileProductsForList();
+	public List<MobileProductForList> getMobileProductsForList(@RequestParam(value="keyword", required=false) String keyword) {
+		return listService.getMobileProductsForList(keyword);
 	}
 	
 	/**

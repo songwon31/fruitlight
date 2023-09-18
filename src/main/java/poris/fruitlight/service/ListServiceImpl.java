@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import poris.fruitlight.dao.ProductDao;
 import poris.fruitlight.dto.MobileBoardMedia;
 import poris.fruitlight.dto.MobileProductForList;
+import poris.fruitlight.dto.MobileProductForListDB;
 import poris.fruitlight.dto.Product;
 import poris.fruitlight.dto.ProductList;
 
@@ -137,9 +138,32 @@ public class ListServiceImpl implements ListService{
 	}
 	
 	@Override
-	public List<MobileProductForList> getMobileProductsForList() {
+	public List<MobileProductForList> getMobileProductsForList(String keyword) {
 		List<MobileProductForList> list = new ArrayList<>();
-		List<Product> productList = productDao.selectProductList();
+		List<MobileProductForListDB> productList = productDao.selectMobileProductList(keyword);
+		for (MobileProductForListDB product : productList) {
+			MobileProductForList mobileProductForList = new MobileProductForList();
+			mobileProductForList.setProduct_no(product.getProduct_no());
+			mobileProductForList.setProduct_name(product.getProduct_name());
+			DecimalFormat df = new DecimalFormat("###,###,###,###");
+			String product_price = "" + df.format(product.getProduct_price()) + "원";
+			mobileProductForList.setProduct_price(product_price);
+			String discount_rate = "" + df.format(product.getDiscount_rate()) + "%";
+			mobileProductForList.setDiscount_rate(discount_rate);
+			String discount_price = "" + df.format(product.getDiscount_price()) + "원";
+			mobileProductForList.setDiscount_price(discount_price);
+			double star_rate = product.getStar_rate();
+			star_rate = (star_rate * 5.0) / 100.0;
+			mobileProductForList.setStar_rate(Math.round(star_rate*10)/10.0);
+			mobileProductForList.setRate_count(product.getRate_count());
+			
+			list.add(mobileProductForList);
+		}
+		return list;
+		
+		/*
+		List<MobileProductForList> list = new ArrayList<>();
+		List<Product> productList = productDao.selectMobileProductList();
 		
 		for (Product product : productList) {
 			List<Integer> productStarRateList = productDao.selectStarRateList(product.getPRODUCT_NO());
@@ -172,6 +196,7 @@ public class ListServiceImpl implements ListService{
 		}
 		
 		return list;
+		*/
 	}
 	
 	/**

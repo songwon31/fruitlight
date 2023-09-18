@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import poris.fruitlight.dto.BoardMedia;
 import poris.fruitlight.dto.MobileBoardMedia;
+import poris.fruitlight.dto.MobileProductForListDB;
 import poris.fruitlight.dto.Product;
 import poris.fruitlight.dto.ProductList;
 
@@ -17,6 +17,8 @@ import poris.fruitlight.dto.ProductList;
 @Mapper
 public interface ProductDao {
 	
+	public List<MobileProductForListDB> selectMobileProductList(String keyword);
+	
 	public List<Product> selectCherryAdList();
 	
 	public List<Product> selectWatermelonAdList();
@@ -25,7 +27,7 @@ public interface ProductDao {
 	
 	public Product selectProductById(int product_no);
 	
-	public List<Product> selectProductList();
+	public List<Product> selectProductList(String keyword);
 	
 	List<Integer> selectStarRateList(int product_no);
 	

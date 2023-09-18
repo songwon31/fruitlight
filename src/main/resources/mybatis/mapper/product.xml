@@ -2,6 +2,34 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="poris.fruitlight.dao.ProductDao">
 
+	<select id="selectMobileProductList" parameterType="String" resultType="MobileProductForListDB">
+		SELECT 
+		    p.product_no,
+		    p.product_name,
+		    p.product_price,
+		    p.discount_rate,
+		    p.discount_price,
+		    AVG(r.star_rate) AS star_rate,
+		    COUNT(r.product_no) AS rate_count
+		FROM 
+		    PRODUCT p
+		LEFT JOIN 
+		    REVIEW r ON p.product_no = r.product_no
+		WHERE
+		    p.product_no = (
+		        SELECT MIN(product_no) 
+		        FROM PRODUCT
+		        WHERE product_name = p.product_name
+		    )
+	        <if test="keyword != null">
+	            AND p.product_name LIKE '%'||#{keyword}||'%'
+	        </if>
+		GROUP BY 
+		    p.product_no, p.product_name, p.product_price, p.discount_rate, p.discount_price
+		ORDER BY 
+		    p.product_no asc
+	</select>
+
 	<select id="selectCherryAdList" resultType="Product">
 		select *
 		from product

@@ -12,7 +12,7 @@ public interface ListService {
 	public List<MobileProductForList> getWatermelonAdList();
 	public List<MobileProductForList> getMangoAdList();
 	
-	public List<MobileProductForList> getMobileProductsForList();
+	public List<MobileProductForList> getMobileProductsForList(String keyword);
 	
 	/**
 	 * @author 송원석
