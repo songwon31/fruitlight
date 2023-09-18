@@ -20,7 +20,11 @@ public class ShopperController {
 	@GetMapping(value="/getShopper", produces="application/json; charset=UTF-8")
 	public Shopper getShopper(String shopperId) {
 		
+		log.info(shopperId+"내아이디는?");
+		
 		Shopper shopper = shopperService.getShopperByShopperId(shopperId);
+		
+		log.info(shopper.toString()+"쇼퍼정보");
 		return shopper;
 		
 	}
