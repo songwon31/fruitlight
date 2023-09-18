@@ -3,13 +3,12 @@
 <mapper namespace="poris.fruitlight.dao.MyPageShopperInquiryDao">
 
    <select id="selectShopperInquiryProductList" parameterType="int" resultType="String">
-	   select PRODUCT_NAME
+	   select distinct PRODUCT_NAME
 	   from SHOPPER s, PRODUCT_INQUIRY i, PRODUCT_BOARD b, PRODUCT p
 	   where s.SHOPPER_NO = i.SHOPPER_NO
 	   and i.BOARD_NO = b.BOARD_NO
 	   and b.PRODUCT_NO = p.PRODUCT_NO
 	   and s.SHOPPER_NO = #{shopperNo}
-	   order by INQUIRY_DATE desc
    </select>
 
    <select id="selectShopperInquiry" parameterType="poris.fruitlight.dto.ProductInquiry" resultType="poris.fruitlight.dto.ProductInquiry">
