@@ -28,10 +28,7 @@ public class MyPageShopperInquiryController {
 
    @Resource
    private MyPageShopperInquiryService pageShopperInquiryService;
-   
-   
-   
-   
+
    @GetMapping(value="myPageShopperInquiry/getInquiryProductList", produces="application/json; charset=UTF-8")
    public List<String> getInquiryProductList(int sno) {
 	   List<String> inquiryProductList = pageShopperInquiryService.getMShopperInquiryProductList(sno);

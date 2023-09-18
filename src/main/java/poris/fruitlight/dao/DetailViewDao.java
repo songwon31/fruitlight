@@ -114,7 +114,7 @@ public interface DetailViewDao {
 	 * @param name(상품이름)
 	 * @return List<Product>(상품 DTO 리스트)
 	 */
-	public List<Product> selectByName(String name);
+	public List<ProductBoard> selectByName(String name);
 	
 	/**
 	 * 상품 게시글에서 상품 선택 후 장바구니에 상품 추가

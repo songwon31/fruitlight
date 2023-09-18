@@ -19,4 +19,6 @@ public class ProductBoard {
 	private String mediaName;			// 상품 사진 파일 이름
 	private byte[] mediaData;			// 상품 사진
 	private String base64Img;			// base64Img 인코딩
+	private int shopperNo;
+    private int stock;
 }

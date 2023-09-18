@@ -9,9 +9,12 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -60,8 +63,7 @@ public class DetailViewController {
 		}
 		
 		// Step2-2. 상품 이름을 기준으로 옵션 데이터 load
-		List<Product> productOptionList = detailViewService.getOptions(productBoard.getProductName());
-		
+		List<ProductBoard> productOptionList = detailViewService.getOptions(productBoard.getProductName());
 		
 		// Step2-3. 상품 정보와 옵션 정보를 JSP에 Model으로 전달
 		model.addAttribute("productBoard", productBoard);
@@ -185,6 +187,53 @@ public class DetailViewController {
 		return reviewInfo;
 		
 	}
+
+	@GetMapping(value="detailView/getOptionProductList", produces="application/json; charset=UTF-8")
+	public List<ProductBoard> getOptionProductList(String productName) {
+		List<ProductBoard> productOptionList = detailViewService.getOptions(productName);
+		return productOptionList;
+	}
+	
+	
+	@PostMapping(value="detailView/addCart", produces="application/json; charset=UTF-8")
+	public void addCart(@RequestBody List<ProductBoard> productBoardList) {
+		log.info("실행1");
+		List<Cart> list = new ArrayList<>();
+		
+		for(ProductBoard productBoard : productBoardList) {
+			log.info("실행2 - " + productBoard);
+			Cart cartProduct = new Cart();
+			cartProduct.setSHOPPER_NO(productBoard.getShopperNo());
+			cartProduct.setPRODUCT_NO(productBoard.getProductNo());
+			cartProduct.setCART_PRODUCT_STOCK(productBoard.getStock());
+			
+			list.add(cartProduct);
+		}
+		
+		log.info("실행3 - " + list.toString());
+		
+		detailViewService.addToCart(list);
+		
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("result", "success");
+		jsonObject.put("message", "성공?");
+		String json = jsonObject.toString();
+		
+	   /*JoinResult joinResult = memberService.join(member);
+	   JSONObject jsonObject = new JSONObject();
+	   
+	   if(joinResult == JoinResult.SUCCESS) {
+		   jsonObject.put("result", "success");
+	   } else {
+		   jsonObject.put("result", "fail");
+		   jsonObject.put("message", "중복된 아이디가 있습니다.");
+	   }*/
+	}
+	
+	
+	
+	
+	
 
 	/**
 	 * 장바구니에 상품 추가

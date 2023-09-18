@@ -100,8 +100,11 @@
    </select>
    
    <!-- 상품 옵션 조회 -->
-   <select id="selectByName" parameterType="String" resultType="Product">
-      select PRODUCT_NO, PRODUCT_NAME, PRODUCT_STOCK, PRODUCT_OPTION, DISCOUNT_PRICE
+   <select id="selectByName" parameterType="String" resultType="ProductBoard">
+      select PRODUCT_NO as productNo, 
+      		 PRODUCT_NAME as productName, 
+      		 PRODUCT_OPTION as productOption, 
+      		 DISCOUNT_PRICE as discountPrice
       from PRODUCT
       where PRODUCT_NAME = #{name}
    </select>

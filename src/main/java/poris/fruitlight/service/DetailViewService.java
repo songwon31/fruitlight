@@ -127,7 +127,7 @@ public interface DetailViewService {
 	 * @param name(현재 상품 이름)
 	 * @return List<Product>(같은 이름을 가진 상품 DTO 리스트)
 	 */
-	public List<Product> getOptions(String name);
+	public List<ProductBoard> getOptions(String name);
 	
 	
 	/**

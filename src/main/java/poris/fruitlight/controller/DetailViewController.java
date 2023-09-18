@@ -58,7 +58,7 @@ public class DetailViewController {
 		}
 		
 		// Step2-2. 상품 이름을 기준으로 옵션 데이터 load
-		List<Product> productOptionList = detailViewService.getOptions(productBoard.getProductName());
+		List<ProductBoard> productOptionList = detailViewService.getOptions(productBoard.getProductName());
 		
 		
 		// Step2-3. 상품 정보와 옵션 정보를 JSP에 Model으로 전달

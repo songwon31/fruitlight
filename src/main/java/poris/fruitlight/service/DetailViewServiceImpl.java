@@ -113,8 +113,8 @@ public class DetailViewServiceImpl implements DetailViewService {
 	
 	//옵션 가져오기
 	@Override
-	public List<Product> getOptions(String name) {
-		List<Product> list = detailViewDao.selectByName(name);
+	public List<ProductBoard> getOptions(String name) {
+		List<ProductBoard> list = detailViewDao.selectByName(name);
 		return list;
 	}
 	
