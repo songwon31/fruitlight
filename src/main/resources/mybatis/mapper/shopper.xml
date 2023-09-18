@@ -59,6 +59,12 @@
 		WHERE SHOPPER_ID= #{shopperId}
 	</select>
 	
+	<select id="selectShopperById" parameterType="String" resultType="Shopper">
+		SELECT *
+		FROM SHOPPER
+		WHERE SHOPPER_ID= #{shopperId}
+	</select>
+	
 	<update id="updateShopper" parameterType="Shopper">
 		UPDATE SHOPPER
 		SET SHOPPER_ID = #{shopperId}

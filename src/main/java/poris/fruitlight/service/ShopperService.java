@@ -44,4 +44,7 @@ public interface ShopperService {
 	public String getSearchShopperId(Shopper shopper);
 	
 	public String getSearchShopperPassword(Shopper shopper);
+	
+	//김시온
+	public Shopper getShopperByShopperId(String shopperId);
 }

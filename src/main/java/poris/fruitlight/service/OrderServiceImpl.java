@@ -13,7 +13,7 @@ import poris.fruitlight.dto.ShippingAddressParam;
 import poris.fruitlight.dto.Shopper;
 
 @Service
-public class orderServiceImpl implements orderService{
+public class OrderServiceImpl implements OrderService{
 	
 	@Autowired
 	ShippingAddressDao shippingAddressDao;

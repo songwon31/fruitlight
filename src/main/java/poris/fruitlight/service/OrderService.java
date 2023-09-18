@@ -7,7 +7,7 @@ import poris.fruitlight.dto.ReceiptHistory;
 import poris.fruitlight.dto.ShippingAddressParam;
 import poris.fruitlight.dto.Shopper;
 
-public interface orderService {
+public interface OrderService {
 	
 	/**
 	 * 

@@ -98,4 +98,6 @@ public interface ShopperDao {
 	 * @return - shopperId(회원 아이디)
 	 */
 	public String selectSearchShopperPassword(Shopper shopper);
+	
+	public Shopper selectShopperById(String shopperId);
 }

@@ -104,4 +104,12 @@ public class ShopperServiceImpl implements ShopperService{
 		String dbShopper = shopperDao.selectSearchShopperPassword(shopper);
 		return dbShopper;
 	}
+	
+	
+	//김시온
+	@Override
+	public Shopper getShopperByShopperId(String shopperId) {
+		Shopper shopper = shopperDao.selectShopperById(shopperId);
+		return shopper;
+	}
 }

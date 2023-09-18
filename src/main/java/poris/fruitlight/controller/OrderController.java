@@ -22,7 +22,7 @@ import poris.fruitlight.dto.ShippingAddressParam;
 import poris.fruitlight.dto.Shopper;
 import poris.fruitlight.service.CartService;
 import poris.fruitlight.service.ShopperService;
-import poris.fruitlight.service.orderService;
+import poris.fruitlight.service.OrderService;
 import poris.fruitlight.util.AlertScript;
 
 @Slf4j
@@ -30,7 +30,7 @@ import poris.fruitlight.util.AlertScript;
 public class OrderController {
 	
 	@Autowired
-	private orderService orderService;
+	private OrderService orderService;
 	
 	@Autowired
 	private ShopperService shopperService;
