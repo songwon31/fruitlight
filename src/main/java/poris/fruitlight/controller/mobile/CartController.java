@@ -12,6 +12,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -59,6 +61,32 @@ public class CartController {
 		
 		return listCoupon;
 	}
+
+	@PostMapping(value="cart/deleteCartProduct", produces="application/json; charset=UTF-8")
+	public void deleteCartProduct(@RequestBody CartProduct cartProduct) {
+		Cart cart = new Cart();
+		cart.setSHOPPER_NO(cartProduct.getSHOPPER_NO());
+		cart.setPRODUCT_NO(cartProduct.getPRODUCT_NO());
+		
+		cartProductService.deleteProduct(cart);
+	}
+
+	@PostMapping(value="cart/updateStockCartProduct", produces="application/json; charset=UTF-8")
+	public void updateStockCartProduct(@RequestBody CartProduct cartProduct) {
+		Cart cart = new Cart();
+		cart.setSHOPPER_NO(cartProduct.getSHOPPER_NO());
+		cart.setPRODUCT_NO(cartProduct.getPRODUCT_NO());
+		cart.setCART_PRODUCT_STOCK(cartProduct.getCART_PRODUCT_STOCK());
+		
+		cartProductService.changeStock(cart);
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	/**
 	 * 장바구니 상품 개별 삭제

@@ -17,4 +17,5 @@ public class CartProduct {
 	private String PRODUCT_OPTION;	//상품 옵션
 	private int DISCOUNT_PRICE;		//상품 가격
 	private String base64Img;		//이미지 변환
+	private int SHOPPER_NO;			//회원번호
 }
