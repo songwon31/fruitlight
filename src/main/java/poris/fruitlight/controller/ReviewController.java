@@ -30,6 +30,17 @@ public class ReviewController {
 		return reviewService.getReviewList();
 	}
 	
+	@GetMapping(value="/getShopperReviewList", produces="application/json; charset=UTF-8")
+	public List<ReviewListItem> getShopperReviewList(String shopper_id) {
+		return reviewService.getShopperReviewList(shopper_id);
+	}
+	
+	@GetMapping(value="/getReview", produces="application/json; charset=UTF-8")
+	public Review getReview(int review_no) {
+		return reviewService.getReview(review_no);
+	}
+	
+	
 	@PostMapping(value="/writeReview", produces="application/json; charset=UTF-8")
 	public String writeReview(Review review) {
 		int result = reviewService.writeReview(review);
@@ -40,5 +51,23 @@ public class ReviewController {
 		return jsonObject.toString();
 	}
 	
+	@PostMapping(value="/editReview", produces="application/json; charset=UTF-8")
+	public String editReview(Review review) {
+		int result = reviewService.editReview(review);
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("result", "success");
+		jsonObject.put("review_no", review.getReview_no());
+		
+		return jsonObject.toString();
+	}
+	
+	@GetMapping(value="/deleteReview", produces="application/json; charset=UTF-8")
+	public String deleteReview(int review_no) {
+		int result = reviewService.deleteReview(review_no);
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("result", "success");
+		
+		return jsonObject.toString();
+	}
 	
 }

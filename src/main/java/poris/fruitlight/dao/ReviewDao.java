@@ -17,8 +17,15 @@ public interface ReviewDao {
 	
 	public List<Review> getList();
 	
+	public List<Review> getShopperList(String shopper_id);
+	
 	public String getShopperName(int orderNo);
 	
 	public int insertReview(Review review);
-   
+	
+	public int updateReview(Review review);
+	
+	public Review selectReview(int review_no);
+	
+	public int deleteReview(int review_no);
 }
