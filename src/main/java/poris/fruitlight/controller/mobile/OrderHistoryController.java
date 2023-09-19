@@ -37,8 +37,6 @@ public class OrderHistoryController {
 		List<MorderHistory> orderHistoryList = myPageOrderedService.searchOrderHistory(orderSearch);
 		
 		return orderHistoryList;
-		
-		
 	}
 	
 

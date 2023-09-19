@@ -91,7 +91,13 @@ public class MainPageController {
       
       return "/WEB-INF/views/main.jsp";
    }
-    
+   
+   @RequestMapping("/searchAddress")
+   public String address() {
+	   
+	   return "/WEB-INF/views/daum_address.jsp";
+   }
+
    /**
     * @author 김진성
     * @return 메인 페이지
@@ -131,4 +137,6 @@ public class MainPageController {
 		session.removeAttribute("ShopperInfo");
 		return "redirect:/";
 	}
+	
+	
 }
