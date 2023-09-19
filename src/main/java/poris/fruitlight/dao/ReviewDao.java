@@ -16,5 +16,9 @@ public interface ReviewDao {
 	public int count();
 	
 	public List<Review> getList();
+	
+	public String getShopperName(int orderNo);
+	
+	public int insertReview(Review review);
    
 }

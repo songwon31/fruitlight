@@ -11,4 +11,18 @@
 		select *
 		from review
 	</select>
+	
+	<select id="getShopperName" parameterType="int" resultType="String">
+		select s.shopper_name
+		from shopper s, order_history o
+		where o.order_no = #{order_no} and s.shopper_no = o.shopper_no
+	</select>
+	
+	<insert id="insertReview" parameterType="Review">
+		<selectKey keyProperty="review_no" resultType="int" order="BEFORE">
+			select REVIEW_NO_SEQ.NEXTVAL from dual
+		</selectKey>
+		insert into review (review_no, order_no, product_no, board_no, star_rate, content, write_date, help_point)
+		values(#{review_no}, #{order_no}, #{product_no}, #{board_no}, #{star_rate}, #{content}, #{write_date}, #{help_point})
+	</insert>
 </mapper>

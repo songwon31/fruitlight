@@ -1,6 +1,7 @@
 package poris.fruitlight.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -39,5 +40,13 @@ public class ReviewServiceImpl implements ReviewService {
 		}
 		
 		return list;
+	}
+	
+	@Override
+	public int writeReview(Review review) {
+		review.setWrite_date(new Date());
+		review.setHelp_point(0);
+		review.setStar_rate(review.getStar_rate() * 20);
+		return reviewDao.insertReview(review);
 	}
 }
