@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="poris.fruitlight.dao.WishDao">
+	<select id="selectListByShopperId" parameterType="String" resultType="poris.fruitlight.dto.WishListItemDB">
+		select s.shopper_no, p.product_no, p.product_name, p.product_option, p.discount_price
+		from wish w, product p, shopper s
+		where s.shopper_id = #{shopper_id} and s.shopper_no = w.shopper_no and p.product_no = w.product_no
+		order by p.product_no desc
+	</select>
+	
+	<delete id="deleteWish" parameterType="map">
+		delete from wish
+		where shopper_no = #{shopper_no} and product_no = #{product_no}
+	</delete>
+	
+	<insert id="insertCart" parameterType="Cart">
+		insert into cart(shopper_no, product_no, cart_product_stock)
+		values(#{SHOPPER_NO}, #{PRODUCT_NO}, #{CART_PRODUCT_STOCK})
+	</insert>
+	
+	<select id="countCart" parameterType="Cart" resultType="int">
+		select count (*)
+		from cart
+		where shopper_no = #{SHOPPER_NO} and product_no = #{PRODUCT_NO}
+	</select>
+</mapper>

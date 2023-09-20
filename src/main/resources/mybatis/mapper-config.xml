@@ -16,6 +16,8 @@
       	<typeAlias alias="ShippingAddressParam" type="poris.fruitlight.dto.ShippingAddressParam"/><!-- 회원의 기본 배송지 정보 DTO -->
       	<typeAlias alias="Pager" type="poris.fruitlight.dto.Pager"/><!-- 페이지 객체 정보 DTO -->
       	<typeAlias alias="Review" type="poris.fruitlight.dto.Review"/><!-- 게시글 리뷰 정보 DTO -->
+      	<typeAlias alias="Wish" type="poris.fruitlight.dto.Wish"/>
+      	<typeAlias alias="Cart" type="poris.fruitlight.dto.Cart"/>
       	<typeAlias alias="MobileProductForListDB" type="poris.fruitlight.dto.MobileProductForListDB"/>
 	</typeAliases>
 
