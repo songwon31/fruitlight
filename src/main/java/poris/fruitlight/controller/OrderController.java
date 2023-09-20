@@ -26,7 +26,7 @@ import poris.fruitlight.service.OrderService;
 import poris.fruitlight.util.AlertScript;
 
 @Slf4j
-@Controller
+//@Controller
 public class OrderController {
 	
 	@Autowired
