@@ -27,6 +27,11 @@ import poris.fruitlight.dto.Review;
 public class DetailViewServiceImpl implements DetailViewService {
 	@Autowired
 	DetailViewDao detailViewDao;
+
+	@Override
+	public void writeInquiry(ProductInquiry productInquiry) {
+		detailViewDao.insertProductInquiry(productInquiry);
+	}
 	
 	@Override
 	public byte[] getMainImage(int bno) {

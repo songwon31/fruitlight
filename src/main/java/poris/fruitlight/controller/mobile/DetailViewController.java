@@ -218,16 +218,18 @@ public class DetailViewController {
 		jsonObject.put("result", "success");
 		jsonObject.put("message", "성공?");
 		String json = jsonObject.toString();
-		
-	   /*JoinResult joinResult = memberService.join(member);
-	   JSONObject jsonObject = new JSONObject();
-	   
-	   if(joinResult == JoinResult.SUCCESS) {
-		   jsonObject.put("result", "success");
-	   } else {
-		   jsonObject.put("result", "fail");
-		   jsonObject.put("message", "중복된 아이디가 있습니다.");
-	   }*/
+	}
+	
+	@PostMapping(value="detailView/writeInquiry", produces="application/json; charset=UTF-8")
+	public void writeInquiry(int bno, int sno, String content) {
+		log.info("bno: " + bno);
+		log.info("sno: " + sno);
+		log.info("content: " + content);
+		ProductInquiry productInquiry = new ProductInquiry();
+		productInquiry.setBOARD_NO(bno);
+		productInquiry.setSHOPPER_NO(sno);
+		productInquiry.setINQUIRY_CONTENT(content);;
+		detailViewService.writeInquiry(productInquiry);
 	}
 	
 	

@@ -25,6 +25,8 @@ public interface DetailViewDao {
 	public BoardMedia SelectProductContentImageByBoardNo(int mno);
 	
 	public BoardMedia selectMainImageByBno(int bno);
+
+	public void insertProductInquiry(ProductInquiry productInquiry);
 	
 	/**
 	 * 게시글 번호로 상품 게시글 select

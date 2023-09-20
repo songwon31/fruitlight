@@ -2,6 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="poris.fruitlight.dao.DetailViewDao">
 
+<insert id="insertReview" parameterType="Review">
+		<selectKey keyProperty="review_no" resultType="int" order="BEFORE">
+			select REVIEW_NO_SEQ.NEXTVAL from dual
+		</selectKey>
+		insert into review (review_no, order_no, product_no, board_no, star_rate, content, write_date, help_point)
+		values(#{review_no}, #{order_no}, #{product_no}, #{board_no}, #{star_rate}, #{content}, #{write_date}, #{help_point})
+	</insert>
+
+	<insert id="insertProductInquiry" parameterType="poris.fruitlight.dto.ProductInquiry">
+		<selectKey keyProperty="INQUIRY_NO" resultType="int" order="BEFORE">
+			select INQUIRY_NO_SEQ.NEXTVAL from dual
+		</selectKey>
+    	insert into PRODUCT_INQUIRY (INQUIRY_NO, BOARD_NO, INQUIRY_CONTENT, INQUIRY_DATE, EMPTANSWER, ANSWER_CONTENT, ANSWER_DATE, SHOPPER_NO)
+        values (#{INQUIRY_NO}, #{BOARD_NO}, #{INQUIRY_CONTENT}, sysdate, 1, null, null, #{SHOPPER_NO})
+    </insert>
+
 	<select id="selectProductReview" parameterType="int" resultType="Review">
     	SELECT r.REVIEW_NO, r.ORDER_NO, r.PRODUCT_NO, r.BOARD_NO, r.STAR_RATE, r.HELP_POINT, r.CONTENT, s.SHOPPER_NAME, p.PRODUCT_NAME, r.WRITE_DATE
         FROM REVIEW r, ORDER_HISTORY o, SHOPPER s, RECEIPT_HISTORY rh, PRODUCT p

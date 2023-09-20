@@ -37,6 +37,8 @@ public interface DetailViewService {
 	public List<Review> getMReviewList(int bno);
 	
 	public byte[] getMainImage(int bno);
+
+	public void writeInquiry(ProductInquiry productInquiry);
 	
 	
 	/**
