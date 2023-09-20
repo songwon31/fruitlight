@@ -73,7 +73,6 @@ public class AddressController {
 		JSONObject jsonObject = new JSONObject();
 		try {
 				addrBookService.createAddressBook(addressBook);
-				
 				jsonObject.put("address_result", "success");
 				jsonObject.put("address_no", addressBook.getAddress_no());
 		} catch(Exception e) {

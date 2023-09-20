@@ -89,9 +89,9 @@ public class OrderController {
 	public String buyOrder(
 			HttpSession session,
 			int addressNo,
-			String payType, 
-			String payTypeBank, 
-			String payTypeCard, 
+			String payType,
+			String payTypeBank,
+			String payTypeCard,
 			String payTypeTelecom, 
 			String payTypeDepositBank,
 			String receiptPurpose,
