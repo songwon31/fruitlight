@@ -11,6 +11,9 @@ public interface WishService {
 	public int deleteWish(int product_no, int shopper_no);
 	public int addToCart(Cart cart);
 	public int checkCart(Cart cart);
+	public int checkWish(int product_no, String shopper_id);
+	public int putInWishList(int product_no, String shopper_id);
+	public int removeFromWishList(int product_no, String shopper_id);
 	/*
 	public List<ReviewListItem> getReviewList();
 	public List<ReviewListItem> getShopperReviewList(String shopper_id);

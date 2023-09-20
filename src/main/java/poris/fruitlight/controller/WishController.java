@@ -56,6 +56,37 @@ public class WishController {
 		
 		return jsonObject.toString();
 	}
+	
+	@GetMapping(value="/isInWish", produces="application/json; charset=UTF-8")
+	public String isInWish(int product_no, String shopper_id) {
+		JSONObject jsonObject = new JSONObject();
+		int isWish = wishService.checkWish(product_no, shopper_id);
+		if (isWish == 0) {
+			jsonObject.put("result", "false");
+		} else {
+			jsonObject.put("result", "true");
+		}
+		
+		return jsonObject.toString();
+	}
+	
+	@GetMapping(value="/putInWishList", produces="application/json; charset=UTF-8")
+	public String putInWishList(int product_no, String shopper_id) {
+		int result = wishService.putInWishList(product_no, shopper_id);
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("result", "success");
+		
+		return jsonObject.toString();
+	}
+	
+	@GetMapping(value="/removeFromWishList", produces="application/json; charset=UTF-8")
+	public String deleteWish(int product_no, String shopper_id) {
+		int result = wishService.removeFromWishList(product_no, shopper_id);
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("result", "success");
+		
+		return jsonObject.toString();
+	}
 	/*
 	@GetMapping(value="/getReviewList", produces="application/json; charset=UTF-8")
 	public List<ReviewListItem> getReviewList() {

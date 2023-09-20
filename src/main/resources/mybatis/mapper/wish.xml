@@ -24,4 +24,32 @@
 		from cart
 		where shopper_no = #{SHOPPER_NO} and product_no = #{PRODUCT_NO}
 	</select>
+	
+	<select id="countWish" parameterType="map" resultType="int">
+		select count (*)
+		from wish w, shopper s
+		where s.shopper_id = #{shopper_id} and w.shopper_no = s.shopper_no and w.product_no = #{product_no}
+	</select>
+	
+	<insert id="putInWishList" parameterType="map">
+		<selectKey keyProperty="shopper_no" resultType="int" order="BEFORE">
+		    SELECT shopper_no
+		    FROM shopper
+		    WHERE shopper_id = #{shopper_id}
+		</selectKey>
+		  
+		INSERT INTO wish (shopper_no, product_no)
+		VALUES (#{shopper_no}, #{product_no})
+	</insert>
+	
+	<select id="getshopperNoById" parameterType="String" resultType="int">
+		select shopper_no
+		from shopper
+		where shopper_id = #{shopper_id}
+	</select>
+	
+	<delete id="removeFromWishList" parameterType="map">
+		delete from wish
+		where shopper_no = #{shopper_no} and product_no = #{product_no}
+	</delete>
 </mapper>

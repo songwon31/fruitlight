@@ -19,4 +19,8 @@ public interface WishDao {
 	public int deleteWish(@Param("product_no") int product_no, @Param("shopper_no") int shopper_no);
 	public int insertCart(Cart cart);
 	public int countCart(Cart cart);
+	public int countWish(@Param("product_no") int product_no, @Param("shopper_id") String shopper_id);
+	public int putInWishList(@Param("product_no") int product_no, @Param("shopper_id") String shopper_id);
+	public int getshopperNoById(String shopper_id);
+	public int removeFromWishList(@Param("product_no") int product_no, @Param("shopper_no") int shopper_no);
 }

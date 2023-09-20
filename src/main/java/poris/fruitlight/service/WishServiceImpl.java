@@ -53,6 +53,22 @@ public class WishServiceImpl implements WishService {
 	public int checkCart(Cart cart) {
 		return wishDao.countCart(cart);
 	}
+	
+	@Override
+	public int checkWish(int product_no, String shopper_id) {
+		return wishDao.countWish(product_no, shopper_id);
+	}
+	
+	@Override
+	public int putInWishList(int product_no, String shopper_id) {
+		return wishDao.putInWishList(product_no, shopper_id);
+	}
+	
+	@Override
+	public int removeFromWishList(int product_no, String shopper_id) {
+		int shopper_no = wishDao.getshopperNoById(shopper_id);
+		return wishDao.removeFromWishList(product_no, shopper_no);
+	}
 	/*
 	@Override
 	public List<ReviewListItem> getReviewList() {
