@@ -16,7 +16,7 @@ public interface OrderService {
 	 * @param shopper
 	 * @return
 	 */
-	public ShippingAddressParam getShippingAddressInfo(Shopper shopper);
+/*	public ShippingAddressParam getShippingAddressInfo(Shopper shopper);*/
 	
 	/**
 	 * 결제 시 ORDER_HISTORY에 데이터 추가

@@ -93,7 +93,7 @@ public class MainPageController {
    }
    
    @RequestMapping("/searchAddress")
-   public String address() {
+   public String searchAddress() {
 	   
 	   return "/WEB-INF/views/daum_address.jsp";
    }

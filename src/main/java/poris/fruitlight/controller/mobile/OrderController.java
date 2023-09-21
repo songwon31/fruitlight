@@ -4,19 +4,20 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.extern.slf4j.Slf4j;
+import poris.fruitlight.dto.AddressBook;
 import poris.fruitlight.dto.Cart;
 import poris.fruitlight.dto.Coupon;
 import poris.fruitlight.dto.Order;
 import poris.fruitlight.dto.OrderHistory;
 import poris.fruitlight.dto.ReceiptHistory;
 import poris.fruitlight.dto.Shopper;
+import poris.fruitlight.service.AddressBookService;
 import poris.fruitlight.service.CartService;
 import poris.fruitlight.service.OrderService;
 import poris.fruitlight.service.ShopperService;
@@ -34,9 +35,21 @@ public class OrderController {
 	@Autowired
 	private CartService cartProductService;
 	
+	@Autowired
+	private AddressBookService addressBookService;
+	
 	private Shopper loginShopper;
 	
 	private int order_no;
+	
+	@GetMapping(value="/defaultAddress", produces="application/json; charset=UTF-8")
+	public AddressBook defaultAddress(int shopper_no) {
+		AddressBook defaultAddress = addressBookService.getAddress(shopper_no);
+		log.info(defaultAddress.toString()+"나디폴트어드레스");
+		
+		return defaultAddress;
+		
+	}
 	
 	
 	@PostMapping(value="/addOrder1", produces="application/json; charset=UTF-8")

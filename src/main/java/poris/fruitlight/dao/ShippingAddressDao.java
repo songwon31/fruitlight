@@ -35,7 +35,7 @@ public interface ShippingAddressDao {
 	 * @param userId - 회원 고유번호
 	 * @return 기본 배송지 주소 정보
 	 */
-	public ShippingAddressParam selectShippingAddressById(Shopper shopper);
+	public AddressBook selectShippingAddressById(int shopperNo);
 	
 	/**
 	 * 배송지 고유번호를 기준으로 배송지를 삭제하는 메소드

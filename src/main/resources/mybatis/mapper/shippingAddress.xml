@@ -23,11 +23,12 @@
 	</insert>
 	
 	<!-- 2023.08.16 고재승 - 회원의 기본 배송지 정보 조회 SQL문 -->
-	<select id="selectShippingAddressById" parameterType="Shopper" resultType="ShippingAddressParam">
+	<select id="selectShippingAddressById" parameterType="int" resultType="AddressBook">
 		SELECT ADDRESS_NO as address_no,
-			SHIPPING_NAME as name,
-			SHIPPING_ADDRESS as address,
-			RECEIVER_TEL as tel
+			SHIPPING_NAME as shipping_name,
+			SHIPPING_ADDRESS as shipping_address,
+			RECEIVER_TEL as receiver_tel,
+			SHIPPING_PREFERENCE as shipping_preference
 		FROM SHIPPING_ADDRESS
 		WHERE SHOPPER_NO = #{shopper_no}
 			AND ACTIVATE = 'Y'

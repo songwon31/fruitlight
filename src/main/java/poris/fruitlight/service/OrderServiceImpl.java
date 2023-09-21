@@ -24,10 +24,10 @@ public class OrderServiceImpl implements OrderService{
 	OrderHistoryDao orderHistoryDao;
 	
 	
-	@Override
+/*	@Override
 	public ShippingAddressParam getShippingAddressInfo(Shopper shopper) {
 		return shippingAddressDao.selectShippingAddressById(shopper);
-	}
+	}*/
 	
 	//주문내역 추가
 	@Override

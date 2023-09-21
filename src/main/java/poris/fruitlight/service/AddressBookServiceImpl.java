@@ -39,4 +39,10 @@ public class AddressBookServiceImpl implements AddressBookService{
 		shippingAddressDao.insertShippingAddress(addressBook);
 		
 	}
+	
+	@Override
+	public AddressBook getAddress(int shopperNo) {
+		
+		return shippingAddressDao.selectShippingAddressById(shopperNo);
+	}
 }
