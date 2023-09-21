@@ -14,6 +14,10 @@ public interface ListService {
 	
 	public List<MobileProductForList> getMobileProductsForList(String keyword);
 	
+	public List<MobileProductForList> getMobileProductsForListPriceDesc(String keyword);
+	
+	public List<MobileProductForList> getMobileProductsForListPriceAsc(String keyword);
+	
 	/**
 	 * @author 송원석
 	 */

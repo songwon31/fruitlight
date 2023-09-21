@@ -18,6 +18,8 @@ import poris.fruitlight.dto.ProductList;
 public interface ProductDao {
 	
 	public List<MobileProductForListDB> selectMobileProductList(String keyword);
+	public List<MobileProductForListDB> selectMobileProductListPriceDesc(String keyword);
+	public List<MobileProductForListDB> selectMobileProductListPriceAsc(String keyword);
 	
 	public List<Product> selectCherryAdList();
 	

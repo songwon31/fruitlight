@@ -25,6 +25,33 @@ public class ListController {
 	@Resource
 	private ListService listService;
 	
+	/**
+	 * @author 송원석
+	 */
+	@RequestMapping(value="/list/getMobileProductsForList", produces="application/json; charset=UTF-8")
+	@ResponseBody
+	public List<MobileProductForList> getMobileProductsForList(@RequestParam(value="keyword", required=false) String keyword) {
+		return listService.getMobileProductsForList(keyword);
+	}
+	
+	/**
+	 * @author 송원석
+	 */
+	@RequestMapping(value="/list/getMobileProductsForListPriceDesc", produces="application/json; charset=UTF-8")
+	@ResponseBody
+	public List<MobileProductForList> getMobileProductsForListPriceDesc(@RequestParam(value="keyword", required=false) String keyword) {
+		return listService.getMobileProductsForListPriceDesc(keyword);
+	}
+	
+	/**
+	 * @author 송원석
+	 */
+	@RequestMapping(value="/list/getMobileProductsForListPriceAsc", produces="application/json; charset=UTF-8")
+	@ResponseBody
+	public List<MobileProductForList> getMobileProductsForListPriceAsc(@RequestParam(value="keyword", required=false) String keyword) {
+		return listService.getMobileProductsForListPriceAsc(keyword);
+	}
+	
 	@RequestMapping(value="/list/getCherryAdList", produces="application/json; charset=UTF-8")
 	@ResponseBody
 	public List<MobileProductForList> getCherryAdList() {
@@ -41,15 +68,6 @@ public class ListController {
 	@ResponseBody
 	public List<MobileProductForList> getMangoAdList() {
 		return listService.getMangoAdList();
-	}
-	
-	/**
-	 * @author 송원석
-	 */
-	@RequestMapping(value="/list/getMobileProductsForList", produces="application/json; charset=UTF-8")
-	@ResponseBody
-	public List<MobileProductForList> getMobileProductsForList(@RequestParam(value="keyword", required=false) String keyword) {
-		return listService.getMobileProductsForList(keyword);
 	}
 	
 	/**
