@@ -23,7 +23,7 @@ public interface OrderService {
 	 * @author 이은지
 	 * @param orderHistory(주문내역 DTO)
 	 */
-	public void addOrder(OrderHistory orderHistory);
+	public int addOrder(OrderHistory orderHistory);
 	
 	/**
 	 * 결제 시 RECEIPT_HISTORY에 데이터 추가

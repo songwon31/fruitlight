@@ -74,4 +74,6 @@ public interface OrderHistoryDao {
     * @param orderParam(주문 관련 DTO)
     */
    public void updateProductStock(OrderParam orderParam);
+   
+   public int selectOrderNo();
 }

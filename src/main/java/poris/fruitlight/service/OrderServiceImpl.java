@@ -3,6 +3,7 @@ package poris.fruitlight.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import lombok.extern.slf4j.Slf4j;
 import poris.fruitlight.dao.OrderHistoryDao;
 import poris.fruitlight.dao.ShippingAddressDao;
 import poris.fruitlight.dto.Coupon;
@@ -13,6 +14,7 @@ import poris.fruitlight.dto.ShippingAddressParam;
 import poris.fruitlight.dto.Shopper;
 
 @Service
+@Slf4j
 public class OrderServiceImpl implements OrderService{
 	
 	@Autowired
@@ -29,14 +31,18 @@ public class OrderServiceImpl implements OrderService{
 	
 	//주문내역 추가
 	@Override
-	public void addOrder(OrderHistory orderHistory) {
+	public int addOrder(OrderHistory orderHistory) {
 		orderHistoryDao.insertOrderHistory(orderHistory);
+		int orderNo = orderHistoryDao.selectOrderNo();
+		log.info(orderNo+"나오더넘버1");
+		return orderNo;
 	}
 	
 	//영수증내역(주문상세내역) 추가
 	@Override
 	public void addReceipt(ReceiptHistory receiptHistory) {
 		orderHistoryDao.insertReceiptHistory(receiptHistory);
+		
 	}
 	
 	//쿠폰 사용

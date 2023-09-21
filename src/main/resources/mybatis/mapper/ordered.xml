@@ -108,14 +108,17 @@
 		)
 	</insert>
 	
+	
+	
 	<!-- 작성자: 이은지 -->
 	<insert id="insertReceiptHistory" parameterType="poris.fruitlight.dto.ReceiptHistory">
-		<selectKey keyProperty="ORDER_NO" resultType="int" order="BEFORE">
-			select ORDER_NO_SEQ.currval from dual
-		</selectKey>
 		insert into RECEIPT_HISTORY (ORDER_NO, PRODUCT_NO, PRICE, STOCK)
 		values(#{ORDER_NO}, #{PRODUCT_NO}, #{PRICE}, #{STOCK})
 	</insert>
+	
+	<select id="selectOrderNo" resultType="int">
+        select ORDER_NO_SEQ.currval from dual
+    </select>
 	
 	<!-- 작성자: 이은지 -->
 	<!-- <delete id="deleteCoupon" parameterType="poris.fruitlight.dto.Coupon">

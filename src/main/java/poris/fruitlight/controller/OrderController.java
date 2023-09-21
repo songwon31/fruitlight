@@ -1,4 +1,4 @@
-package poris.fruitlight.controller;
+/*package poris.fruitlight.controller;
 
 import java.io.IOException;
 import java.util.Date;
@@ -40,13 +40,13 @@ public class OrderController {
 	
 	private Shopper loginShopper;
 	
-	/**
+	*//**
 	 * 
 	 * @param response - alert 반환
 	 * @param session - 회원 정보
 	 * @param model - 회원정보, 배송지 정보 DTO
 	 * @return
-	 */
+	 *//*
 	@RequestMapping("/order")
 	public String DetailViewPage(HttpServletResponse response,HttpSession session, Model model) {
 		// Step1. 로그인 세션 정보 Load
@@ -70,7 +70,7 @@ public class OrderController {
 		return "order";
 	}
 	
-	/**
+	*//**
 	 * 구매하기 클릭시 주문 관련 데이터 db에 저장 및 업데이트
 	 * @author 이은지
 	 * @param session
@@ -84,7 +84,7 @@ public class OrderController {
 	 * @param cashReceiptRegisterType(현금영수증 종류 - 휴대폰번호, 현금영수증카드)
 	 * @param cashReceiptRequestNo(현금영수증 번호)
 	 * @return 내 주문목록(mypageOrdered) 페이지
-	 */
+	 *//*
 	@RequestMapping("/order/buyOrder")
 	public String buyOrder(
 			HttpSession session,
@@ -225,3 +225,4 @@ public class OrderController {
 	}
 	
 }
+*/
