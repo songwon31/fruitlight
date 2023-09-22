@@ -186,15 +186,17 @@ public class DetailViewController {
 		List<Review> reviewList = detailViewService.getMReviewList(bno);
 		
 		ReviewInfo reviewInfo = new ReviewInfo();
-		int totalSumStarRate = 0;
-		
-		for(Review review : reviewList) {
-			totalSumStarRate += review.getStar_rate();
+			int totalSumStarRate = 0;
+			
+			for(Review review : reviewList) {
+				totalSumStarRate += review.getStar_rate();
+			}
+			
+		if(totalSumStarRate != 0) {
+			reviewInfo.setStarRateAvg(totalSumStarRate/reviewList.size());
+			reviewInfo.setTotalReviewScore((float)(Math.round((totalSumStarRate/40.0)*10)/10.0));
+			reviewInfo.setReviewCount(reviewList.size());
 		}
-		
-		reviewInfo.setStarRateAvg(totalSumStarRate/reviewList.size());
-		reviewInfo.setTotalReviewScore((float)(Math.round((totalSumStarRate/40.0)*10)/10.0));
-		reviewInfo.setReviewCount(reviewList.size());
 
 		return reviewInfo;
 		
