@@ -19,29 +19,59 @@
     </insert>
 
 	<select id="selectProductReview" parameterType="int" resultType="Review">
-    	SELECT r.REVIEW_NO, r.STAR_RATE, r.CONTENT, r.WRITE_DATE, r.HELP_POINT, s.SHOPPER_NAME
-		FROM REVIEW r, ORDER_HISTORY o, SHOPPER s
-		WHERE r.ORDER_NO = o.ORDER_NO
-		AND o.SHOPPER_NO = s.SHOPPER_NO
-		AND r.BOARD_NO = #{BOARD_NO}
+		<![CDATA[
+	    	SELECT r.REVIEW_NO, r.STAR_RATE, r.CONTENT, r.WRITE_DATE, r.HELP_POINT, s.SHOPPER_NAME
+			FROM REVIEW r, ORDER_HISTORY o, SHOPPER s
+			WHERE r.ORDER_NO = o.ORDER_NO
+			AND o.SHOPPER_NO = s.SHOPPER_NO
+			AND product_no in (
+	                            SELECT product_no
+	                            FROM PRODUCT
+	                            WHERE PRODUCT_NAME in (
+	                                                    SELECT PRODUCT_NAME
+	                                                    FROM PRODUCT
+	                                                    WHERE PRODUCT_NO = #{BOARD_NO}
+	                                                    )
+	                            )
+	    ]]>
     </select>
 
 	<select id="selectRecentProductReview" parameterType="int" resultType="Review">
+    	<![CDATA[
     	SELECT r.REVIEW_NO, r.STAR_RATE, r.CONTENT, r.WRITE_DATE, r.HELP_POINT, s.SHOPPER_NAME
 		FROM REVIEW r, ORDER_HISTORY o, SHOPPER s
 		WHERE r.ORDER_NO = o.ORDER_NO
 		AND o.SHOPPER_NO = s.SHOPPER_NO
-		AND r.BOARD_NO = #{BOARD_NO}
-		ORDER BY r.WRITE_DATE DESC
+		AND product_no in (
+                            SELECT product_no
+                            FROM PRODUCT
+                            WHERE PRODUCT_NAME in (
+                                                    SELECT PRODUCT_NAME
+                                                    FROM PRODUCT
+                                                    WHERE PRODUCT_NO = #{BOARD_NO}
+                                                    )
+                            )
+        ORDER BY r.WRITE_DATE DESC
+    	]]>
     </select>
 
 	<select id="selectBestProductReview" parameterType="int" resultType="Review">
+    	<![CDATA[
     	SELECT r.REVIEW_NO, r.STAR_RATE, r.CONTENT, r.WRITE_DATE, r.HELP_POINT, s.SHOPPER_NAME
 		FROM REVIEW r, ORDER_HISTORY o, SHOPPER s
 		WHERE r.ORDER_NO = o.ORDER_NO
 		AND o.SHOPPER_NO = s.SHOPPER_NO
-		AND r.BOARD_NO = #{BOARD_NO}
-		ORDER BY r.HELP_POINT DESC
+		AND product_no in (
+                            SELECT product_no
+                            FROM PRODUCT
+                            WHERE PRODUCT_NAME in (
+                                                    SELECT PRODUCT_NAME
+                                                    FROM PRODUCT
+                                                    WHERE PRODUCT_NO = #{BOARD_NO}
+                                                    )
+                            )
+        ORDER BY r.HELP_POINT DESC
+    	]]>
     </select>
 
 	<select id="selectProductInquiry" parameterType="int" resultType="poris.fruitlight.dto.ProductInquiry">
