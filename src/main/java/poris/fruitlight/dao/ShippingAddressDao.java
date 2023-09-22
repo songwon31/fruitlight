@@ -37,6 +37,8 @@ public interface ShippingAddressDao {
 	 */
 	public AddressBook selectShippingAddressById(int shopperNo);
 	
+	public void modifyShippingAddress(AddressBook addressbook);
+	
 	/**
 	 * 배송지 고유번호를 기준으로 배송지를 삭제하는 메소드
 	 * @author 고재승

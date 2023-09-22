@@ -43,4 +43,13 @@
  		WHERE ADDRESS_NO = #{address_no}
 	</update>
 	
+	<update id="modifyShippingAddress" parameterType="AddressBook">
+		UPDATE SHIPPING_ADDRESS
+		SET SHIPPING_NAME = #{shipping_name},
+			SHIPPING_ADDRESS = #{shipping_address},
+			RECEIVER_TEL = #{receiver_tel},
+			SHIPPING_PREFERENCE = #{shipping_preference}
+ 		WHERE ADDRESS_NO = #{address_no}
+	</update>
+	
 </mapper>

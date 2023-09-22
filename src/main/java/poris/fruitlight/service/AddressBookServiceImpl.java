@@ -45,4 +45,11 @@ public class AddressBookServiceImpl implements AddressBookService{
 		
 		return shippingAddressDao.selectShippingAddressById(shopperNo);
 	}
+	
+	@Override
+	public void modifyAddressBook(AddressBook addressBook) {
+		
+		shippingAddressDao.modifyShippingAddress(addressBook);
+		
+	}
 }

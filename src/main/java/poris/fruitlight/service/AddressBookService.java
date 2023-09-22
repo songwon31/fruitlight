@@ -28,6 +28,8 @@ public interface AddressBookService {
 	 */
 	public void createAddressBook(AddressBook addressBook);
 	
+	public void modifyAddressBook(AddressBook addressBook);
+	
 	public AddressBook getAddress(int shopperNo);
 	
 	

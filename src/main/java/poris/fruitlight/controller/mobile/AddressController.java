@@ -82,6 +82,12 @@ public class AddressController {
 		}
 		return jsonObject.toString();
 	}
+	
+	@PostMapping(value="/modifyAddress", produces="application/json; charset=UTF-8")
+	public void modifyAddress(AddressBook addressBook) throws Exception {
+		log.info(addressBook+"값잘받아오니");
+		addrBookService.modifyAddressBook(addressBook);
+	}
 
 	
 
