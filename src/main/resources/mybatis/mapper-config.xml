@@ -19,6 +19,7 @@
       	<typeAlias alias="Wish" type="poris.fruitlight.dto.Wish"/>
       	<typeAlias alias="Cart" type="poris.fruitlight.dto.Cart"/>
       	<typeAlias alias="MobileProductForListDB" type="poris.fruitlight.dto.MobileProductForListDB"/>
+      	<typeAlias alias="ProductPart" type="poris.fruitlight.dto.ProductPart"/>
 	</typeAliases>
 
 </configuration>

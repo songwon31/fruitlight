@@ -8,6 +8,7 @@ import poris.fruitlight.dto.MobileBoardMedia;
 import poris.fruitlight.dto.MobileProductForListDB;
 import poris.fruitlight.dto.Product;
 import poris.fruitlight.dto.ProductList;
+import poris.fruitlight.dto.ProductPart;
 
 /**
  * 상품 정보와 관련된 DAO.
@@ -16,6 +17,11 @@ import poris.fruitlight.dto.ProductList;
  */
 @Mapper
 public interface ProductDao {
+	public List<ProductPart> selectProductPartList(String keyword);
+	public List<ProductPart> selectProductPartListAsc(String keyword);
+	public List<ProductPart> selectProductPartListDesc(String keyword);
+	public float selectStarRateAvg(String product_name);
+	public int countReview(String product_name);
 	
 	public List<MobileProductForListDB> selectMobileProductList(String keyword);
 	public List<MobileProductForListDB> selectMobileProductListPriceDesc(String keyword);

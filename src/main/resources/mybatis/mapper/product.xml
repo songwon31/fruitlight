@@ -2,6 +2,67 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="poris.fruitlight.dao.ProductDao">
 
+	<select id="selectProductPartList" parameterType="String" resultType="ProductPart">
+		select p.product_no, p.product_name, p.product_price, p.discount_rate, p.discount_price
+		from product p
+		where p.product_no = (
+							select MIN(product_no)
+							from product 
+							where product_name = p.product_name
+							)
+							<if test="keyword != null">
+	            				and p.product_name LIKE '%'||#{keyword}||'%'
+	        				</if>
+	</select>
+
+	<select id="selectProductPartListAsc" parameterType="String" resultType="ProductPart">
+		select p.product_no, p.product_name, p.product_price, p.discount_rate, p.discount_price
+		from product p
+		where p.product_no = (
+							select MIN(product_no)
+							from product 
+							where product_name = p.product_name
+							)
+							<if test="keyword != null">
+	            				and p.product_name LIKE '%'||#{keyword}||'%'
+	        				</if>
+		order by p.discount_price asc
+	</select>
+
+	<select id="selectProductPartListDesc" parameterType="String" resultType="ProductPart">
+		select p.product_no, p.product_name, p.product_price, p.discount_rate, p.discount_price
+		from product p
+		where p.product_no = (
+							select MIN(product_no)
+							from product 
+							where product_name = p.product_name
+							)
+							<if test="keyword != null">
+	            				and p.product_name LIKE '%'||#{keyword}||'%'
+	        				</if>
+		order by p.discount_price desc
+	</select>
+	
+	<select id="selectStarRateAvg" parameterType="String" resultType="float">
+		select coalesce(avg(r.star_rate), 0.0) as star_rate
+		from review r, product p
+		where r.product_no = p.product_no 
+		and p.product_no in (
+		                    SELECT product_no
+		                    FROM PRODUCT
+		                    WHERE PRODUCT_NAME = #{product_name})
+	</select>
+	
+	<select id="countReview" parameterType="String" resultType="int">
+		select count(*)
+		from review r, product p
+		where r.product_no = p.product_no 
+		and p.product_no in (
+		                    SELECT product_no
+		                    FROM PRODUCT
+		                    WHERE PRODUCT_NAME = #{product_name})
+	</select>
+
 	<select id="selectMobileProductList" parameterType="String" resultType="MobileProductForListDB">
 		SELECT 
 		    p.product_no,

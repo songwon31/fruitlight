@@ -15,6 +15,7 @@ import poris.fruitlight.dto.MobileProductForList;
 import poris.fruitlight.dto.MobileProductForListDB;
 import poris.fruitlight.dto.Product;
 import poris.fruitlight.dto.ProductList;
+import poris.fruitlight.dto.ProductPart;
 
 @Service
 @Slf4j
@@ -26,75 +27,78 @@ public class ListServiceImpl implements ListService{
 	@Override
 	public List<MobileProductForList> getMobileProductsForList(String keyword) {
 		List<MobileProductForList> list = new ArrayList<>();
-		List<MobileProductForListDB> productList = productDao.selectMobileProductList(keyword);
-		for (MobileProductForListDB product : productList) {
+		List<ProductPart> productPartList = productDao.selectProductPartList(keyword);
+		for (ProductPart productPart : productPartList) {
+			float star_rate_avg = productDao.selectStarRateAvg(productPart.getProduct_name()) * 5.0f / 100.0f;
+			int review_count = productDao.countReview(productPart.getProduct_name());
 			MobileProductForList mobileProductForList = new MobileProductForList();
-			mobileProductForList.setProduct_no(product.getProduct_no());
-			mobileProductForList.setProduct_name(product.getProduct_name());
+			mobileProductForList.setProduct_no(productPart.getProduct_no());
+			mobileProductForList.setProduct_name(productPart.getProduct_name());
 			DecimalFormat df = new DecimalFormat("###,###,###,###");
-			String product_price = "" + df.format(product.getProduct_price()) + "원";
+			String product_price = "" + df.format(productPart.getProduct_price()) + "원";
 			mobileProductForList.setProduct_price(product_price);
-			String discount_rate = "" + df.format(product.getDiscount_rate()) + "%";
+			String discount_rate = "" + df.format(productPart.getDiscount_rate()) + "%";
 			mobileProductForList.setDiscount_rate(discount_rate);
-			String discount_price = "" + df.format(product.getDiscount_price()) + "원";
+			String discount_price = "" + df.format(productPart.getDiscount_price()) + "원";
 			mobileProductForList.setDiscount_price(discount_price);
-			double star_rate = product.getStar_rate();
-			star_rate = (star_rate * 5.0) / 100.0;
-			mobileProductForList.setStar_rate(Math.round(star_rate*10)/10.0);
-			mobileProductForList.setRate_count(product.getRate_count());
+			mobileProductForList.setStar_rate(Math.round(star_rate_avg*10)/10.0);
+			mobileProductForList.setRate_count(review_count);
 			
 			list.add(mobileProductForList);
 		}
+		
 		return list;
 	}
 	
 	@Override
 	public List<MobileProductForList> getMobileProductsForListPriceDesc(String keyword) {
 		List<MobileProductForList> list = new ArrayList<>();
-		List<MobileProductForListDB> productList = productDao.selectMobileProductListPriceDesc(keyword);
-		for (MobileProductForListDB product : productList) {
+		List<ProductPart> productPartList = productDao.selectProductPartListDesc(keyword);
+		for (ProductPart productPart : productPartList) {
+			float star_rate_avg = productDao.selectStarRateAvg(productPart.getProduct_name()) * 5.0f / 100.0f;
+			int review_count = productDao.countReview(productPart.getProduct_name());
 			MobileProductForList mobileProductForList = new MobileProductForList();
-			mobileProductForList.setProduct_no(product.getProduct_no());
-			mobileProductForList.setProduct_name(product.getProduct_name());
+			mobileProductForList.setProduct_no(productPart.getProduct_no());
+			mobileProductForList.setProduct_name(productPart.getProduct_name());
 			DecimalFormat df = new DecimalFormat("###,###,###,###");
-			String product_price = "" + df.format(product.getProduct_price()) + "원";
+			String product_price = "" + df.format(productPart.getProduct_price()) + "원";
 			mobileProductForList.setProduct_price(product_price);
-			String discount_rate = "" + df.format(product.getDiscount_rate()) + "%";
+			String discount_rate = "" + df.format(productPart.getDiscount_rate()) + "%";
 			mobileProductForList.setDiscount_rate(discount_rate);
-			String discount_price = "" + df.format(product.getDiscount_price()) + "원";
+			String discount_price = "" + df.format(productPart.getDiscount_price()) + "원";
 			mobileProductForList.setDiscount_price(discount_price);
-			double star_rate = product.getStar_rate();
-			star_rate = (star_rate * 5.0) / 100.0;
-			mobileProductForList.setStar_rate(Math.round(star_rate*10)/10.0);
-			mobileProductForList.setRate_count(product.getRate_count());
+			mobileProductForList.setStar_rate(Math.round(star_rate_avg*10)/10.0);
+			mobileProductForList.setRate_count(review_count);
 			
 			list.add(mobileProductForList);
 		}
+		
 		return list;
 	}
 	
 	@Override
 	public List<MobileProductForList> getMobileProductsForListPriceAsc(String keyword) {
 		List<MobileProductForList> list = new ArrayList<>();
-		List<MobileProductForListDB> productList = productDao.selectMobileProductListPriceAsc(keyword);
-		for (MobileProductForListDB product : productList) {
+		List<ProductPart> productPartList = productDao.selectProductPartListAsc(keyword);
+		for (ProductPart productPart : productPartList) {
+			float star_rate_avg = productDao.selectStarRateAvg(productPart.getProduct_name()) * 5.0f / 100.0f;
+			int review_count = productDao.countReview(productPart.getProduct_name());
 			MobileProductForList mobileProductForList = new MobileProductForList();
-			mobileProductForList.setProduct_no(product.getProduct_no());
-			mobileProductForList.setProduct_name(product.getProduct_name());
+			mobileProductForList.setProduct_no(productPart.getProduct_no());
+			mobileProductForList.setProduct_name(productPart.getProduct_name());
 			DecimalFormat df = new DecimalFormat("###,###,###,###");
-			String product_price = "" + df.format(product.getProduct_price()) + "원";
+			String product_price = "" + df.format(productPart.getProduct_price()) + "원";
 			mobileProductForList.setProduct_price(product_price);
-			String discount_rate = "" + df.format(product.getDiscount_rate()) + "%";
+			String discount_rate = "" + df.format(productPart.getDiscount_rate()) + "%";
 			mobileProductForList.setDiscount_rate(discount_rate);
-			String discount_price = "" + df.format(product.getDiscount_price()) + "원";
+			String discount_price = "" + df.format(productPart.getDiscount_price()) + "원";
 			mobileProductForList.setDiscount_price(discount_price);
-			double star_rate = product.getStar_rate();
-			star_rate = (star_rate * 5.0) / 100.0;
-			mobileProductForList.setStar_rate(Math.round(star_rate*10)/10.0);
-			mobileProductForList.setRate_count(product.getRate_count());
+			mobileProductForList.setStar_rate(Math.round(star_rate_avg*10)/10.0);
+			mobileProductForList.setRate_count(review_count);
 			
 			list.add(mobileProductForList);
 		}
+		
 		return list;
 	}
 	

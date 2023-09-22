@@ -71,7 +71,7 @@ public class ReviewController {
 	}
 	
 	@GetMapping(value="/checkReview", produces="application/json; charset=UTF-8")
-	public String deleteReview(int order_no, int product_no) {
+	public String checkReview(int order_no, int product_no) {
 		int result = reviewService.checkReview(order_no, product_no);
 		JSONObject jsonObject = new JSONObject();
 		log.info(""+result);
