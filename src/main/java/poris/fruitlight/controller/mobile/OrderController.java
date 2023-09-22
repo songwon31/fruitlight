@@ -56,7 +56,12 @@ public class OrderController {
 	public void addOrder1(@RequestBody Order order) {
 	
 		log.info("데이터 잘 넘어오고있니?"+order.toString());
-		
+		if(order.getCASH_RECEIPT_PURPOSE() == null) {
+			order.setCASH_RECEIPT_PURPOSE("없음");
+		}
+		if(order.getCASH_RECEIPT_TYPE() == null) {
+			order.setCASH_RECEIPT_TYPE("없음");
+		}
 		OrderHistory orderHistory = new OrderHistory();
 		orderHistory.setSHOPPER_NO(order.getSHOPPER_NO());
 		orderHistory.setADDRESS_NO(order.getADDRESS_NO());
@@ -70,6 +75,7 @@ public class OrderController {
 		orderHistory.setCASH_RECEIPT_TYPE(order.getCASH_RECEIPT_TYPE());
 		Date currentDate = new Date();
 		orderHistory.setORDER_DATE(currentDate);
+		log.info(orderHistory.toString()+"나 오더 히스토리");
 		order_no = orderService.addOrder(orderHistory);
 		
 		

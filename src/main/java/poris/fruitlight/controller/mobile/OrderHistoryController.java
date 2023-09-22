@@ -23,7 +23,7 @@ public class OrderHistoryController {
 	public List<MorderHistory> getOrderList() {
 		int shopperNo = 1;
 		List<MorderHistory> orderHistoryList = myPageOrderedService.getOrderHistory(shopperNo);
-		
+	
 		return orderHistoryList;
 		
 	}
@@ -38,6 +38,5 @@ public class OrderHistoryController {
 		
 		return orderHistoryList;
 	}
-	
 
 }
