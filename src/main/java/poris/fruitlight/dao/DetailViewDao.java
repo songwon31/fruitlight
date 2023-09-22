@@ -17,6 +17,8 @@ import poris.fruitlight.dto.Review;
 @Mapper
 public interface DetailViewDao {
 	public List<Review> selectProductReview(int bno);
+	public List<Review> selectRecentProductReview(int bno);
+	public List<Review> selectBestProductReview(int bno);
 	
 	public List<ProductInquiry> selectProductInquiry(int bno);
 	

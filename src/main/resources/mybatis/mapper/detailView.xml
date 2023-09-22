@@ -19,13 +19,29 @@
     </insert>
 
 	<select id="selectProductReview" parameterType="int" resultType="Review">
-    	SELECT r.REVIEW_NO, r.ORDER_NO, r.PRODUCT_NO, r.BOARD_NO, r.STAR_RATE, r.HELP_POINT, r.CONTENT, s.SHOPPER_NAME, p.PRODUCT_NAME, r.WRITE_DATE
-        FROM REVIEW r, ORDER_HISTORY o, SHOPPER s, RECEIPT_HISTORY rh, PRODUCT p
-        WHERE r.ORDER_NO = o.ORDER_NO
-      	AND o.SHOPPER_NO = s.SHOPPER_NO
-      	AND r.ORDER_NO = rh.ORDER_NO
-      	AND rh.PRODUCT_NO = p.PRODUCT_NO
-      	AND BOARD_NO = #{BOARD_NO}
+    	SELECT r.REVIEW_NO, r.STAR_RATE, r.CONTENT, r.WRITE_DATE, r.HELP_POINT, s.SHOPPER_NAME
+		FROM REVIEW r, ORDER_HISTORY o, SHOPPER s
+		WHERE r.ORDER_NO = o.ORDER_NO
+		AND o.SHOPPER_NO = s.SHOPPER_NO
+		AND r.BOARD_NO = #{BOARD_NO}
+    </select>
+
+	<select id="selectRecentProductReview" parameterType="int" resultType="Review">
+    	SELECT r.REVIEW_NO, r.STAR_RATE, r.CONTENT, r.WRITE_DATE, r.HELP_POINT, s.SHOPPER_NAME
+		FROM REVIEW r, ORDER_HISTORY o, SHOPPER s
+		WHERE r.ORDER_NO = o.ORDER_NO
+		AND o.SHOPPER_NO = s.SHOPPER_NO
+		AND r.BOARD_NO = #{BOARD_NO}
+		ORDER BY r.WRITE_DATE DESC
+    </select>
+
+	<select id="selectBestProductReview" parameterType="int" resultType="Review">
+    	SELECT r.REVIEW_NO, r.STAR_RATE, r.CONTENT, r.WRITE_DATE, r.HELP_POINT, s.SHOPPER_NAME
+		FROM REVIEW r, ORDER_HISTORY o, SHOPPER s
+		WHERE r.ORDER_NO = o.ORDER_NO
+		AND o.SHOPPER_NO = s.SHOPPER_NO
+		AND r.BOARD_NO = #{BOARD_NO}
+		ORDER BY r.HELP_POINT DESC
     </select>
 
 	<select id="selectProductInquiry" parameterType="int" resultType="poris.fruitlight.dto.ProductInquiry">

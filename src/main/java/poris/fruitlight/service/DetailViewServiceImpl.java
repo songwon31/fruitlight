@@ -46,6 +46,18 @@ public class DetailViewServiceImpl implements DetailViewService {
 	}
 	
 	@Override
+	public List<Review> getMRecentReviewList(int bno) {
+		List<Review> reviewList = detailViewDao.selectRecentProductReview(bno);
+		return reviewList;
+	}
+	
+	@Override
+	public List<Review> getMBestReviewList(int bno) {
+		List<Review> reviewList = detailViewDao.selectBestProductReview(bno);
+		return reviewList;
+	}
+	
+	@Override
 	public List<ProductInquiry> getMProductInquiryList(int bno) {
 		List<ProductInquiry> inquiryList = detailViewDao.selectProductInquiry(bno);
 		return inquiryList;

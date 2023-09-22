@@ -168,6 +168,18 @@ public class DetailViewController {
 		List<Review> reviewList = detailViewService.getMReviewList(bno);
 		return reviewList;
 	}
+	
+	@GetMapping(value="detailView/getRecentReviewList", produces="application/json; charset=UTF-8")
+	public List<Review> getMRecentReviewList(int bno) {
+		List<Review> reviewList = detailViewService.getMRecentReviewList(bno);
+		return reviewList;
+	}
+	
+	@GetMapping(value="detailView/getBestReviewList", produces="application/json; charset=UTF-8")
+	public List<Review> getMBestReviewList(int bno) {
+		List<Review> reviewList = detailViewService.getMBestReviewList(bno);
+		return reviewList;
+	}
 
 	@GetMapping(value="detailView/getReviewInfo", produces="application/json; charset=UTF-8")
 	public ReviewInfo getReviewInfo(int bno) {
