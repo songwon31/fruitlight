@@ -50,4 +50,10 @@
 		delete from review
 		where review_no = #{review_no}
 	</delete>
+	
+	<select id="countReview" parameterType="map">
+		select count(*)
+		from review
+		where order_no = #{order_no} and product_no = #{product_no}
+	</select>
 </mapper>

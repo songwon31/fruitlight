@@ -70,4 +70,18 @@ public class ReviewController {
 		return jsonObject.toString();
 	}
 	
+	@GetMapping(value="/checkReview", produces="application/json; charset=UTF-8")
+	public String deleteReview(int order_no, int product_no) {
+		int result = reviewService.checkReview(order_no, product_no);
+		JSONObject jsonObject = new JSONObject();
+		log.info(""+result);
+		if (result == 0) {
+			jsonObject.put("result", "fail");
+		} else {
+			jsonObject.put("result", "success");
+		}
+		
+		return jsonObject.toString();
+	}
+	
 }

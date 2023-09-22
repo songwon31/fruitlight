@@ -12,4 +12,5 @@ public interface ReviewService {
 	public int editReview(Review review);
 	public Review getReview(int review_no);
 	public int deleteReview(int review_no);
+	public int checkReview(int order_no, int product_no);
 }

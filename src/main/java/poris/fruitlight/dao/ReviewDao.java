@@ -3,6 +3,7 @@ package poris.fruitlight.dao;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import poris.fruitlight.dto.Review;
 
@@ -28,4 +29,6 @@ public interface ReviewDao {
 	public Review selectReview(int review_no);
 	
 	public int deleteReview(int review_no);
+	
+	public int countReview(@Param("order_no") int order_no, @Param("product_no") int product_no);
 }
